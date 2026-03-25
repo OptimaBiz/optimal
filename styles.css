@@ -690,8 +690,16 @@ a:focus-visible {
     overflow: hidden;
   }
 
-  .site-nav a,
-  .nav-services__toggle {
+  .site-nav > * {
+    display: block;
+  }
+
+  .nav-services {
+    width: 100%;
+  }
+
+  .site-nav > a,
+  .site-nav > .nav-services > .nav-services__toggle {
     padding: 0.9rem 1rem;
     border-top: 1px solid var(--border);
     text-align: left;
