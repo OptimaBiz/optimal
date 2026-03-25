@@ -713,17 +713,36 @@ a:focus-visible {
     display: none;
   }
 
-  .services-mobile-menu {
+  #services-mobile-panel {
     position: static;
     left: auto;
     top: auto;
-    transform: translateY(8px);
+    width: 100%;
+    max-width: none;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
     box-shadow: none;
+    overflow: hidden;
+    transition: none;
     border-radius: 0;
     border: 0;
     border-top: 1px solid var(--border);
     background: linear-gradient(180deg, #ffffff 0%, #f7faff 100%);
     padding: var(--space-2) var(--space-3);
+    margin-top: 0;
+    display: none;
+    max-height: 0;
+  }
+
+  .nav-services.is-open #services-mobile-panel {
+    display: block;
+    max-height: min(62vh, 28rem);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .services-mobile-menu {
     display: block;
   }
 
