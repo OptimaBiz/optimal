@@ -6,6 +6,10 @@
   const servicesToggle = document.querySelector('.nav-services__toggle');
   const contactForm = document.querySelector('#contact-form');
   const formNote = document.querySelector('#form-note');
+  const desktopMedia = window.matchMedia('(min-width: 1024px)');
+  const mobileMedia = window.matchMedia('(max-width: 1023.98px)');
+  const isDesktop = () => desktopMedia.matches;
+  const isMobile = () => mobileMedia.matches;
 
   const closeServicesMenu = () => {
     if (!servicesWrap || !servicesToggle) return;
@@ -31,13 +35,20 @@
 
   if (servicesWrap && servicesToggle) {
     servicesToggle.addEventListener('click', (event) => {
+      if (isDesktop()) return;
       event.stopPropagation();
       const isOpen = servicesWrap.classList.toggle('is-open');
       servicesToggle.setAttribute('aria-expanded', String(isOpen));
     });
 
+    servicesWrap.addEventListener('mouseenter', () => {
+      if (!isDesktop()) return;
+      servicesWrap.classList.add('is-open');
+      servicesToggle.setAttribute('aria-expanded', 'true');
+    });
+
     servicesWrap.addEventListener('mouseleave', () => {
-      if (window.matchMedia('(min-width: 801px)').matches) closeServicesMenu();
+      if (isDesktop()) closeServicesMenu();
     });
   }
 
@@ -45,7 +56,7 @@
     const target = event.target;
     if (!(target instanceof Node)) return;
 
-    if (servicesWrap && !servicesWrap.contains(target)) {
+    if (isMobile() && servicesWrap && !servicesWrap.contains(target)) {
       closeServicesMenu();
     }
 
@@ -64,12 +75,20 @@
     siteNav.addEventListener('click', (event) => {
       const target = event.target;
       if (!(target instanceof HTMLElement)) return;
-      if (target.tagName === 'A' && window.matchMedia('(max-width: 800px)').matches) {
+      if (target.tagName === 'A' && isMobile()) {
         closeMainMenu();
         closeServicesMenu();
       }
     });
   }
+
+  const handleViewportModeChange = () => {
+    closeServicesMenu();
+    if (isDesktop()) {
+      closeMainMenu();
+    }
+  };
+  desktopMedia.addEventListener('change', handleViewportModeChange);
 
   if (contactForm && formNote) {
     contactForm.addEventListener('submit', (event) => {
