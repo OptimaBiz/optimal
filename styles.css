@@ -290,6 +290,14 @@ img {
   padding: 0.3rem 0;
 }
 
+.logos-heading {
+  margin: 0 0 0.65rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--text-muted);
+}
+
 .logo-ticker__track {
   display: flex;
   width: max-content;
@@ -820,5 +828,10 @@ a:focus-visible {
   .footer-bar {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .logos-heading {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
   }
 }
