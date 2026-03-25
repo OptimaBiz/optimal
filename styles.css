@@ -5,13 +5,20 @@
   --text: #15233b;
   --text-muted: #4e5b70;
   --border: #d8e1ec;
+  --border-strong: #bccbe0;
   --accent: #1f4dbf;
   --accent-dark: #173a90;
+  --ring: rgba(31, 77, 191, 0.24);
   --radius-sm: 10px;
   --radius-md: 14px;
   --radius-lg: 22px;
   --shadow-sm: 0 8px 24px rgba(19, 39, 76, 0.06);
   --shadow-md: 0 14px 32px rgba(13, 33, 68, 0.09);
+  --shadow-premium: 0 12px 30px rgba(15, 35, 72, 0.08), 0 2px 10px rgba(15, 35, 72, 0.05);
+  --duration-fast: 0.18s;
+  --duration-base: 0.24s;
+  --ease-standard: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --space-1: 0.5rem;
   --space-2: 0.75rem;
   --space-3: 1rem;
@@ -45,10 +52,6 @@ body {
 a {
   color: var(--accent);
   text-decoration: none;
-}
-
-a:hover {
-  color: var(--accent-dark);
 }
 
 img {
@@ -95,25 +98,40 @@ img {
 
 .eyebrow {
   display: inline-block;
-  margin-bottom: 0.4rem;
-  font-size: 0.78rem;
-  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+  padding: 0.26rem 0.62rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--accent);
-  font-weight: 700;
+  font-weight: 800;
+  line-height: 1;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--accent) 20%, #ffffff);
+  background: color-mix(in srgb, var(--accent) 7%, #ffffff);
 }
 
 .eyebrow--soft {
   color: #385a9f;
+  border-color: rgba(56, 90, 159, 0.22);
+  background: rgba(56, 90, 159, 0.08);
 }
 
 .site-header {
   position: sticky;
   top: 0;
   z-index: 30;
-  backdrop-filter: blur(10px);
-  background: rgba(248, 251, 255, 0.95);
+  background: rgba(248, 251, 255, 0.98);
   border-bottom: 1px solid var(--border);
+  box-shadow: 0 1px 0 rgba(15, 35, 72, 0.03);
+}
+
+@supports (backdrop-filter: blur(10px)) {
+  .site-header {
+    backdrop-filter: saturate(135%) blur(10px);
+    background: rgba(248, 251, 255, 0.8);
+    border-bottom-color: rgba(188, 203, 224, 0.8);
+  }
 }
 
 .header-bar {
@@ -166,11 +184,11 @@ img {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-premium);
   opacity: 0;
   visibility: hidden;
   transform: translate(-50%, 8px);
-  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+  transition: opacity var(--duration-fast) var(--ease-standard), transform var(--duration-fast) var(--ease-standard), visibility var(--duration-fast);
 }
 
 .nav-services.is-open #services-menu-panel {
@@ -331,6 +349,7 @@ img {
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
+  transition: border-color var(--duration-base) var(--ease-standard), box-shadow var(--duration-base) var(--ease-standard), transform var(--duration-base) var(--ease-standard);
 }
 
 .service-card,
@@ -528,14 +547,29 @@ textarea {
   font: inherit;
   color: var(--text);
   background: #fff;
+  transition: border-color var(--duration-fast) var(--ease-standard), box-shadow var(--duration-fast) var(--ease-standard), background-color var(--duration-fast) var(--ease-standard);
 }
 
-input:focus,
-textarea:focus,
+input:focus-visible,
+textarea:focus-visible,
 button:focus-visible,
 a:focus-visible {
-  outline: 2px solid #91adf3;
+  outline: 2px solid var(--ring);
   outline-offset: 2px;
+  box-shadow: 0 0 0 3px var(--ring);
+}
+
+input:focus-visible,
+textarea:focus-visible {
+  border-color: var(--accent);
+}
+
+input:focus:not(:focus-visible),
+textarea:focus:not(:focus-visible),
+button:focus:not(:focus-visible),
+a:focus:not(:focus-visible) {
+  outline: none;
+  box-shadow: none;
 }
 
 .form-note {
@@ -561,28 +595,20 @@ a:focus-visible {
   padding: 0.68rem 1.25rem;
   border: 1px solid transparent;
   font-weight: 600;
-  transition: background-color 0.22s ease, border-color 0.22s ease, color 0.22s ease, transform 0.22s ease;
-}
-
-.button:hover {
-  transform: translateY(-1px);
+  box-shadow: 0 1px 0 rgba(12, 26, 56, 0.03);
+  transition: background-color var(--duration-base) var(--ease-standard), border-color var(--duration-base) var(--ease-standard), color var(--duration-base) var(--ease-standard), transform var(--duration-base) var(--ease-out), box-shadow var(--duration-base) var(--ease-standard);
 }
 
 .button--primary {
   background: var(--accent);
   border-color: var(--accent);
   color: #fff;
-}
-
-.button--primary:hover {
-  color: #fff;
-  background: var(--accent-dark);
-  border-color: var(--accent-dark);
+  box-shadow: 0 8px 22px rgba(31, 77, 191, 0.2);
 }
 
 .button--secondary {
   background: #fff;
-  border-color: #b8c7dc;
+  border-color: var(--border-strong);
   color: var(--text);
 }
 
@@ -623,7 +649,7 @@ a:focus-visible {
 .reveal {
   opacity: 0;
   transform: translateY(14px);
-  transition: opacity 0.62s cubic-bezier(0.22, 1, 0.36, 1), transform 0.62s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: opacity 0.62s var(--ease-out), transform 0.62s var(--ease-out);
   will-change: opacity, transform;
 }
 
@@ -634,6 +660,67 @@ a:focus-visible {
 .reveal.is-visible {
   opacity: 1;
   transform: translateY(0) scale(1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  a:hover {
+    color: var(--accent-dark);
+  }
+
+  .button:hover {
+    transform: translateY(-1px);
+  }
+
+  .button--primary:hover {
+    color: #fff;
+    background: var(--accent-dark);
+    border-color: var(--accent-dark);
+    box-shadow: 0 12px 28px rgba(23, 58, 144, 0.24);
+  }
+
+  .button--secondary:hover {
+    border-color: #9fb2cf;
+    background: #f8fbff;
+  }
+
+  .service-card:hover,
+  .case-card:hover,
+  .standard-card:hover,
+  .testimonial:hover,
+  .contact-card:hover,
+  .timeline-step__card:hover,
+  .contact-panel:hover,
+  .cta-card:hover {
+    border-color: var(--border-strong);
+    box-shadow: var(--shadow-premium);
+    transform: translateY(-2px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .logo-ticker__track {
+    animation: none;
+  }
+
+  .reveal,
+  .reveal[data-reveal="scale"],
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 @media (max-width: 1024px) {
