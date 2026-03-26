@@ -350,17 +350,18 @@ img {
   transition: transform 0.22s ease, box-shadow 0.22s ease;
 }
 
+.hero-service-card,
+.hero-service-card:link,
+.hero-service-card:visited,
+.hero-service-card:hover,
+.hero-service-card:active,
+.hero-service-card *,
 .hero-card,
 .hero-card:link,
 .hero-card:visited,
 .hero-card:hover,
 .hero-card:active,
 .hero-card * {
-  text-decoration: none !important;
-}
-
-.hero-card h3,
-.hero-card p {
   text-decoration: none !important;
 }
 
