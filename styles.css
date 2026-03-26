@@ -355,6 +355,11 @@ img {
   text-decoration: none !important;
 }
 
+.hero-card h3,
+.hero-card p {
+  text-decoration: none !important;
+}
+
 .hero-service-card h3 {
   margin-bottom: 0.35rem;
   color: var(--text);
@@ -373,6 +378,8 @@ img {
   margin-top: 0.5rem !important;
   font-size: 0.85rem !important;
   color: var(--accent) !important;
+  text-decoration: underline !important;
+  text-underline-offset: 0.14em;
   transition: transform 0.2s ease;
 }
 
