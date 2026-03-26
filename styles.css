@@ -351,6 +351,10 @@ img {
 }
 
 .hero-card,
+.hero-card:link,
+.hero-card:visited,
+.hero-card:hover,
+.hero-card:active,
 .hero-card * {
   text-decoration: none !important;
 }
@@ -378,8 +382,7 @@ img {
   margin-top: 0.5rem !important;
   font-size: 0.85rem !important;
   color: var(--accent) !important;
-  text-decoration: underline !important;
-  text-underline-offset: 0.14em;
+  text-decoration: none !important;
   transition: transform 0.2s ease;
 }
 
