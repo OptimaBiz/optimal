@@ -268,10 +268,52 @@ img {
   color: var(--text-muted);
 }
 
+.hero-facts {
+  margin: -0.7rem 0 1.45rem;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+}
+
+.hero-facts li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+}
+
+.hero-facts li::before {
+  content: "";
+}
+
+.hero-facts li + li::before {
+  content: "|";
+  color: #a8b3c2;
+  padding: 0 0.55rem;
+}
+
 .hero-actions {
   display: flex;
   gap: var(--space-3);
   flex-wrap: wrap;
+}
+
+.hero-note {
+  margin: 0.85rem 0 0;
+  font-size: 0.92rem;
+  color: var(--text-muted);
+}
+
+.hero-visual__label {
+  margin: 0 0 0.9rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
 }
 
 .hero-panel {
@@ -283,6 +325,82 @@ img {
   display: grid;
   place-content: center;
   box-shadow: var(--shadow-md);
+}
+
+.hero-panel--cards {
+  min-height: auto;
+  display: grid;
+  gap: var(--space-2);
+  background: #f3f6fb;
+  border: 1px solid #dbe5f2;
+  box-shadow: var(--shadow-sm);
+  padding: clamp(0.95rem, 1.7vw, 1.3rem);
+  overflow: visible;
+  align-content: start;
+}
+
+.hero-service-card {
+  display: block;
+  background: #fff;
+  border: 1px solid #d8e1ef;
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.hero-service-card,
+.hero-service-card:link,
+.hero-service-card:visited,
+.hero-service-card:hover,
+.hero-service-card:active,
+.hero-service-card *,
+.hero-card,
+.hero-card:link,
+.hero-card:visited,
+.hero-card:hover,
+.hero-card:active,
+.hero-card * {
+  text-decoration: none !important;
+}
+
+.hero-service-card h3 {
+  margin-bottom: 0.35rem;
+  color: var(--text);
+  font-weight: 700;
+}
+
+.hero-service-card p {
+  margin: 0;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.card-cta {
+  margin-top: 0.5rem !important;
+  font-size: 0.85rem !important;
+  color: var(--accent) !important;
+  text-decoration: none !important;
+  transition: transform 0.2s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hero-service-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: #c4d3e7;
+  }
+
+  .hero-service-card:hover h3 {
+    color: var(--accent);
+  }
+
+  .hero-service-card:hover .card-cta {
+    transform: translateX(4px);
+  }
 }
 
 .logo-ticker__viewport {
@@ -297,6 +415,13 @@ img {
   letter-spacing: 0.02em;
   color: var(--text-muted);
   text-align: center;
+}
+
+.logos-subheading {
+  margin: 0 0 1rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
 }
 
 .logo-ticker__track {
@@ -491,6 +616,18 @@ img {
 .testimonial p {
   margin-top: 0;
   color: var(--text-muted);
+}
+
+.trust-facts-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.trust-fact {
+  text-align: center;
+}
+
+.trust-fact h3 {
+  margin: 0;
 }
 
 .testimonial__meta {
@@ -874,5 +1011,9 @@ a:focus-visible {
   .logos-heading {
     margin-bottom: 0.5rem;
     font-size: 0.9rem;
+  }
+
+  .logos-subheading {
+    font-size: 0.85rem;
   }
 }
