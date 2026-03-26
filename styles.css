@@ -552,6 +552,60 @@ img {
   }
 }
 
+
+
+.accreditation-types-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.accreditation-type-card {
+  min-height: 100%;
+  padding: clamp(1.2rem, 2.1vw, 1.7rem);
+  border-radius: 18px;
+}
+
+.accreditation-type-card .card-cta {
+  margin-top: auto !important;
+  display: inline-flex;
+}
+
+.inline-cta {
+  margin-top: var(--space-4);
+  padding: clamp(1rem, 2vw, 1.35rem);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: linear-gradient(180deg, #fbfdff 0%, #f3f8ff 100%);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  justify-content: space-between;
+  align-items: center;
+}
+
+.inline-cta p {
+  margin: 0;
+  max-width: 66ch;
+  color: var(--text-muted);
+}
+
+.section--cool {
+  background: #f3f6fb;
+}
+
+.service-card--cool {
+  background: #f8fbff;
+  border-color: #d4deea;
+}
+
+.trust-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.faq-card {
+  background: #fbfdff;
+}
 .services-grid,
 .cases-grid,
 .standards-grid,
@@ -953,6 +1007,16 @@ a:focus-visible {
   .contact-cards {
     grid-template-columns: 1fr;
   }
+
+  .accreditation-types-grid,
+  .trust-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .inline-cta {
+    align-items: flex-start;
+  }
+
 
   .mega-menu {
     width: min(700px, calc(100vw - 2rem));
