@@ -268,10 +268,45 @@ img {
   color: var(--text-muted);
 }
 
+.hero-facts {
+  margin: -0.7rem 0 1.45rem;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 1rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.hero-facts li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.hero-facts li::before {
+  content: "•";
+  color: var(--accent);
+  font-size: 0.75rem;
+}
+
 .hero-actions {
   display: flex;
   gap: var(--space-3);
   flex-wrap: wrap;
+}
+
+.hero-note {
+  margin: 0.85rem 0 0;
+  font-size: 0.92rem;
+  color: var(--text-muted);
+}
+
+.hero-visual__label {
+  margin: 0 0 0.8rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
 }
 
 .hero-panel {
@@ -283,6 +318,36 @@ img {
   display: grid;
   place-content: center;
   box-shadow: var(--shadow-md);
+}
+
+.hero-panel--cards {
+  min-height: auto;
+  display: grid;
+  gap: var(--space-2);
+  padding: var(--space-2);
+  align-content: start;
+}
+
+.hero-service-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.hero-service-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.hero-service-card h3 {
+  margin-bottom: 0.35rem;
+}
+
+.hero-service-card p {
+  margin: 0;
+  color: var(--text-muted);
 }
 
 .logo-ticker__viewport {
@@ -297,6 +362,13 @@ img {
   letter-spacing: 0.02em;
   color: var(--text-muted);
   text-align: center;
+}
+
+.logos-subheading {
+  margin: 0 0 1rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
 }
 
 .logo-ticker__track {
@@ -491,6 +563,18 @@ img {
 .testimonial p {
   margin-top: 0;
   color: var(--text-muted);
+}
+
+.trust-facts-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.trust-fact {
+  text-align: center;
+}
+
+.trust-fact h3 {
+  margin: 0;
 }
 
 .testimonial__meta {
@@ -844,6 +928,11 @@ a:focus-visible {
     gap: 0.7rem;
   }
 
+  .hero-facts {
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
   .button {
     width: 100%;
   }
@@ -874,5 +963,9 @@ a:focus-visible {
   .logos-heading {
     margin-bottom: 0.5rem;
     font-size: 0.9rem;
+  }
+
+  .logos-subheading {
+    font-size: 0.85rem;
   }
 }
