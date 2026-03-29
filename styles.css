@@ -793,7 +793,7 @@ img {
 .process-step {
   display: grid;
   grid-template-columns: 2.9rem 1fr;
-  column-gap: 1.05rem;
+  column-gap: 0.85rem;
   align-items: start;
   position: relative;
 }
@@ -801,11 +801,11 @@ img {
 .process-step::after {
   content: "";
   position: absolute;
-  left: 1.42rem;
-  top: 2.9rem;
-  width: 1px;
-  bottom: -1rem;
-  background: linear-gradient(180deg, rgba(55, 84, 131, 0.22), rgba(55, 84, 131, 0.08));
+  left: 1.39rem;
+  top: 2.82rem;
+  width: 1.5px;
+  bottom: -0.9rem;
+  background: linear-gradient(180deg, rgba(67, 94, 139, 0.34), rgba(67, 94, 139, 0.1));
 }
 
 .process-step:last-child::after {
@@ -831,22 +831,35 @@ img {
 .process-step__card {
   padding: clamp(1rem, 1.8vw, 1.35rem) clamp(1rem, 1.9vw, 1.45rem);
   display: grid;
-  gap: 0.82rem;
+  gap: 0.72rem;
   background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
   border-color: #d8e1ee;
+  position: relative;
+}
+
+.process-step__card::before {
+  content: "";
+  position: absolute;
+  left: -0.78rem;
+  top: 1.35rem;
+  width: 0.78rem;
+  height: 1.5px;
+  background: linear-gradient(90deg, rgba(88, 111, 149, 0.45), rgba(88, 111, 149, 0.12));
 }
 
 .process-step__title {
   margin: 0;
-  font-size: clamp(1.08rem, 1.65vw, 1.22rem);
+  font-size: clamp(1.13rem, 1.7vw, 1.28rem);
   letter-spacing: 0.01em;
+  font-weight: 650;
+  color: #203652;
 }
 
 .process-step__lead {
   margin: 0;
-  color: #50647d;
+  color: #405670;
   font-size: 0.95rem;
-  line-height: 1.52;
+  line-height: 1.5;
 }
 
 .process-step__list {
@@ -859,10 +872,10 @@ img {
 
 .process-step__list li {
   margin: 0;
-  padding-left: 0.95rem;
-  color: #384f6d;
-  line-height: 1.42;
-  font-size: 0.92rem;
+  padding-left: 0.88rem;
+  color: #415a79;
+  line-height: 1.36;
+  font-size: 0.9rem;
   position: relative;
 }
 
@@ -878,15 +891,18 @@ img {
 
 .process-step__result {
   margin: 0;
-  padding-top: 0.75rem;
+  padding: 0.68rem 0.8rem 0.72rem;
   border-top: 1px solid #e2e9f4;
-  color: #2f4360;
+  color: #2a4263;
   font-size: 0.92rem;
   line-height: 1.45;
+  background: linear-gradient(180deg, rgba(247, 250, 255, 0.95) 0%, rgba(241, 246, 253, 0.9) 100%);
+  border-radius: 10px;
 }
 
 .process-step__result strong {
-  color: #253f67;
+  color: #173a6d;
+  font-weight: 700;
 }
 
 .cta-card {
@@ -1706,13 +1722,13 @@ body.modal-open {
 
   .process-step {
     grid-template-columns: 2.45rem 1fr;
-    column-gap: 0.72rem;
+    column-gap: 0.6rem;
   }
 
   .process-step::after {
-    left: 1.21rem;
-    top: 2.5rem;
-    bottom: -0.86rem;
+    left: 1.19rem;
+    top: 2.45rem;
+    bottom: -0.8rem;
   }
 
   .process-step__number {
@@ -1724,6 +1740,12 @@ body.modal-open {
   .process-step__card {
     gap: 0.7rem;
     padding: 0.9rem;
+  }
+
+  .process-step__card::before {
+    left: -0.58rem;
+    top: 1.18rem;
+    width: 0.58rem;
   }
 
   .process-step__lead,
