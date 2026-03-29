@@ -15,11 +15,28 @@
         if (!partialPath) return;
 
         try {
-          const response = await fetch(partialPath, { headers: { 'X-Requested-With': 'partial-loader' } });
-          if (!response.ok) throw new Error(`Failed to load partial: ${partialPath}`);
+          const partialUrl = new URL(partialPath, window.location.href);
+          const response = await fetch(partialUrl.href, { headers: { 'X-Requested-With': 'partial-loader' } });
+          if (!response.ok) {
+            throw new Error(`Failed to load partial: ${partialPath} (${response.status} ${response.statusText})`);
+          }
+
           host.innerHTML = await response.text();
+          host.dataset.partialLoaded = 'true';
         } catch (error) {
-          console.error(error);
+          host.dataset.partialLoaded = 'false';
+          if (!host.children.length) {
+            host.innerHTML = `
+              <div class="contact-form-shell contact-form-shell--fallback">
+                <h2 class="contact-form__title">Обсудить задачу</h2>
+                <p class="contact-form__subtitle">
+                  Форма сейчас недоступна. Свяжитесь с нами через страницу контактов — ответим в рабочее время.
+                </p>
+                <a class="button button--primary form-submit" href="contacts.html">Перейти в контакты</a>
+              </div>
+            `;
+          }
+          console.error('[partial-loader] Не удалось загрузить partial', partialPath, error);
         }
       })
     );
