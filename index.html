@@ -508,27 +508,40 @@
 
       <section class="section" id="contacts">
         <div class="container contacts-grid">
-          <div class="contact-cards reveal" data-reveal="up">
-            <article class="contact-card">
-              <span class="contact-card__label">Email</span>
-              <a href="mailto:hello@optimaloption.ru">hello@optimaloption.ru</a>
-            </article>
-            <article class="contact-card">
-              <span class="contact-card__label">Телефон</span>
-              <a href="tel:+78123898178">+7 812 38-98-178</a>
-            </article>
-            <article class="contact-card">
-              <span class="contact-card__label">Адрес</span>
-              <p>Санкт-Петербург, Россия</p>
-            </article>
-          </div>
+          <aside class="contact-summary reveal" data-reveal="up" aria-label="Контактная информация">
+            <header class="contact-summary__header">
+              <span class="contact-summary__eyebrow">Контакты</span>
+              <h2 class="contact-summary__title">Как с нами связаться</h2>
+            </header>
+            <div class="contact-summary__body">
+              <section class="contact-summary__section" aria-label="Email">
+                <span class="contact-summary__label">Email</span>
+                <a class="contact-summary__value contact-summary__value--link" href="mailto:hello@optimaloption.ru">hello@optimaloption.ru</a>
+              </section>
+              <section class="contact-summary__section" aria-label="Телефон">
+                <span class="contact-summary__label">Телефон</span>
+                <a class="contact-summary__value contact-summary__value--link" href="tel:+78123898178">+7 812 38-98-178</a>
+              </section>
+              <section class="contact-summary__section" aria-label="География работы">
+                <span class="contact-summary__label">Работаем по всей России</span>
+                <p class="contact-summary__value">Базируемся в Санкт-Петербурге</p>
+                <p class="contact-summary__meta">Сопровождаем проекты дистанционно и очно, где это необходимо</p>
+              </section>
+              <section class="contact-summary__section" aria-label="Режим ответа">
+                <span class="contact-summary__label">Режим ответа</span>
+                <p class="contact-summary__value">Отвечаем в рабочее время</p>
+                <p class="contact-summary__meta">Обычно связываемся в день обращения</p>
+              </section>
+            </div>
+            <p class="contact-summary__note">Сначала разбираем запрос, затем предлагаем оптимальный формат работы</p>
+          </aside>
           <div class="contact-panel reveal" data-reveal="up">
             <div class="contact-form-shell" data-contact-form-shell>
               <form class="contact-form" action="https://formspree.io/f/mjgpywnr" method="POST" novalidate>
                 <div class="contact-form__header">
-                  <h2 class="contact-form__title">Обсудить задачу</h2>
+                  <h2 class="contact-form__title">Обсудить проект</h2>
                   <p class="contact-form__subtitle">
-                    Оставьте контакты и кратко опишите задачу. Мы свяжемся с вами и предложим оптимальный вариант решения.
+                    Оставьте контакты и кратко опишите запрос. Мы свяжемся с вами и предложим оптимальный формат решения.
                   </p>
                 </div>
 
@@ -560,7 +573,7 @@
                       id="contact-channel"
                       name="contact"
                       type="text"
-                      placeholder="example@mail.ru / +7 (___) ___-__-__"
+                      placeholder="example@mail.ru / телефон в любом формате"
                       autocomplete="email"
                       required
                     />

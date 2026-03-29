@@ -105,8 +105,9 @@
       const successState = shell.querySelector('[data-contact-success]');
       const resetButton = shell.querySelector('[data-contact-reset]');
       const submitButton = form?.querySelector('button[type="submit"]');
+      const contactInput = form?.querySelector('input[name="contact"]');
 
-      if (!form || !formNote || !consentError || !consentCheckbox || !consentModal || !modalDialog || !openConsentButton || !submitButton) {
+      if (!form || !formNote || !consentError || !consentCheckbox || !consentModal || !modalDialog || !openConsentButton || !submitButton || !contactInput) {
         return;
       }
 
@@ -139,6 +140,16 @@
         if (pageTitle) pageTitle.value = document.title;
       };
 
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const validateContactField = (rawValue) => {
+        const value = String(rawValue || '').trim();
+        if (!value) return false;
+        if (emailRegex.test(value)) return true;
+        const digitsOnly = value.replace(/\D/g, '');
+        return digitsOnly.length >= 7;
+      };
+
       let lastFocusedTrigger = null;
 
       const closeModal = () => {
@@ -168,6 +179,10 @@
         consentCheckbox.setCustomValidity('');
       });
 
+      contactInput.addEventListener('input', () => {
+        contactInput.setCustomValidity('');
+      });
+
       const setSubmittingState = (isSubmitting) => {
         submitButton.disabled = isSubmitting;
         submitButton.classList.toggle('is-loading', isSubmitting);
@@ -191,6 +206,7 @@
         formNote.textContent = '';
         consentError.textContent = '';
         consentCheckbox.setCustomValidity('');
+        contactInput.setCustomValidity('');
         setContextFields();
       };
 
@@ -216,8 +232,16 @@
         const message = String(formData.get('message') || '').trim();
         const hasConsent = consentCheckbox.checked;
 
-        if (name.length < 2 || contact.length < 6 || message.length < 10) {
+        if (name.length < 2 || message.length < 10) {
           formNote.textContent = 'Пожалуйста, заполните все обязательные поля корректно.';
+          formNote.classList.add('is-error');
+          return;
+        }
+
+        if (!validateContactField(contact)) {
+          contactInput.setCustomValidity('Укажите email или телефон не короче 7 цифр');
+          contactInput.reportValidity();
+          formNote.textContent = 'Укажите email или телефон не короче 7 цифр';
           formNote.classList.add('is-error');
           return;
         }
