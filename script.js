@@ -93,7 +93,7 @@
 
   const PARTIAL_FALLBACKS = {
     'partials/contact-block.html': `
-<aside class="contact-summary reveal" data-reveal="up" aria-label="Контактная информация">
+<aside class="contact-summary" aria-label="Контактная информация">
   <header class="contact-summary__header">
     <span class="contact-summary__eyebrow">Контакты</span>
     <h2 class="contact-summary__title">Как с нами связаться</h2>
@@ -119,7 +119,7 @@
 <div class="contact-form-shell" data-contact-form-shell>
   <form class="contact-form" action="https://formspree.io/f/mjgpywnr" method="POST" novalidate>
     <div class="contact-form__header">
-      <h2 class="contact-form__title">Обсудить проект</h2>
+      <h2 class="contact-form__title">Форма для связи</h2>
       <p class="contact-form__subtitle">Оставьте контакты и кратко опишите запрос. Мы свяжемся с вами и предложим оптимальный формат решения.</p>
     </div>
     <input type="hidden" name="page_url" value="" />
@@ -127,7 +127,7 @@
     <input type="hidden" name="_subject" value="Новая заявка с сайта optimaloption.ru" />
     <input type="hidden" name="_language" value="ru" />
     <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="contact-form__gotcha" aria-hidden="true" />
-    <input type="hidden" name="_next" value="" />
+    <input type="hidden" name="_next" value="/" />
     <div class="contact-form__grid">
       <div class="form-field"><label class="form-label" for="contact-name">Как к вам обращаться</label><input class="form-input" id="contact-name" name="name" type="text" placeholder="Имя" autocomplete="name" required /></div>
       <div class="form-field"><label class="form-label" for="contact-channel">Email или телефон</label><input class="form-input" id="contact-channel" name="contact" type="text" placeholder="example@mail.ru / телефон в любом формате" autocomplete="email" required /></div>
@@ -161,29 +161,34 @@
     const includeNodes = Array.from(document.querySelectorAll('[data-include]'));
     if (!includeNodes.length) return;
 
-    await Promise.all(
+    const loadedPartials = await Promise.all(
       includeNodes.map(async (node) => {
         const source = node.getAttribute('data-include');
-        if (!source) return;
+        if (!source) return { node, content: '', isEmpty: true };
         try {
           const response = await fetch(source, { cache: 'no-store' });
           if (!response.ok) throw new Error(`Failed to load partial: ${source}`);
-          node.innerHTML = await response.text();
+          return { node, content: await response.text(), isEmpty: false };
         } catch (error) {
           console.error('[partials] Ошибка загрузки', source, error);
           const fallback = PARTIAL_FALLBACKS[source];
           if (fallback) {
-            node.innerHTML = fallback;
             console.warn('[partials] Использован fallback-шаблон для', source);
-          } else {
-            node.innerHTML = '';
-            node.classList.add('is-empty');
-            const panel = node.closest('.contact-panel');
-            if (panel) panel.hidden = true;
+            return { node, content: fallback, isEmpty: false };
           }
+          return { node, content: '', isEmpty: true };
         }
       })
     );
+
+    loadedPartials.forEach(({ node, content, isEmpty }) => {
+      node.innerHTML = content;
+      if (isEmpty) {
+        node.classList.add('is-empty');
+        const panel = node.closest('.contact-panel');
+        if (panel) panel.hidden = true;
+      }
+    });
   };
 
   const initContactForms = () => {
@@ -232,8 +237,10 @@
       const setContextFields = () => {
         const pageUrl = form.querySelector('input[name="page_url"]');
         const pageTitle = form.querySelector('input[name="page_title"]');
+        const nextUrl = form.querySelector('input[name="_next"]');
         if (pageUrl) pageUrl.value = window.location.href;
         if (pageTitle) pageTitle.value = document.title;
+        if (nextUrl) nextUrl.value = window.location.href;
       };
 
 
