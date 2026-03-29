@@ -172,7 +172,7 @@
         submitButton.disabled = isSubmitting;
         submitButton.classList.toggle('is-loading', isSubmitting);
         submitButton.setAttribute('aria-busy', String(isSubmitting));
-        submitButton.textContent = isSubmitting ? 'Отправляем…' : 'Отправить заявку';
+        submitButton.textContent = isSubmitting ? 'Отправка...' : 'Отправить заявку';
       };
 
       const showSuccessState = () => {
@@ -196,6 +196,11 @@
 
       if (resetButton) {
         resetButton.addEventListener('click', resetToFormState);
+      }
+
+      form.hidden = false;
+      if (successState) {
+        successState.hidden = true;
       }
 
       setContextFields();
@@ -246,12 +251,6 @@
           showSuccessState();
         } catch (error) {
           console.error('[contact-form] Ошибка отправки формы', error);
-          const nextUrl = String(formData.get('_next') || '').trim();
-          if (nextUrl) {
-            window.location.href = nextUrl;
-            return;
-          }
-
           formNote.textContent = 'Не удалось отправить заявку. Попробуйте снова или свяжитесь с нами по телефону.';
           formNote.classList.add('is-error');
         } finally {
