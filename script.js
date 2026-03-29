@@ -16,13 +16,14 @@
 
         try {
           const partialUrl = new URL(partialPath, window.location.href);
-          const response = await fetch(partialUrl.href, { headers: { 'X-Requested-With': 'partial-loader' } });
+          const response = await fetch(partialUrl.href);
           if (!response.ok) {
             throw new Error(`Failed to load partial: ${partialPath} (${response.status} ${response.statusText})`);
           }
 
           host.innerHTML = await response.text();
           host.dataset.partialLoaded = 'true';
+          host.dataset.partialHasForm = String(Boolean(host.querySelector('.contact-form')));
         } catch (error) {
           host.dataset.partialLoaded = 'false';
           if (!host.children.length) {
