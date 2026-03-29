@@ -113,6 +113,7 @@
       <p class="contact-summary__meta">Сопровождаем проекты дистанционно и очно, где это необходимо</p>
     </section>
   </div>
+  <p class="contact-summary__note">Сначала разбираем запрос, затем предлагаем оптимальный формат работы.</p>
 </aside>`,
     'partials/contact-form.html': `
 <div class="contact-form-shell" data-contact-form-shell>
@@ -134,7 +135,7 @@
     </div>
     <div class="form-consent">
       <input class="form-consent__checkbox" type="checkbox" id="consent-checkbox" name="consent" required aria-describedby="consent-error" />
-      <label class="form-consent__text" for="consent-checkbox">Я даю <button type="button" class="form-consent__link" data-consent-open>согласие на обработку персональных данных</button> и принимаю <a href="privacy-policy.html">Политику обработки персональных данных</a></label>
+      <label class="form-consent__text" for="consent-checkbox">Я даю <button type="button" class="form-consent__link" data-consent-open>согласие на обработку персональных данных</button> и принимаю <a href="privacy-policy.html">Политику конфиденциальности</a></label>
     </div>
     <p class="form-note form-note--error" id="consent-error" aria-live="polite"></p>
     <p class="form-note" id="form-note" role="status" aria-live="polite"></p>
@@ -150,7 +151,7 @@
     <div class="consent-modal__backdrop" data-consent-close></div>
     <div class="consent-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="consent-modal-title" tabindex="-1">
       <div class="consent-modal__header"><h3 class="consent-modal__title" id="consent-modal-title">Согласие на обработку персональных данных</h3><button class="consent-modal__close" type="button" data-consent-close aria-label="Закрыть окно">×</button></div>
-      <div class="consent-modal__body"><p>Я, заполняя форму на сайте, даю согласие на обработку моих персональных данных: имени, телефона, адреса электронной почты, а также иных сведений, указанных в сообщении.</p><p>Обработка персональных данных осуществляется в целях рассмотрения обращения, обратной связи со мной, подготовки ответа на запрос и предложения услуг по заявленной задаче.</p><p>Под обработкой персональных данных понимаются сбор, запись, систематизация, накопление, хранение, уточнение, использование и удаление персональных данных в соответствии с действующим законодательством Российской Федерации.</p><p>Согласие действует до достижения целей обработки персональных данных либо до момента его отзыва субъектом персональных данных.</p><p class="consent-modal__policy-note">Полный порядок обработки персональных данных размещён на странице <a href="privacy-policy.html">Политики обработки персональных данных</a>.</p></div>
+      <div class="consent-modal__body"><p>Я, заполняя форму на сайте, даю согласие на обработку моих персональных данных: имени, телефона, адреса электронной почты, а также иных сведений, указанных в сообщении.</p><p>Обработка персональных данных осуществляется в целях рассмотрения обращения, обратной связи со мной, подготовки ответа на запрос и предложения услуг по заявленной задаче.</p><p>Под обработкой персональных данных понимаются сбор, запись, систематизация, накопление, хранение, уточнение, использование и удаление персональных данных в соответствии с действующим законодательством Российской Федерации.</p><p>Согласие действует до достижения целей обработки персональных данных либо до момента его отзыва субъектом персональных данных.</p><p class="consent-modal__policy-note">Полный порядок обработки персональных данных размещён на странице <a href="privacy-policy.html">Политики конфиденциальности</a>.</p></div>
     </div>
   </div>
 </div>`
