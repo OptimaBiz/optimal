@@ -4,8 +4,6 @@
   const siteNav = document.querySelector('.site-nav');
   const servicesWrap = document.querySelector('.nav-services');
   const servicesToggle = document.querySelector('.nav-services__toggle');
-  const contactForm = document.querySelector('#contact-form');
-  const formNote = document.querySelector('#form-note');
   const desktopMedia = window.matchMedia('(min-width: 1024px)');
   const mobileMedia = window.matchMedia('(max-width: 1023.98px)');
   const isDesktop = () => desktopMedia.matches;
@@ -90,46 +88,65 @@
   };
   desktopMedia.addEventListener('change', handleViewportModeChange);
 
-  if (contactForm && formNote) {
-    contactForm.addEventListener('submit', (event) => {
-      event.preventDefault();
+  const initRevealItems = () => {
+    const revealItems = document.querySelectorAll('.reveal:not(.is-visible)');
 
-      formNote.classList.remove('is-success', 'is-error');
-      const formData = new FormData(contactForm);
-      const name = String(formData.get('name') || '').trim();
-      const phone = String(formData.get('phone') || '').trim();
+    if ('IntersectionObserver' in window && revealItems.length) {
+      const observer = new IntersectionObserver(
+        (entries, obs) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              obs.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.16,
+          rootMargin: '0px 0px -8% 0px'
+        }
+      );
 
-      if (name.length < 2 || phone.length < 6) {
-        formNote.textContent = 'Проверьте имя и телефон: заполните поля корректно.';
-        formNote.classList.add('is-error');
-        return;
-      }
+      revealItems.forEach((item) => observer.observe(item));
+      return;
+    }
 
-      formNote.textContent = 'Спасибо! Заявка принята. Мы свяжемся с вами в рабочее время.';
-      formNote.classList.add('is-success');
-      contactForm.reset();
-    });
-  }
-
-  const revealItems = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window && revealItems.length) {
-    const observer = new IntersectionObserver(
-      (entries, obs) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            obs.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        threshold: 0.16,
-        rootMargin: '0px 0px -8% 0px'
-      }
-    );
-
-    revealItems.forEach((item) => observer.observe(item));
-  } else {
     revealItems.forEach((item) => item.classList.add('is-visible'));
-  }
+  };
+
+  const hydrateFormspreeFields = () => {
+    document.querySelectorAll('form[action*="formspree.io"]').forEach((form) => {
+      const pageUrlInput = form.querySelector('input[name="page_url"]');
+      const pageTitleInput = form.querySelector('input[name="page_title"]');
+
+      if (pageUrlInput) pageUrlInput.value = window.location.href;
+      if (pageTitleInput) pageTitleInput.value = document.title;
+    });
+  };
+
+  const loadPartials = async () => {
+    const partialSlots = document.querySelectorAll('[data-partial-src]');
+
+    await Promise.all(
+      Array.from(partialSlots).map(async (slot) => {
+        if (!(slot instanceof HTMLElement)) return;
+        const src = slot.dataset.partialSrc;
+        if (!src) return;
+
+        try {
+          const response = await fetch(src);
+          if (!response.ok) return;
+          slot.innerHTML = await response.text();
+        } catch (_error) {
+          // Фолбэк — оставляем содержимое контейнера без изменений.
+        }
+      })
+    );
+  };
+
+  document.addEventListener('DOMContentLoaded', async () => {
+    await loadPartials();
+    hydrateFormspreeFields();
+    initRevealItems();
+  });
 })();

@@ -1,1 +1,51 @@
-<form action="https://formspree.io/f/mjgpywnr" method="POST">
+<section class="contact-form-block" aria-label="Форма обратной связи">
+  <div class="contact-form-shell reveal" data-reveal="up">
+    <div class="section-head">
+      <h2>Обсудить задачу</h2>
+      <p>
+        Оставьте имя, удобный способ связи и кратко опишите ситуацию. Мы свяжемся с вами и
+        сориентируем по формату работы.
+      </p>
+    </div>
+
+    <form action="https://formspree.io/f/mjgpywnr" method="POST" class="contact-form" id="contact-form">
+      <div class="form-field">
+        <label for="cf-name">Имя</label>
+        <input id="cf-name" type="text" name="name" required />
+      </div>
+
+      <div class="form-field">
+        <label for="cf-contact">Почта или телефон</label>
+        <input
+          id="cf-contact"
+          type="text"
+          name="contact"
+          placeholder="Укажите email или номер телефона"
+          required
+        />
+        <p class="form-helper">Оставьте удобный способ связи — почту или телефон.</p>
+      </div>
+
+      <div class="form-field">
+        <label for="cf-message">Кратко опишите задачу</label>
+        <textarea
+          id="cf-message"
+          name="message"
+          rows="5"
+          placeholder="Например: нужна аккредитация, есть текущая ситуация, сроки, замечания или вопросы"
+          required
+        ></textarea>
+      </div>
+
+      <input type="hidden" name="_subject" value="Новая заявка с сайта Оптимальный вариант" />
+      <input type="hidden" name="_language" value="ru" />
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+      <input type="hidden" name="page_url" value="" />
+      <input type="hidden" name="page_title" value="" />
+      <!-- Для production-домена: https://optimaloption.ru/thank-you.html -->
+      <input type="hidden" name="_next" value="https://optimaloption.ru/thank-you.html" />
+
+      <button class="button button--primary" type="submit">Отправить заявку</button>
+    </form>
+  </div>
+</section>
