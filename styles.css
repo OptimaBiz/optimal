@@ -1953,3 +1953,44 @@ body.modal-open {
   border-color: #bccce1;
   background: #f8fbff;
 }
+
+.breadcrumbs {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  padding-top: 1.25rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.breadcrumbs a {
+  color: var(--text-muted);
+}
+
+.breadcrumbs a:hover {
+  color: var(--accent);
+}
+
+.hero-panel--cards {
+  gap: 1rem;
+}
+
+.hero-service-card {
+  background: #fff;
+  border: 1px solid #d7e2ef;
+  box-shadow: 0 12px 28px rgba(15, 45, 92, 0.08);
+  border-radius: 16px;
+  text-decoration: none;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+
+.hero-service-card .card-cta {
+  text-decoration: none;
+  color: #2d4e96;
+}
+
+.hero-service-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 32px rgba(15, 45, 92, 0.14);
+  border-color: #bdd0ea;
+}

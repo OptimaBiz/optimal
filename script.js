@@ -90,6 +90,26 @@
     desktopMedia.addEventListener('change', handleViewportModeChange);
   };
 
+
+  const loadPartials = async () => {
+    const includeNodes = Array.from(document.querySelectorAll('[data-include]'));
+    if (!includeNodes.length) return;
+
+    await Promise.all(
+      includeNodes.map(async (node) => {
+        const source = node.getAttribute('data-include');
+        if (!source) return;
+        try {
+          const response = await fetch(source, { cache: 'no-store' });
+          if (!response.ok) throw new Error(`Failed to load partial: ${source}`);
+          node.innerHTML = await response.text();
+        } catch (error) {
+          console.error('[partials] Ошибка загрузки', source, error);
+        }
+      })
+    );
+  };
+
   const initContactForms = () => {
     const shells = document.querySelectorAll('[data-contact-form-shell]');
 
@@ -308,7 +328,12 @@
     }
   };
 
-  initNavigation();
-  initContactForms();
-  initReveal();
+  const bootstrap = async () => {
+    await loadPartials();
+    initNavigation();
+    initContactForms();
+    initReveal();
+  };
+
+  bootstrap();
 })();
