@@ -102,8 +102,11 @@
       const modalDialog = shell.querySelector('.consent-modal__dialog');
       const openConsentButton = shell.querySelector('[data-consent-open]');
       const closeConsentButtons = shell.querySelectorAll('[data-consent-close]');
+      const successState = shell.querySelector('[data-contact-success]');
+      const resetButton = shell.querySelector('[data-contact-reset]');
+      const submitButton = form?.querySelector('button[type="submit"]');
 
-      if (!form || !formNote || !consentError || !consentCheckbox || !consentModal || !modalDialog || !openConsentButton) {
+      if (!form || !formNote || !consentError || !consentCheckbox || !consentModal || !modalDialog || !openConsentButton || !submitButton) {
         return;
       }
 
@@ -165,9 +168,40 @@
         consentCheckbox.setCustomValidity('');
       });
 
+      const setSubmittingState = (isSubmitting) => {
+        submitButton.disabled = isSubmitting;
+        submitButton.classList.toggle('is-loading', isSubmitting);
+        submitButton.setAttribute('aria-busy', String(isSubmitting));
+        submitButton.textContent = isSubmitting ? 'Отправляем…' : 'Отправить заявку';
+      };
+
+      const showSuccessState = () => {
+        form.hidden = true;
+        if (successState) {
+          successState.hidden = false;
+        }
+      };
+
+      const resetToFormState = () => {
+        if (successState) {
+          successState.hidden = true;
+        }
+        form.hidden = false;
+        form.reset();
+        formNote.textContent = '';
+        consentError.textContent = '';
+        consentCheckbox.setCustomValidity('');
+        setContextFields();
+      };
+
+      if (resetButton) {
+        resetButton.addEventListener('click', resetToFormState);
+      }
+
       setContextFields();
 
-      form.addEventListener('submit', (event) => {
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
         formNote.classList.remove('is-success', 'is-error');
         consentError.textContent = '';
 
@@ -178,14 +212,12 @@
         const hasConsent = consentCheckbox.checked;
 
         if (name.length < 2 || contact.length < 6 || message.length < 10) {
-          event.preventDefault();
           formNote.textContent = 'Пожалуйста, заполните все обязательные поля корректно.';
           formNote.classList.add('is-error');
           return;
         }
 
         if (!hasConsent) {
-          event.preventDefault();
           consentCheckbox.setCustomValidity('Подтвердите согласие на обработку персональных данных.');
           consentError.textContent = 'Подтвердите согласие на обработку персональных данных, чтобы отправить форму.';
           consentCheckbox.reportValidity();
@@ -193,13 +225,37 @@
         }
 
         consentCheckbox.setCustomValidity('');
+        setSubmittingState(true);
 
-        if (!form.action) {
-          event.preventDefault();
-          formNote.textContent = 'Спасибо! Заявка принята. Мы свяжемся с вами в рабочее время.';
-          formNote.classList.add('is-success');
-          form.reset();
-          setContextFields();
+        try {
+          if (form.action) {
+            const response = await fetch(form.action, {
+              method: form.method || 'POST',
+              body: formData,
+              headers: {
+                Accept: 'application/json'
+              }
+            });
+
+            if (!response.ok) {
+              throw new Error(`Submit failed: ${response.status}`);
+            }
+          }
+
+          resetToFormState();
+          showSuccessState();
+        } catch (error) {
+          console.error('[contact-form] Ошибка отправки формы', error);
+          const nextUrl = String(formData.get('_next') || '').trim();
+          if (nextUrl) {
+            window.location.href = nextUrl;
+            return;
+          }
+
+          formNote.textContent = 'Не удалось отправить заявку. Попробуйте снова или свяжитесь с нами по телефону.';
+          formNote.classList.add('is-error');
+        } finally {
+          setSubmittingState(false);
         }
       });
     });
