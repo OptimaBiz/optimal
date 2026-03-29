@@ -124,6 +124,7 @@
     </div>
     <input type="hidden" name="page_url" value="" />
     <input type="hidden" name="page_title" value="" />
+    <input type="hidden" name="email" value="" />
     <input type="hidden" name="_subject" value="Новая заявка с сайта optimaloption.ru" />
     <input type="hidden" name="_language" value="ru" />
     <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="contact-form__gotcha" aria-hidden="true" />
@@ -237,9 +238,14 @@
       const setContextFields = () => {
         const pageUrl = form.querySelector('input[name="page_url"]');
         const pageTitle = form.querySelector('input[name="page_title"]');
+        const emailField = form.querySelector('input[name="email"]');
         const nextUrl = form.querySelector('input[name="_next"]');
         if (pageUrl) pageUrl.value = window.location.href;
         if (pageTitle) pageTitle.value = document.title;
+        if (emailField) {
+          const contactValue = String(contactInput.value || '').trim();
+          emailField.value = emailRegex.test(contactValue) ? contactValue : '';
+        }
         if (nextUrl) nextUrl.value = window.location.href;
       };
 
@@ -354,6 +360,12 @@
           consentError.textContent = 'Подтвердите согласие на обработку персональных данных, чтобы отправить форму.';
           consentCheckbox.reportValidity();
           return;
+        }
+
+        const emailField = form.querySelector('input[name="email"]');
+        if (emailField) {
+          emailField.value = emailRegex.test(contact) ? contact : '';
+          formData.set('email', emailField.value);
         }
 
         consentCheckbox.setCustomValidity('');
