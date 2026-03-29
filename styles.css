@@ -722,38 +722,109 @@ img {
   padding: clamp(1.15rem, 2vw, 1.6rem);
 }
 
+.service-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  min-height: 100%;
+  border-color: #dbe4ee;
+  border-radius: 18px;
+  background: linear-gradient(180deg, #ffffff 0%, #fcfdff 100%);
+  box-shadow: 0 10px 26px rgba(15, 35, 74, 0.07);
+  text-decoration: none;
+  color: var(--text);
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+
+.service-card:visited {
+  color: var(--text);
+}
+
+.service-card::after {
+  content: "";
+  position: absolute;
+  top: 1.1rem;
+  right: 1.1rem;
+  width: 0.48rem;
+  height: 0.48rem;
+  border-radius: 999px;
+  background: #d7e4ff;
+}
+
 .service-card h3,
 .case-card h3,
 .standard-card h3,
 .process-step__title,
 .contact-panel h2 {
   margin-top: 0;
-  margin-bottom: 0.65rem;
+  margin-bottom: 0;
 }
 
-.service-card__top {
-  display: flex;
-  justify-content: space-between;
-  gap: var(--space-3);
+.service-card h3 {
+  font-size: clamp(1.16rem, 2vw, 1.35rem);
+  line-height: 1.35;
 }
 
-.service-tags {
+.service-card__eyebrow {
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6d7c91;
+}
+
+.service-card__description {
   margin: 0;
-  padding-left: 1rem;
   color: var(--text-muted);
-  font-size: 0.9rem;
+  font-size: 0.97rem;
+  line-height: 1.58;
 }
 
-.icon-badge {
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 999px;
-  background: #e8efff;
-  color: var(--accent);
+.service-card__points {
   display: grid;
-  place-items: center;
-  font-weight: 700;
-  flex-shrink: 0;
+  gap: 0.46rem;
+  margin-top: 0.1rem;
+}
+
+.service-card__points span {
+  position: relative;
+  padding-left: 1rem;
+  font-size: 0.89rem;
+  line-height: 1.5;
+  color: #405066;
+}
+
+.service-card__points span::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 0.3rem;
+  height: 0.3rem;
+  border-radius: 999px;
+  background: #9db2d2;
+}
+
+.service-card__cta {
+  margin-top: auto;
+  padding-top: 0.4rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.service-card:hover,
+.service-card:focus-visible {
+  transform: translateY(-4px);
+  border-color: #c1d2ea;
+  box-shadow: 0 16px 34px rgba(13, 34, 72, 0.13);
+  color: var(--text);
+}
+
+.service-card:hover .service-card__cta,
+.service-card:focus-visible .service-card__cta {
+  color: var(--accent-dark);
 }
 
 .case-card {
