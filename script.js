@@ -5,44 +5,6 @@
   const isDesktop = () => desktopMedia.matches;
   const isMobile = () => mobileMedia.matches;
 
-  const initPartials = async () => {
-    const partialHosts = document.querySelectorAll('[data-partial]');
-    if (!partialHosts.length) return;
-
-    await Promise.all(
-      Array.from(partialHosts).map(async (host) => {
-        const partialPath = host.getAttribute('data-partial');
-        if (!partialPath) return;
-
-        try {
-          const partialUrl = new URL(partialPath, window.location.href);
-          const response = await fetch(partialUrl.href);
-          if (!response.ok) {
-            throw new Error(`Failed to load partial: ${partialPath} (${response.status} ${response.statusText})`);
-          }
-
-          host.innerHTML = await response.text();
-          host.dataset.partialLoaded = 'true';
-          host.dataset.partialHasForm = String(Boolean(host.querySelector('.contact-form')));
-        } catch (error) {
-          host.dataset.partialLoaded = 'false';
-          if (!host.children.length) {
-            host.innerHTML = `
-              <div class="contact-form-shell contact-form-shell--fallback">
-                <h2 class="contact-form__title">Обсудить задачу</h2>
-                <p class="contact-form__subtitle">
-                  Форма сейчас недоступна. Свяжитесь с нами через страницу контактов — ответим в рабочее время.
-                </p>
-                <a class="button button--primary form-submit" href="contacts.html">Перейти в контакты</a>
-              </div>
-            `;
-          }
-          console.error('[partial-loader] Не удалось загрузить partial', partialPath, error);
-        }
-      })
-    );
-  };
-
   const initNavigation = () => {
     const menuToggle = document.querySelector('.menu-toggle');
     const siteNav = document.querySelector('.site-nav');
@@ -267,9 +229,7 @@
     }
   };
 
-  initPartials().finally(() => {
-    initNavigation();
-    initContactForms();
-    initReveal();
-  });
+  initNavigation();
+  initContactForms();
+  initReveal();
 })();

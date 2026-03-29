@@ -522,13 +522,132 @@
               <p>Санкт-Петербург, Россия</p>
             </article>
           </div>
-          <div class="contact-panel reveal" data-reveal="up" data-partial="partials/contact-form.html">
-            <div class="contact-form-shell contact-form-shell--fallback" data-partial-fallback>
-              <h2 class="contact-form__title">Обсудить задачу</h2>
-              <p class="contact-form__subtitle">
-                Форма сейчас недоступна. Свяжитесь с нами через страницу контактов — ответим в рабочее время.
-              </p>
-              <a class="button button--primary form-submit" href="contacts.html">Перейти в контакты</a>
+          <div class="contact-panel reveal" data-reveal="up">
+            <div class="contact-form-shell" data-contact-form-shell>
+              <form class="contact-form" method="POST" novalidate>
+                <div class="contact-form__header">
+                  <h2 class="contact-form__title">Обсудить задачу</h2>
+                  <p class="contact-form__subtitle">
+                    Оставьте контакты и кратко опишите задачу. Мы свяжемся с вами и предложим оптимальный вариант решения.
+                  </p>
+                </div>
+
+                <input type="hidden" name="page_url" value="" />
+                <input type="hidden" name="page_title" value="" />
+                <input type="hidden" name="_subject" value="" />
+                <input type="hidden" name="_language" value="" />
+                <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="contact-form__gotcha" aria-hidden="true" />
+                <input type="hidden" name="_next" value="" />
+
+                <div class="contact-form__grid">
+                  <div class="form-field">
+                    <label class="form-label" for="contact-name">Как к вам обращаться</label>
+                    <input
+                      class="form-input"
+                      id="contact-name"
+                      name="name"
+                      type="text"
+                      placeholder="Имя"
+                      autocomplete="name"
+                      required
+                    />
+                  </div>
+
+                  <div class="form-field">
+                    <label class="form-label" for="contact-channel">Email или телефон</label>
+                    <input
+                      class="form-input"
+                      id="contact-channel"
+                      name="contact"
+                      type="text"
+                      placeholder="example@mail.ru / +7 (___) ___-__-__"
+                      autocomplete="email"
+                      required
+                    />
+                  </div>
+
+                  <div class="form-field">
+                    <label class="form-label" for="contact-message">Кратко опишите задачу</label>
+                    <textarea
+                      class="form-textarea"
+                      id="contact-message"
+                      name="message"
+                      rows="5"
+                      placeholder="Например: нужна аккредитация, лицензия, подготовка документов, сопровождение"
+                      required
+                    ></textarea>
+                  </div>
+                </div>
+
+                <div class="form-consent">
+                  <input
+                    class="form-consent__checkbox"
+                    type="checkbox"
+                    id="consent-checkbox"
+                    name="consent"
+                    required
+                    aria-describedby="consent-error"
+                  />
+                  <label class="form-consent__text" for="consent-checkbox">
+                    Я даю
+                    <button type="button" class="form-consent__link" data-consent-open>
+                      согласие на обработку персональных данных
+                    </button>
+                    и принимаю
+                    <a href="privacy-policy.html">Политику обработки персональных данных</a>
+                  </label>
+                </div>
+
+                <p class="form-note form-note--error" id="consent-error" aria-live="polite"></p>
+                <p class="form-note" id="form-note" role="status" aria-live="polite"></p>
+
+                <button class="button button--primary form-submit" type="submit">Отправить заявку</button>
+              </form>
+
+              <div class="consent-modal" data-consent-modal hidden>
+                <div class="consent-modal__backdrop" data-consent-close></div>
+                <div
+                  class="consent-modal__dialog"
+                  role="dialog"
+                  aria-modal="true"
+                  aria-labelledby="consent-modal-title"
+                  tabindex="-1"
+                >
+                  <div class="consent-modal__header">
+                    <h3 class="consent-modal__title" id="consent-modal-title">Согласие на обработку персональных данных</h3>
+                    <button class="consent-modal__close" type="button" data-consent-close aria-label="Закрыть окно">
+                      ×
+                    </button>
+                  </div>
+                  <div class="consent-modal__body">
+                    <p>
+                      Я, заполняя форму на сайте, даю согласие на обработку моих персональных данных: имени, телефона, адреса
+                      электронной почты, а также иных сведений, указанных в сообщении.
+                    </p>
+                    <p>
+                      Обработка персональных данных осуществляется в целях рассмотрения обращения, обратной связи со мной,
+                      подготовки ответа на запрос и предложения услуг по заявленной задаче.
+                    </p>
+                    <p>
+                      Под обработкой персональных данных понимаются сбор, запись, систематизация, накопление, хранение,
+                      уточнение, использование и удаление персональных данных в соответствии с действующим законодательством
+                      Российской Федерации.
+                    </p>
+                    <p>
+                      Согласие действует до достижения целей обработки персональных данных либо до момента его отзыва субъектом
+                      персональных данных.
+                    </p>
+                    <p>
+                      Отзыв согласия может быть направлен владельцу сайта в порядке, предусмотренном Политикой обработки
+                      персональных данных.
+                    </p>
+                    <p class="consent-modal__policy-note">
+                      Полный порядок обработки персональных данных размещён на странице
+                      <a href="privacy-policy.html">Политики обработки персональных данных</a>.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
