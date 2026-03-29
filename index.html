@@ -522,19 +522,7 @@
               <p>Санкт-Петербург, Россия</p>
             </article>
           </div>
-          <div class="contact-panel reveal" data-reveal="up">
-            <h2>Оставьте заявку</h2>
-            <form class="contact-form" id="contact-form">
-              <div class="form-grid">
-                <label><span>Ваше имя</span><input type="text" name="name" required /></label>
-                <label><span>Телефон</span><input type="tel" name="phone" required /></label>
-              </div>
-              <label><span>Email</span><input type="email" name="email" /></label>
-              <label><span>Описание задачи</span><textarea name="message" rows="5"></textarea></label>
-              <button class="button button--primary button--full" type="submit">Отправить</button>
-              <p class="form-note" id="form-note" role="status" aria-live="polite"></p>
-            </form>
-          </div>
+          <div class="contact-panel reveal" data-reveal="up" data-partial="partials/contact-form.html"></div>
         </div>
       </section>
     </main>
