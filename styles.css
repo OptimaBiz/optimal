@@ -1677,6 +1677,10 @@ body.modal-open {
   line-height: 1.4;
 }
 
+.contact-form[hidden] {
+  display: none !important;
+}
+
 .contact-success[hidden] {
   display: none !important;
 }
