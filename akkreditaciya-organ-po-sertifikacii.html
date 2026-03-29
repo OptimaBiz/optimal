@@ -245,7 +245,35 @@
       <section class="section" id="catalog-contacts">
         <div class="container contacts-grid">
           <div data-include="partials/contact-block.html"></div>
-          <div class="contact-panel reveal" data-reveal="up"><div data-include="partials/contact-form.html"></div></div>
+          <noscript>
+            <aside class="contact-summary" aria-label="Контактная информация">
+              <header class="contact-summary__header">
+                <span class="contact-summary__eyebrow">Контакты</span>
+                <h2 class="contact-summary__title">Как с нами связаться</h2>
+              </header>
+              <div class="contact-summary__body">
+                <section class="contact-summary__section" aria-label="Email">
+                  <span class="contact-summary__label">Email</span>
+                  <a class="contact-summary__value contact-summary__value--link" href="mailto:hello@optimaloption.ru">hello@optimaloption.ru</a>
+                </section>
+                <section class="contact-summary__section" aria-label="Телефон">
+                  <span class="contact-summary__label">Телефон</span>
+                  <a class="contact-summary__value contact-summary__value--link" href="tel:+78123898178">+7 812 38-98-178</a>
+                </section>
+              </div>
+            </aside>
+          </noscript>
+          <div class="contact-panel reveal" data-reveal="up"><div data-include="partials/contact-form.html"></div>
+            <noscript>
+              <div class="contact-form-shell" data-contact-form-shell>
+                <div class="contact-form">
+                  <div class="contact-form__header">
+                    <h2 class="contact-form__title">Форма для связи</h2>
+                    <p class="contact-form__subtitle">Чтобы оставить заявку без JavaScript, напишите на <a href="mailto:hello@optimaloption.ru">hello@optimaloption.ru</a> или позвоните <a href="tel:+78123898178">+7 812 38-98-178</a>.</p>
+                  </div>
+                </div>
+              </div>
+            </noscript></div>
         </div>
       </section>
 
