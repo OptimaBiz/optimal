@@ -1869,7 +1869,7 @@ body.menu-open {
   }
 
   .hero--home .hero-copy {
-    min-height: calc(100svh - 64px - clamp(3rem, 11vw, 4.4rem));
+    min-height: clamp(22rem, calc(100dvh - 64px - clamp(3rem, 11vw, 4.4rem)), 33rem);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -2251,7 +2251,7 @@ body.menu-open {
 
   .hero--home .hero-copy {
     max-width: 19.9rem;
-    min-height: calc(100svh - 64px - 2rem);
+    min-height: clamp(21rem, calc(100dvh - 64px - 2rem), 31rem);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
