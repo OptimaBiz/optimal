@@ -1854,6 +1854,14 @@ body.menu-open {
 }
 
 @media (max-width: 800px) {
+  .hero--home .hero-visual {
+    display: none;
+  }
+
+  .hero--home .hero-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
   .hero::before {
     inset: 0.2rem 0 auto;
     height: min(72%, 380px);
