@@ -10,11 +10,32 @@
     const siteNav = document.querySelector('.site-nav');
     const servicesWrap = document.querySelector('.nav-services');
     const servicesToggle = document.querySelector('.nav-services__toggle');
+    const servicesDesktopPanel = document.querySelector('#services-menu-panel');
 
-    const closeServicesMenu = () => {
+    const updateDesktopMenuPosition = () => {
+      if (!servicesDesktopPanel || !servicesWrap || !isDesktop()) return;
+      servicesDesktopPanel.style.setProperty('--services-menu-offset-x', '0px');
+      const rect = servicesDesktopPanel.getBoundingClientRect();
+      const viewportPadding = 8;
+      let offset = 0;
+      if (rect.left < viewportPadding) {
+        offset = viewportPadding - rect.left;
+      } else if (rect.right > window.innerWidth - viewportPadding) {
+        offset = (window.innerWidth - viewportPadding) - rect.right;
+      }
+      servicesDesktopPanel.style.setProperty('--services-menu-offset-x', `${Math.round(offset)}px`);
+    };
+
+    const closeServicesMenu = ({ returnFocus = false } = {}) => {
       if (!servicesWrap || !servicesToggle) return;
       servicesWrap.classList.remove('is-open');
       servicesToggle.setAttribute('aria-expanded', 'false');
+      if (servicesDesktopPanel) {
+        servicesDesktopPanel.style.setProperty('--services-menu-offset-x', '0px');
+      }
+      if (returnFocus) {
+        servicesToggle.focus();
+      }
     };
 
     const closeMainMenu = () => {
@@ -45,6 +66,7 @@
         if (!isDesktop()) return;
         servicesWrap.classList.add('is-open');
         servicesToggle.setAttribute('aria-expanded', 'true');
+        updateDesktopMenuPosition();
       });
 
       servicesWrap.addEventListener('mouseleave', () => {
@@ -71,6 +93,11 @@
       }
     });
 
+    document.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape' || !servicesWrap?.classList.contains('is-open')) return;
+      closeServicesMenu({ returnFocus: true });
+    });
+
     if (siteNav) {
       siteNav.addEventListener('click', (event) => {
         const target = event.target;
@@ -88,6 +115,9 @@
     };
 
     desktopMedia.addEventListener('change', handleViewportModeChange);
+    window.addEventListener('resize', () => {
+      if (servicesWrap?.classList.contains('is-open')) updateDesktopMenuPosition();
+    });
   };
 
 
@@ -183,11 +213,8 @@
     );
 
     loadedPartials.forEach(({ node, content, isEmpty }) => {
-      node.innerHTML = content;
-      if (isEmpty) {
-        node.classList.add('is-empty');
-        const panel = node.closest('.contact-panel');
-        if (panel) panel.hidden = true;
+      if (!isEmpty && content.trim()) {
+        node.innerHTML = content;
       }
     });
   };
@@ -212,6 +239,9 @@
       if (!form || !formNote || !consentError || !consentCheckbox || !consentModal || !modalDialog || !openConsentButton || !submitButton || !contactInput) {
         return;
       }
+
+      contactInput.setAttribute('autocomplete', 'off');
+      contactInput.setAttribute('inputmode', 'text');
 
       const suffix = `${Date.now()}-${index}`;
       const assignLinkedId = (inputSelector, labelSelector, prefix) => {
@@ -306,17 +336,21 @@
         }
       };
 
-      const resetToFormState = () => {
-        if (successState) {
-          successState.hidden = true;
-        }
-        form.hidden = false;
+      const clearFormFields = () => {
         form.reset();
         formNote.textContent = '';
         consentError.textContent = '';
         consentCheckbox.setCustomValidity('');
         contactInput.setCustomValidity('');
         setContextFields();
+      };
+
+      const resetToFormState = () => {
+        if (successState) {
+          successState.hidden = true;
+        }
+        form.hidden = false;
+        clearFormFields();
       };
 
       if (resetButton) {
@@ -386,7 +420,7 @@
             }
           }
 
-          resetToFormState();
+          clearFormFields();
           showSuccessState();
         } catch (error) {
           console.error('[contact-form] Ошибка отправки формы', error);
