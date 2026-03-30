@@ -776,6 +776,20 @@ img {
   font-size: 0.9rem;
 }
 
+.logo-ticker__viewport {
+  overflow: hidden;
+  padding: 0.28rem 0;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
+}
+
+.logo-ticker__track {
+  display: flex;
+  width: max-content;
+  gap: 0.65rem;
+  animation: trustTicker 30s linear infinite;
+}
+
 .trust-badges {
   list-style: none;
   display: flex;
@@ -788,6 +802,11 @@ img {
 
 .trust-badges--wrap {
   flex-wrap: wrap;
+}
+
+.trust-badges--ticker {
+  flex-wrap: nowrap;
+  justify-content: flex-start;
 }
 
 .trust-badges--scroll {
@@ -833,6 +852,24 @@ img {
   align-items: center;
   justify-content: center;
   vertical-align: middle;
+}
+
+@keyframes trustTicker {
+  to {
+    transform: translateX(calc(-50% - 0.325rem));
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .logo-ticker__viewport:hover .logo-ticker__track {
+    animation-play-state: paused;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-ticker__track {
+    animation: none;
+  }
 }
 
 
