@@ -339,6 +339,7 @@ img {
   gap: 0.1rem;
   line-height: 1.04;
   letter-spacing: -0.012em;
+  font-size: clamp(2.3rem, 3.8vw, 3.9rem);
 }
 
 .hero-title__line {
@@ -1862,6 +1863,7 @@ body.menu-open {
   }
 
   .hero-title {
+    font-size: clamp(2rem, 5.2vw, 3rem);
     line-height: 1.06;
     gap: 0.2rem;
   }
@@ -2172,6 +2174,10 @@ body.menu-open {
 }
 
 @media (max-width: 480px) {
+  .hero-title {
+    font-size: clamp(1.84rem, 8.8vw, 2.28rem);
+  }
+
   .site-header {
     border-bottom-color: rgba(196, 210, 231, 0.72);
   }
@@ -2212,6 +2218,7 @@ body.menu-open {
   }
 
   .hero--home .eyebrow {
+    align-self: flex-start;
     margin-bottom: 11px;
     font-size: 11px;
     line-height: 1.2;
@@ -2238,17 +2245,9 @@ body.menu-open {
   }
 
   .hero--home .hero-title__line--accent {
-    color: #4269da;
+    color: #2f5cff;
     text-shadow: 0 1px 5px rgba(42, 79, 166, 0.06);
     letter-spacing: -0.012em;
-  }
-
-  .hero--home .hero-title .hero-title__line--accent:nth-of-type(2) {
-    color: #2f5cff;
-  }
-
-  .hero--home .hero-title .hero-title__line--accent:nth-of-type(4) {
-    color: #1b2d4f;
   }
 
   .hero--home .hero-text {
