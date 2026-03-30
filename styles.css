@@ -109,6 +109,10 @@ img {
   color: var(--text-muted);
 }
 
+.section-head .eyebrow {
+  margin-bottom: 0.72rem;
+}
+
 .eyebrow {
   display: inline-flex;
   align-items: center;
