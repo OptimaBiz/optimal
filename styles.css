@@ -2152,6 +2152,19 @@ body.modal-open {
   display: none;
 }
 
+@media (min-width: 1025px) {
+  .hero--home .hero-title {
+    font-size: clamp(2.6rem, 3.6vw, 3.85rem);
+    line-height: 1.02;
+    max-width: 18ch;
+  }
+
+  .hero--home .hero-text {
+    font-size: clamp(1.08rem, 1.24vw, 1.24rem);
+    line-height: 1.62;
+  }
+}
+
 @media (max-width: 480px) {
   .site-header {
     border-bottom-color: rgba(196, 210, 231, 0.72);
