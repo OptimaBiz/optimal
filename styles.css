@@ -1540,6 +1540,15 @@ body.modal-open {
 }
 
 @media (max-width: 1024px) {
+  .hero--home .hero-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(1.25rem, 3vw, 2rem);
+  }
+
+  .hero--home .hero-title {
+    max-width: 100%;
+  }
+
   .hero::before {
     inset: 0.8rem 0 auto;
     height: min(64%, 430px);
