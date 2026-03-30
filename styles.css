@@ -1759,13 +1759,6 @@ body.menu-open {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .logo-ticker__track {
-    animation: none;
-    transform: translateX(0);
-  }
-}
-
 @media (max-width: 800px) {
   .hero::before {
     inset: 0.2rem 0 auto;
