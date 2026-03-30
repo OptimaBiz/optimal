@@ -120,6 +120,35 @@
     });
   };
 
+  const initMotionToggle = () => {
+    const toggleButton = document.querySelector('[data-motion-toggle]');
+    if (!toggleButton) return;
+
+    const storageKey = 'motionPreference';
+    const applyPreference = (preference) => {
+      const isDisabled = preference === 'disabled';
+      const isEnabled = preference === 'enabled';
+
+      body.classList.toggle('animations-disabled', isDisabled);
+      body.classList.toggle('animations-enabled', isEnabled);
+      toggleButton.setAttribute('aria-pressed', String(isDisabled));
+      toggleButton.textContent = isDisabled ? 'Включить анимации' : 'Отключить анимации';
+    };
+
+    const savedPreference = localStorage.getItem(storageKey);
+    if (savedPreference === 'disabled' || savedPreference === 'enabled') {
+      applyPreference(savedPreference);
+    } else {
+      applyPreference('system');
+    }
+
+    toggleButton.addEventListener('click', () => {
+      const nextPreference = body.classList.contains('animations-disabled') ? 'enabled' : 'disabled';
+      localStorage.setItem(storageKey, nextPreference);
+      applyPreference(nextPreference);
+    });
+  };
+
 
   const PARTIAL_FALLBACKS = {
     'partials/contact-block.html': `
@@ -459,6 +488,7 @@
 
   const bootstrap = async () => {
     await loadPartials();
+    initMotionToggle();
     initNavigation();
     initContactForms();
     initReveal();
