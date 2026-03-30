@@ -1688,6 +1688,10 @@ body.menu-open {
 }
 
 @media (max-width: 1023.98px) {
+  .site-nav > a[href="index.html"] {
+    display: none;
+  }
+
   .menu-toggle {
     display: inline-flex;
   }
@@ -1725,6 +1729,40 @@ body.menu-open {
     border-top: 1px solid var(--border);
     text-align: left;
     width: 100%;
+  }
+
+  .site-nav > .nav-services > .nav-services__toggle {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    font-weight: 700;
+    color: #1f4dbf;
+    background: linear-gradient(180deg, #f4f8ff 0%, #edf4ff 100%);
+  }
+
+  .site-nav > .nav-services > .nav-services__toggle::after {
+    content: "▾";
+    font-size: 0.95rem;
+    color: #1f4dbf;
+    transition: transform 0.2s ease;
+  }
+
+  .nav-services.is-open > .nav-services__toggle::after {
+    transform: rotate(180deg);
+  }
+
+  .site-nav > .nav-services > .nav-services__toggle::before {
+    content: "Нажмите, чтобы раскрыть";
+    position: absolute;
+    right: 2.2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.72rem;
+    color: #5b6f8c;
+    font-weight: 500;
+    pointer-events: none;
   }
 
   .site-nav > *:first-child .nav-services__toggle,
@@ -1793,10 +1831,19 @@ body.menu-open {
 
   .services-mobile-menu__title {
     margin-bottom: 0.2rem;
-    color: #1a3f96;
+    color: var(--accent);
     font-size: 0.92rem;
     letter-spacing: 0.01em;
     text-transform: uppercase;
+    font-weight: 700;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-nav > .nav-services > .nav-services__toggle::before {
+    content: "Нажмите";
+    right: 2rem;
+    font-size: 0.68rem;
   }
 }
 
