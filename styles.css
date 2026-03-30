@@ -823,6 +823,11 @@ img {
   gap: var(--space-4);
 }
 
+.services-grid--directions .service-card--wide {
+  grid-column: 1 / -1;
+  min-height: clamp(250px, 26vw, 320px);
+}
+
 .service-card,
 .case-card,
 .standard-card,
@@ -1580,6 +1585,10 @@ body.modal-open {
     grid-template-columns: 1fr;
   }
 
+  .services-grid--directions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .accreditation-types-grid,
   .trust-grid,
   .reviews-grid {
@@ -1597,6 +1606,17 @@ body.modal-open {
 
   .mega-menu__grid {
     grid-template-columns: repeat(3, minmax(170px, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .services-grid--directions {
+    grid-template-columns: 1fr;
+  }
+
+  .services-grid--directions .service-card--wide {
+    grid-column: auto;
+    min-height: auto;
   }
 }
 
