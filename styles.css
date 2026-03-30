@@ -324,7 +324,7 @@ img {
 
 .hero-title__line {
   display: block;
-  font-size: clamp(2rem, 4vw, 3.4rem);
+  white-space: nowrap;
 }
 
 .hero-title__line--accent {
