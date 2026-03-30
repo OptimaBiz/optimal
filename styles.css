@@ -316,31 +316,19 @@ img {
 
 .hero-title {
   margin: 0;
-  line-height: 1.04;
   display: grid;
   gap: 0.1rem;
+  line-height: 1.04;
   letter-spacing: -0.012em;
 }
 
-.hero-title__line,
-.hero-title__main,
-.hero-title__accent {
-  font-size: clamp(2rem, 4vw, 3.4rem);
+.hero-title__line {
   display: block;
-  white-space: nowrap;
-}
-
-.hero-title__accent {
-  color: #2f5cff !important;
-  text-shadow: 0 1px 10px rgba(42, 79, 166, 0.08);
-}
-
-.hero-title .hero-title__accent {
-  color: #2f5cff !important;
+  font-size: clamp(2rem, 4vw, 3.4rem);
 }
 
 .hero-title__line--accent {
-  color: #2f5cff !important;
+  color: #2f5cff;
   text-shadow: 0 1px 10px rgba(42, 79, 166, 0.08);
 }
 
@@ -1788,10 +1776,6 @@ body.modal-open {
     gap: 0.56rem;
   }
 
-  .hero-title__line {
-    white-space: normal;
-  }
-
   .hero-facts {
     gap: 0.45rem;
   }
@@ -2188,21 +2172,18 @@ body.modal-open {
     line-height: 1.03;
     letter-spacing: -0.016em;
     margin-bottom: 12px;
-    max-width: 12.1ch;
+    max-width: none;
     gap: 0.11em;
   }
 
-  .hero--home .hero-title__line,
-  .hero--home .hero-title__main,
-  .hero--home .hero-title__accent {
+  .hero--home .hero-title__line {
     font-size: inherit;
     line-height: inherit;
     white-space: nowrap;
   }
 
-  .hero--home .hero-title__line--accent,
-  .hero--home .hero-title__accent {
-    color: #2f5cff !important;
+  .hero--home .hero-title__line--accent {
+    color: #2f5cff;
     text-shadow: 0 1px 5px rgba(42, 79, 166, 0.06);
     letter-spacing: -0.012em;
   }
@@ -2295,7 +2276,6 @@ body.modal-open {
 
   .hero--home .hero-title {
     font-size: clamp(1.88rem, 10.2vw, 2.14rem);
-    max-width: 11.8ch;
   }
 
   .hero--home .hero-text {
@@ -2325,7 +2305,6 @@ body.modal-open {
   .hero--home .hero-title {
     font-size: clamp(1.79rem, 10.9vw, 1.98rem);
     line-height: 1.03;
-    max-width: 11.6ch;
   }
 
   .hero--home .hero-actions .button--primary {
