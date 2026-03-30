@@ -161,7 +161,7 @@ img {
 .brand {
   color: var(--text);
   font-weight: 700;
-  font-size: 1rem;
+  font-size: clamp(1.08rem, 0.8vw, 1.22rem);
   letter-spacing: 0.01em;
 }
 
@@ -1662,6 +1662,10 @@ body.menu-open {
 
   #services-mobile-panel {
     display: none !important;
+  }
+
+  .site-nav > a[href="index.html"] {
+    display: none;
   }
 
   .site-nav > a:nth-of-type(1) {
