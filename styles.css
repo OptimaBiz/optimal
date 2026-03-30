@@ -166,6 +166,23 @@ img {
   font-size: 0.95rem;
 }
 
+.motion-toggle {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 999px;
+  font: inherit;
+  font-size: 0.83rem;
+  padding: 0.35rem 0.7rem;
+  line-height: 1.2;
+  cursor: pointer;
+}
+
+.motion-toggle:hover {
+  border-color: #b8c7de;
+  background: #f4f7fc;
+}
+
 .menu-toggle,
 .nav-services__toggle {
   border: 1px solid transparent;
@@ -725,7 +742,7 @@ img {
 .logo-ticker__track {
   display: flex;
   width: max-content;
-  animation: ticker 34s linear infinite;
+  animation: ticker var(--ticker-animation-duration, 34s) linear infinite;
 }
 
 .logo-ticker__set {
@@ -1761,9 +1778,18 @@ body.menu-open {
 
 @media (prefers-reduced-motion: reduce) {
   .logo-ticker__track {
-    animation: none;
+    animation-duration: 240s;
     transform: translateX(0);
   }
+}
+
+body.animations-disabled .logo-ticker__track {
+  animation: none;
+  transform: translateX(0);
+}
+
+body.animations-enabled .logo-ticker__track {
+  --ticker-animation-duration: 34s;
 }
 
 @media (max-width: 800px) {
