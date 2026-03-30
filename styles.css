@@ -1854,12 +1854,25 @@ body.menu-open {
 }
 
 @media (max-width: 800px) {
-  .hero--home .hero-visual {
-    display: none;
+  .hero--home {
+    padding-top: clamp(1.6rem, 6vw, 2.4rem);
+    padding-bottom: clamp(1.4rem, 5vw, 2rem);
   }
 
   .hero--home .hero-grid {
     grid-template-columns: minmax(0, 1fr);
+    gap: clamp(1rem, 3.8vh, 1.8rem);
+  }
+
+  .hero--home .hero-copy {
+    min-height: calc(100svh - 64px - clamp(3rem, 11vw, 4.4rem));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .hero--home .hero-visual {
+    margin-top: clamp(0.4rem, 2.2vw, 1rem);
   }
 
   .hero::before {
@@ -2234,7 +2247,7 @@ body.menu-open {
 
   .hero--home .hero-copy {
     max-width: 19.9rem;
-    min-height: auto;
+    min-height: calc(100svh - 64px - 2rem);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
