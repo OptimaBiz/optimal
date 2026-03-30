@@ -370,6 +370,39 @@ img {
   min-width: 0;
 }
 
+@media (min-width: 801px) {
+  .hero--home .hero-grid {
+    align-items: stretch;
+  }
+
+  .hero--home .hero-copy {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+  }
+
+  .hero--home .hero-actions {
+    margin-top: auto;
+    padding-top: clamp(0.8rem, 1.5vw, 1.2rem);
+  }
+
+  .hero--home .hero-panel--cards {
+    gap: 0.72rem;
+    padding: clamp(1.05rem, 1.9vw, 1.4rem);
+  }
+
+  .hero--home .hero-service-card {
+    min-height: 124px;
+    display: grid;
+    align-content: start;
+  }
+
+  .hero--home .hero-service-card .card-cta {
+    margin-top: auto !important;
+    padding-top: 0.62rem;
+  }
+}
+
 .hero--home .hero-grid {
   grid-template-columns: 1.12fr 0.88fr;
 }
@@ -600,10 +633,10 @@ img {
 .hero-visual__label {
   margin: 0 0 0.9rem;
   font-size: 0.76rem;
-  font-weight: 600;
+  font-weight: 640;
   text-transform: uppercase;
-  letter-spacing: 0.11em;
-  color: #556581;
+  letter-spacing: 0.12em;
+  color: #4d607f;
 }
 
 .hero-panel {
