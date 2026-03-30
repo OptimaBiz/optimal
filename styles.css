@@ -1637,6 +1637,9 @@ body.modal-open {
     transform: translateY(-8px);
     transition: 0.22s ease;
     overflow: hidden;
+    max-height: min(78vh, 34rem);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .site-nav > * {
@@ -1728,6 +1731,13 @@ body.modal-open {
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .logo-ticker__track {
+    animation: none;
+    transform: translateX(0);
+  }
+}
+
 @media (max-width: 800px) {
   .hero::before {
     inset: 0.2rem 0 auto;
@@ -1750,6 +1760,15 @@ body.modal-open {
   .hero--home .hero-title,
   .hero--service-page .hero-title {
     max-width: 100%;
+  }
+
+  .hero--home .hero-title {
+    text-wrap: balance;
+  }
+
+  .hero--home .hero-title__line {
+    white-space: normal;
+    overflow-wrap: anywhere;
   }
 
   .hero--accreditation {
@@ -2179,7 +2198,8 @@ body.modal-open {
   .hero--home .hero-title__line {
     font-size: inherit;
     line-height: inherit;
-    white-space: nowrap;
+    white-space: normal;
+    overflow-wrap: anywhere;
   }
 
   .hero--home .hero-title__line--accent {
