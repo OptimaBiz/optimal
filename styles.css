@@ -2133,3 +2133,122 @@ body.modal-open {
 [data-include].is-empty {
   display: none;
 }
+
+.hero-text__mobile {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  .hero--home {
+    padding: 28px 0 22px;
+    margin-bottom: 32px;
+  }
+
+  .hero--home .container {
+    width: min(100% - 2.5rem, var(--container));
+  }
+
+  .hero--home .hero-grid {
+    gap: 0;
+  }
+
+  .hero--home .eyebrow {
+    margin-bottom: 18px;
+    font-size: 12px;
+    line-height: 1;
+    letter-spacing: 0.08em;
+    padding: 10px 16px;
+  }
+
+  .hero--home .hero-title {
+    font-size: 52px;
+    line-height: 0.96;
+    letter-spacing: -0.03em;
+    margin-bottom: 18px;
+    max-width: 11ch;
+    gap: 0;
+  }
+
+  .hero--home .hero-title__line {
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+  .hero--home .hero-text {
+    font-size: 18px;
+    line-height: 1.45;
+    max-width: 30ch;
+    margin: 0 0 18px;
+  }
+
+  .hero-text__desktop {
+    display: none;
+  }
+
+  .hero-text__mobile {
+    display: inline;
+  }
+
+  .hero--home .hero-facts {
+    gap: 10px;
+    margin-bottom: 18px;
+    font-size: 14px;
+  }
+
+  .hero--home .hero-facts li span {
+    min-height: 0;
+    font-size: 14px;
+    line-height: 1;
+    padding: 11px 16px;
+  }
+
+  .hero--home .hero-actions {
+    margin-top: 0;
+    gap: 0;
+  }
+
+  .hero--home .hero-actions .button--primary {
+    width: 100%;
+    padding: 18px 24px;
+    font-size: 18px;
+    line-height: 1.1;
+  }
+
+  .hero--home + .section {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 390px) {
+  .hero--home .container {
+    width: min(100% - 2.25rem, var(--container));
+  }
+
+  .hero--home .hero-title {
+    font-size: 48px;
+  }
+
+  .hero--home .hero-text {
+    font-size: 17px;
+  }
+
+  .hero--home .hero-facts,
+  .hero--home .hero-facts li span {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero--home .hero-title {
+    font-size: 44px;
+    line-height: 0.98;
+  }
+
+  .hero--home .hero-actions .button--primary {
+    font-size: 17px;
+  }
+
+  .hero--home .hero-facts li span {
+    padding: 10px 14px;
+  }
+}
