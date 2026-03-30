@@ -316,7 +316,6 @@ img {
 
 .hero-title {
   margin: 0;
-  max-width: 24ch;
   line-height: 1.04;
   display: grid;
   gap: 0.1rem;
@@ -335,11 +334,60 @@ img {
 }
 
 .hero-text {
-  margin: clamp(1.15rem, 1.9vw, 1.75rem) 0 clamp(1.38rem, 2.4vw, 2rem);
-  max-width: 58ch;
+  margin: clamp(1rem, 1.75vw, 1.55rem) 0 clamp(1.25rem, 2.2vw, 1.85rem);
   color: #36475f;
   font-size: clamp(1.01rem, 1.15vw, 1.11rem);
   line-height: 1.66;
+}
+
+.hero--home .hero-copy {
+  max-width: min(100%, 42.5rem);
+}
+
+.hero--home .hero-title {
+  max-width: 24ch;
+}
+
+.hero--home .hero-text {
+  max-width: 58ch;
+}
+
+.hero--home .eyebrow {
+  margin-bottom: clamp(0.42rem, 0.8vw, 0.62rem);
+}
+
+.hero--home .hero-text {
+  margin-top: clamp(0.94rem, 1.5vw, 1.26rem);
+  margin-bottom: clamp(1.18rem, 2vw, 1.7rem);
+}
+
+.hero--home .hero-facts {
+  margin-bottom: clamp(1.1rem, 1.8vw, 1.45rem);
+}
+
+.hero--service-page .hero-grid {
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(1rem, 2vw, 1.8rem);
+}
+
+.hero--service-page .hero-copy {
+  max-width: min(100%, 76ch);
+  padding-inline: 0;
+}
+
+.hero--service-page .eyebrow {
+  margin-bottom: clamp(0.7rem, 1.15vw, 1rem);
+}
+
+.hero--service-page .hero-title {
+  max-width: 30ch;
+  line-height: 1.02;
+}
+
+.hero--service-page .hero-text {
+  max-width: 70ch;
+  margin-top: clamp(1.1rem, 1.75vw, 1.42rem);
+  margin-bottom: clamp(1.25rem, 2.1vw, 1.9rem);
 }
 
 .hero-copy--service {
@@ -1627,9 +1675,13 @@ body.modal-open {
   }
 
   .hero-title {
-    max-width: 100%;
     line-height: 1.06;
     gap: 0.2rem;
+  }
+
+  .hero--home .hero-title,
+  .hero--service-page .hero-title {
+    max-width: 100%;
   }
 
   .hero--accreditation {
