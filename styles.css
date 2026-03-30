@@ -1424,8 +1424,8 @@ a:focus-visible {
 
 .consent-modal__title {
   margin: 0;
-  font-size: 1.12rem;
-  line-height: 1.3;
+  font-size: clamp(1rem, 1.05vw, 1.12rem);
+  line-height: 1.28;
 }
 
 .consent-modal__close {
@@ -1443,7 +1443,8 @@ a:focus-visible {
 .consent-modal__body {
   padding: 1.1rem;
   color: var(--text-muted);
-  font-size: 0.95rem;
+  font-size: clamp(0.86rem, 0.9vw, 0.95rem);
+  line-height: 1.5;
 }
 
 .consent-modal__body p {
@@ -1451,7 +1452,7 @@ a:focus-visible {
 }
 
 .consent-modal__policy-note {
-  font-size: 0.9rem;
+  font-size: clamp(0.82rem, 0.85vw, 0.9rem);
   margin-bottom: 0;
 }
 
@@ -1940,6 +1941,7 @@ body.menu-open {
   }
 
   .consent-modal {
+    place-items: start center;
     padding: 0.6rem;
   }
 
@@ -1955,8 +1957,22 @@ body.menu-open {
     padding: 0.9rem;
   }
 
+  .consent-modal__title {
+    font-size: clamp(0.92rem, 3.4vw, 1rem);
+  }
+
   .consent-modal__body {
     overflow-y: auto;
+    font-size: clamp(0.8rem, 2.95vw, 0.9rem);
+    line-height: 1.45;
+  }
+
+  .consent-modal__body p {
+    margin-bottom: 0.72rem;
+  }
+
+  .consent-modal__policy-note {
+    font-size: clamp(0.76rem, 2.7vw, 0.85rem);
   }
 
   .footer-bar {
