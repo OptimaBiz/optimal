@@ -322,19 +322,25 @@ img {
   letter-spacing: -0.012em;
 }
 
-.hero-title__line {
+.hero-title__line,
+.hero-title__main,
+.hero-title__accent {
   font-size: clamp(2rem, 4vw, 3.4rem);
   display: block;
   white-space: nowrap;
 }
 
 .hero-title__accent {
-  color: #2a4fa6;
+  color: #2f5cff !important;
   text-shadow: 0 1px 10px rgba(42, 79, 166, 0.08);
 }
 
+.hero-title .hero-title__accent {
+  color: #2f5cff !important;
+}
+
 .hero-title__line--accent {
-  color: #2a4fa6;
+  color: #2f5cff !important;
   text-shadow: 0 1px 10px rgba(42, 79, 166, 0.08);
 }
 
@@ -2186,14 +2192,17 @@ body.modal-open {
     gap: 0.11em;
   }
 
-  .hero--home .hero-title__line {
+  .hero--home .hero-title__line,
+  .hero--home .hero-title__main,
+  .hero--home .hero-title__accent {
     font-size: inherit;
     line-height: inherit;
     white-space: nowrap;
   }
 
-  .hero--home .hero-title__line--accent {
-    color: #2f56a9;
+  .hero--home .hero-title__line--accent,
+  .hero--home .hero-title__accent {
+    color: #2f5cff !important;
     text-shadow: 0 1px 5px rgba(42, 79, 166, 0.06);
     letter-spacing: -0.012em;
   }
