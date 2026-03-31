@@ -1930,6 +1930,52 @@ body.menu-open {
 }
 
 @media (max-width: 1023.98px) {
+  /* Делаем Hero-блок полноэкранным */
+  .hero--home {
+    min-height: 100vh;
+    display: flex;
+    align-items: center; /* Центрируем контент вертикально */
+    padding-top: 0; /* Компенсируем центрирование */
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr; /* Одна колонка */
+    gap: 2rem;
+    width: 100%;
+  }
+
+  /* Стилизуем текстовую часть как "Главный экран" */
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left; /* Или center, если хотите симметрии */
+    min-height: calc(100vh - 120px); /* Вычитаем высоту шапки */
+  }
+
+  /* Увеличиваем заголовок для эффекта */
+  .hero-content h1 {
+    font-size: clamp(2.8rem, 12vw, 3.5rem) !important; /* Намного крупнее */
+    line-height: 1.1;
+    margin: 1.5rem 0;
+    letter-spacing: -0.02em;
+  }
+
+  /* Делаем CTA кнопку более массивной на мобильных */
+  .hero-actions .btn {
+    width: 100%;
+    padding: 1.2rem;
+    font-size: 1.1rem;
+    justify-content: center;
+  }
+
+  /* Если картинка в хиро мешает, её можно либо уменьшить,
+     либо убрать вниз под основной экран */
+  .hero-image {
+    margin-top: 2rem;
+    order: 2; /* Гарантируем, что она ПОСЛЕ текста */
+  }
+
   .hero--home .hero-grid {
     grid-template-columns: minmax(0, 1fr);
     gap: clamp(1.25rem, 3vw, 2rem);
