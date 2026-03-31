@@ -1952,14 +1952,14 @@ body.menu-open {
   }
 
   /* 3. Работаем с текстовым блоком */
-  .hero-content {
+  .hero-copy {
     padding: 0;
     margin: 0;
     width: 100%;
   }
 
   /* 4. Заголовок — делаем его плотным и крупным */
-  .hero-content h1 {
+  .hero--home .hero-title {
     font-size: clamp(2.2rem, 9vw, 2.8rem) !important;
     line-height: 1.1;
     margin: 1rem 0; /* Компактный отступ сверху и снизу */
@@ -1967,7 +1967,7 @@ body.menu-open {
   }
 
   /* 5. Описание — чуть меньше, чтобы не вытеснять кнопку */
-  .hero-description {
+  .hero--home .hero-text {
     font-size: 1.05rem;
     line-height: 1.4;
     margin-bottom: 1.5rem;
@@ -1980,7 +1980,7 @@ body.menu-open {
     width: 100%;
   }
 
-  .hero-actions .btn {
+  .hero-actions .button--primary {
     width: 100%; /* Кнопка на всю ширину для удобства нажатия */
     padding: 1.1rem;
     display: flex;
@@ -1989,7 +1989,7 @@ body.menu-open {
 
   /* 7. Убираем картинку из этого экрана совсем, 
      чтобы она не занимала место и не создавала пустоту */
-  .hero-image {
+  .hero--home .hero-visual {
     display: none;
   }
 }
