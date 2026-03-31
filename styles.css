@@ -860,12 +860,6 @@ img {
   }
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .logo-ticker__viewport:hover .logo-ticker__track {
-    animation-play-state: paused;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .logo-ticker__track {
     animation: none;
