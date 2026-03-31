@@ -1993,6 +1993,12 @@ body.menu-open {
     display: none;
   }
 
+  .hero--home + .logos.section--tight {
+    margin-top: 0;
+    position: relative;
+    z-index: 1;
+  }
+
   .hero--home .hero-grid {
     grid-template-columns: minmax(0, 1fr);
     gap: clamp(1.25rem, 3vw, 2rem);
@@ -2865,10 +2871,6 @@ body.menu-open {
   .hero--home .hero-service-card .card-cta {
     margin-top: 0.42rem !important;
     font-size: 0.78rem !important;
-  }
-
-  .hero--home + .section {
-    margin-top: 0;
   }
 
   .trust-badges {
