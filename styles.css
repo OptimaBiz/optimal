@@ -35,6 +35,13 @@
   --z-overlay: 120;
   --z-modal: 130;
   --z-feedback: 140;
+  /* Создаем переменную для нашего фирменного темного фона */
+    --case-gradient: radial-gradient(120% 85% at 18% 8%, rgba(90, 126, 178, 0.18), transparent 58%), 
+                     radial-gradient(95% 65% at 84% 26%, rgba(113, 134, 170, 0.14), transparent 62%), 
+                     linear-gradient(180deg, #171f2c 0%, #111826 62%, #101621 100%);
+    
+    /* Также полезно создать переменную для цвета текста на темном фоне */
+    --text-on-dark: #edf2fb;
 }
 
 * {
@@ -657,9 +664,9 @@ img {
   min-height: auto;
   display: grid;
   gap: 0.65rem;
-  background: linear-gradient(158deg, rgba(250, 253, 255, 0.9) 0%, rgba(244, 249, 254, 0.92) 46%, rgba(239, 246, 252, 0.88) 100%);
-  border: 1px solid rgba(210, 223, 242, 0.72);
-  box-shadow: 0 14px 30px rgba(13, 33, 68, 0.066), inset 0 1px 0 rgba(255, 255, 255, 0.74);
+  background: var(--case-gradient);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
   padding: clamp(1rem, 1.8vw, 1.32rem);
   overflow: visible;
   align-content: start;
@@ -991,13 +998,8 @@ img {
 }
 
 .section--cases {
-  position: relative;
-  background:
-    radial-gradient(120% 85% at 18% 8%, rgba(90, 126, 178, 0.18), transparent 58%),
-    radial-gradient(95% 65% at 84% 26%, rgba(113, 134, 170, 0.14), transparent 62%),
-    linear-gradient(180deg, #171f2c 0%, #111826 62%, #101621 100%);
-  color: #edf2fb;
-  overflow: hidden;
+  background: var(--case-gradient);
+  color: var(--text-on-dark);
 }
 
 .section--cases::before {
