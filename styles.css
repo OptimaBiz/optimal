@@ -2287,10 +2287,10 @@ body.menu-open {
   }
 
   .hero--home .hero-copy {
-    min-height: clamp(22rem, calc(100dvh - 64px - clamp(3rem, 11vw, 4.4rem)), 33rem);
+    min-height: clamp(24rem, calc(100svh - 64px - clamp(2.8rem, 10vw, 4rem)), 34rem);
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   .hero--home .hero-visual {
@@ -2377,6 +2377,10 @@ body.menu-open {
 
   .hero-actions {
     gap: 0.7rem;
+  }
+
+  .hero--home .hero-copy .hero-actions {
+    margin-top: auto;
   }
 
   .button {
@@ -2668,12 +2672,13 @@ body.menu-open {
   }
 
   .hero--home .hero-grid {
-    gap: 0;
+    gap: 0.75rem;
   }
 
   .hero--home .hero-copy {
-    max-width: 19.9rem;
-    min-height: clamp(21rem, calc(100dvh - 64px - 2rem), 31rem);
+    max-width: none;
+    width: 100%;
+    min-height: calc(100svh - 64px - 2.1rem);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -2696,7 +2701,7 @@ body.menu-open {
   }
 
   .hero--home .hero-title {
-    font-size: clamp(1.96rem, 9.4vw, 2.26rem);
+    font-size: clamp(2.04rem, 9.8vw, 2.34rem);
     line-height: 1.03;
     letter-spacing: -0.016em;
     margin-bottom: 12px;
@@ -2718,9 +2723,9 @@ body.menu-open {
   }
 
   .hero--home .hero-text {
-    font-size: 0.94rem;
+    font-size: 0.98rem;
     line-height: 1.5;
-    max-width: 31ch;
+    max-width: 33ch;
     margin: 0 0 12px;
   }
 
