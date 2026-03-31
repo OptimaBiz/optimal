@@ -1932,7 +1932,7 @@ body.menu-open {
 @media (max-width: 1023.98px) {
   /* 1. Настраиваем главный контейнер как "экран" */
   .hero--home {
-    height: calc(100dvh + 60px); /* Строго высота экрана */
+    height: 100dvh; /* Строго высота экрана */
     display: flex;
     flex-direction: column;
     justify-content: center; /* Центрируем контент вертикально */
