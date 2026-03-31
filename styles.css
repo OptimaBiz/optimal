@@ -786,8 +786,9 @@ img {
 .logo-ticker__track {
   display: flex;
   width: max-content;
-  gap: 0.65rem;
+  gap: 0;
   animation: trustTicker 30s linear infinite;
+  will-change: transform;
 }
 
 .trust-badges {
@@ -807,6 +808,8 @@ img {
 .trust-badges--ticker {
   flex-wrap: nowrap;
   justify-content: flex-start;
+  flex: 0 0 auto;
+  padding-right: 0.65rem;
 }
 
 .trust-badges--scroll {
@@ -856,7 +859,7 @@ img {
 
 @keyframes trustTicker {
   to {
-    transform: translateX(calc(-50% - 0.325rem));
+    transform: translateX(-50%);
   }
 }
 
