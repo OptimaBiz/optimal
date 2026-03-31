@@ -1930,65 +1930,62 @@ body.menu-open {
 }
 
 @media (max-width: 1023.98px) {
-  /* 1. Настраиваем главный контейнер как "экран" */
+  /* Home hero: первый экран с CTA в рамках viewport */
   .hero--home {
-    min-height: 100dvh; /* Высота не меньше экрана */
+    min-height: calc(100dvh - 72px);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    padding: 0 1.5rem; /* Боковые отступы для текста */
+    padding: clamp(1.2rem, 4vw, 1.8rem) 0 clamp(1rem, 3.6vw, 1.45rem);
     margin: 0;
     box-sizing: border-box;
     position: relative;
   }
 
-  /* 2. Убираем сетку, переходим на гибкий поток */
-  .hero-grid {
+  .hero--home .hero-grid {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Выравнивание текста по левому краю */
+    align-items: flex-start;
     width: 100%;
-    gap: 0; /* Убираем лишние зазоры */
+    gap: 0.6rem;
   }
 
-  /* 3. Работаем с текстовым блоком */
-  .hero-copy {
+  .hero--home .hero-copy {
     padding: 0;
     margin: 0;
     width: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
   }
 
-  /* 4. Заголовок — делаем его плотным и крупным */
   .hero--home .hero-title {
     font-size: clamp(2.2rem, 9vw, 2.8rem) !important;
     line-height: 1.1;
-    margin: 1rem 0; /* Компактный отступ сверху и снизу */
+    margin: 0.72rem 0 0.94rem;
     letter-spacing: -0.02em;
   }
 
-  /* 5. Описание — чуть меньше, чтобы не вытеснять кнопку */
   .hero--home .hero-text {
-    font-size: 1.05rem;
-    line-height: 1.4;
-    margin-bottom: 1.5rem;
-    max-width: 90%;
+    font-size: 1rem;
+    line-height: 1.48;
+    margin-bottom: 1.1rem;
+    max-width: 34ch;
   }
 
-  /* 6. Кнопка — финал первого экрана */
-  .hero-actions {
-    margin-top: 0.5rem;
+  .hero--home .hero-actions {
+    margin-top: auto;
+    padding-top: 0.72rem;
     width: 100%;
   }
 
-  .hero-actions .button--primary {
-    width: 100%; /* Кнопка на всю ширину для удобства нажатия */
+  .hero--home .hero-actions .button--primary {
+    width: 100%;
     padding: 1.1rem;
     display: flex;
     justify-content: center;
   }
 
-  /* 7. Убираем картинку из этого экрана совсем, 
-     чтобы она не занимала место и не создавала пустоту */
   .hero--home .hero-visual {
     display: none;
   }
@@ -2008,14 +2005,34 @@ body.menu-open {
     max-width: 100%;
   }
 
-  .hero::before {
+  .hero--home::before {
     inset: 0.8rem 0 auto;
     height: min(64%, 430px);
   }
 
-  .hero::after {
+  .hero--home::after {
     width: min(68vw, 460px);
     right: -4rem;
+  }
+
+  .hero--service-page .hero-copy,
+  .hero:not(.hero--home):not(.hero--accreditation) .hero-copy {
+    max-width: min(100%, 68ch);
+    margin-inline: auto;
+    padding-inline: clamp(0.4rem, 2vw, 1rem);
+  }
+
+  .hero--service-page .hero-title,
+  .hero:not(.hero--home):not(.hero--accreditation) .hero-title {
+    font-size: clamp(2rem, 4.1vw, 2.65rem);
+    line-height: 1.08;
+    max-width: 24ch;
+  }
+
+  .hero--service-page .hero-text,
+  .hero:not(.hero--home):not(.hero--accreditation) .hero-text {
+    max-width: 62ch;
+    margin-bottom: clamp(1.1rem, 2.2vw, 1.7rem);
   }
 
   .hero-grid,
@@ -2357,15 +2374,11 @@ body.menu-open {
   }
 
   .hero--home .hero-copy {
-    display: flex;
-    flex-direction: column;
     justify-content: flex-start;
-    min-height: 100%;
   }
 
   .hero--home .hero-visual {
-    display: block;
-    margin-top: clamp(0.25rem, 1.2vh, 0.6rem);
+    display: none;
   }
 
   .hero::before {
@@ -2744,7 +2757,7 @@ body.menu-open {
 
   .hero--home .hero-grid {
     grid-template-rows: minmax(calc(100svh - 64px - 32px), auto);
-    gap: 0.7rem;
+    gap: 0.48rem;
   }
 
   .hero--home .hero-copy {
@@ -2776,7 +2789,7 @@ body.menu-open {
     font-size: clamp(2.18rem, 9.9vw, 2.54rem);
     line-height: 1.01;
     letter-spacing: -0.019em;
-    margin-bottom: 13px;
+    margin-bottom: 10px;
     max-width: none;
     gap: 0.12em;
     font-weight: 800;
@@ -2785,8 +2798,8 @@ body.menu-open {
   .hero--home .hero-title__line {
     font-size: inherit;
     line-height: inherit;
-    white-space: nowrap;
-    overflow-wrap: normal;
+    white-space: normal;
+    overflow-wrap: anywhere;
   }
 
   .hero--home .hero-title__line--accent {
@@ -2796,10 +2809,10 @@ body.menu-open {
   }
 
   .hero--home .hero-text {
-    font-size: 1rem;
-    line-height: 1.52;
+    font-size: 0.98rem;
+    line-height: 1.46;
     max-width: 33ch;
-    margin: 0 0 12px;
+    margin: 0 0 10px;
   }
 
   .hero-text__desktop {
@@ -2812,7 +2825,7 @@ body.menu-open {
 
   .hero--home .hero-facts {
     gap: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     font-size: 11px;
   }
 
