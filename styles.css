@@ -2314,7 +2314,8 @@ body.menu-open {
   }
 
   .hero--home .hero-visual {
-    display: none;
+    display: block;
+    margin-top: clamp(0.25rem, 1.2vh, 0.6rem);
   }
 
   .hero::before {
