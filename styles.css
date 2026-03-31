@@ -1930,52 +1930,69 @@ body.menu-open {
 }
 
 @media (max-width: 1023.98px) {
-  /* Делаем Hero-блок полноэкранным */
+  /* 1. Настраиваем главный контейнер как "экран" */
   .hero--home {
-    min-height: 100vh;
+    height: 100dvh; /* Строго высота экрана */
     display: flex;
-    align-items: center; /* Центрируем контент вертикально */
-    padding-top: 0; /* Компенсируем центрирование */
+    flex-direction: column;
+    justify-content: center; /* Центрируем контент вертикально */
+    padding: 0 1.5rem; /* Боковые отступы для текста */
+    margin: 0;
+    box-sizing: border-box;
+    position: relative;
   }
 
+  /* 2. Убираем сетку, переходим на гибкий поток */
   .hero-grid {
-    grid-template-columns: 1fr; /* Одна колонка */
-    gap: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Выравнивание текста по левому краю */
+    width: 100%;
+    gap: 0; /* Убираем лишние зазоры */
+  }
+
+  /* 3. Работаем с текстовым блоком */
+  .hero-content {
+    padding: 0;
+    margin: 0;
     width: 100%;
   }
 
-  /* Стилизуем текстовую часть как "Главный экран" */
-  .hero-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: left; /* Или center, если хотите симметрии */
-    min-height: calc(100vh - 120px); /* Вычитаем высоту шапки */
-  }
-
-  /* Увеличиваем заголовок для эффекта */
+  /* 4. Заголовок — делаем его плотным и крупным */
   .hero-content h1 {
-    font-size: clamp(2.8rem, 12vw, 3.5rem) !important; /* Намного крупнее */
+    font-size: clamp(2.2rem, 9vw, 2.8rem) !important;
     line-height: 1.1;
-    margin: 1.5rem 0;
+    margin: 1rem 0; /* Компактный отступ сверху и снизу */
     letter-spacing: -0.02em;
   }
 
-  /* Делаем CTA кнопку более массивной на мобильных */
-  .hero-actions .btn {
+  /* 5. Описание — чуть меньше, чтобы не вытеснять кнопку */
+  .hero-description {
+    font-size: 1.05rem;
+    line-height: 1.4;
+    margin-bottom: 1.5rem;
+    max-width: 90%;
+  }
+
+  /* 6. Кнопка — финал первого экрана */
+  .hero-actions {
+    margin-top: 0.5rem;
     width: 100%;
-    padding: 1.2rem;
-    font-size: 1.1rem;
+  }
+
+  .hero-actions .btn {
+    width: 100%; /* Кнопка на всю ширину для удобства нажатия */
+    padding: 1.1rem;
+    display: flex;
     justify-content: center;
   }
 
-  /* Если картинка в хиро мешает, её можно либо уменьшить,
-     либо убрать вниз под основной экран */
+  /* 7. Убираем картинку из этого экрана совсем, 
+     чтобы она не занимала место и не создавала пустоту */
   .hero-image {
-    margin-top: 2rem;
-    order: 2; /* Гарантируем, что она ПОСЛЕ текста */
+    display: none;
   }
-
+}
   .hero--home .hero-grid {
     grid-template-columns: minmax(0, 1fr);
     gap: clamp(1.25rem, 3vw, 2rem);
