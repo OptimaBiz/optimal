@@ -136,6 +136,9 @@ img {
 .eyebrow {
   display: inline-flex;
   align-items: center;
+  justify-self: start;
+  width: fit-content;
+  max-width: max-content;
   padding: 0.28rem 0.65rem;
   font-size: 0.75rem;
   text-transform: uppercase;
