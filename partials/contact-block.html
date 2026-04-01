@@ -2,21 +2,34 @@
   <header class="contact-summary__header">
     <span class="contact-summary__eyebrow">Контакты</span>
     <h2 class="contact-summary__title contact-panel__title">Как с нами связаться</h2>
+    <p class="contact-summary__subtitle">Отвечаем в течение рабочего дня. Можно написать или позвонить — подскажем, с чего начать.</p>
   </header>
   <div class="contact-summary__body">
-    <section class="contact-summary__section" aria-label="Email">
+    <section class="contact-summary__section contact-summary__section--card" aria-label="Email">
       <span class="contact-summary__label">Email</span>
       <a class="contact-summary__value contact-summary__value--link" href="mailto:hello@optimaloption.ru"><i class="fa-solid fa-envelope contact-summary__icon" aria-hidden="true"></i><span>hello@optimaloption.ru</span></a>
     </section>
-    <section class="contact-summary__section" aria-label="Телефон">
+    <section class="contact-summary__section contact-summary__section--card" aria-label="Телефон">
       <span class="contact-summary__label">Телефон</span>
       <a class="contact-summary__value contact-summary__value--link" href="tel:+78123898178"><i class="fa-solid fa-phone contact-summary__icon" aria-hidden="true"></i><span>+7 812 38-98-178</span></a>
     </section>
-    <section class="contact-summary__section" aria-label="География работы">
-      <span class="contact-summary__label">Работаем по всей России</span>
+    <section class="contact-summary__section contact-summary__section--geo" aria-label="География работы">
+      <span class="contact-summary__label"><i class="fa-solid fa-location-dot contact-summary__icon" aria-hidden="true"></i><span>География работы</span></span>
       <p class="contact-summary__value">Базируемся в Санкт-Петербурге</p>
-      <p class="contact-summary__meta">Сопровождаем проекты дистанционно и очно, где это необходимо</p>
+      <p class="contact-summary__value contact-summary__value--regular">Работаем по всей России</p>
+      <p class="contact-summary__meta">Дистанционно и очно — в зависимости от задачи</p>
+    </section>
+    <section class="contact-summary__section contact-summary__section--trust" aria-label="Факторы доверия">
+      <span class="contact-summary__label">Почему нам доверяют</span>
+      <ul class="contact-summary__trust-list">
+        <li>15+ лет опыта</li>
+        <li>Работаем с регуляторами</li>
+        <li>Сопровождаем до результата</li>
+      </ul>
     </section>
   </div>
-  <p class="contact-summary__note">Сначала разбираем запрос, затем предлагаем оптимальный формат работы.</p>
+  <div class="contact-summary__quick">
+    <p class="contact-summary__note">Сначала разбираем запрос, затем предлагаем оптимальный формат работы.</p>
+    <a class="button button--secondary contact-summary__quick-call" href="tel:+78123898178">Позвонить →</a>
+  </div>
 </aside>
