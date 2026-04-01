@@ -1018,6 +1018,75 @@ img {
 .faq-card {
   background: #fbfdff;
 }
+
+
+.trust-strip .service-card {
+  padding: clamp(0.9rem, 1.8vw, 1.15rem);
+}
+
+.trust-strip .service-card h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.use-cases-grid .service-card,
+#value .service-card,
+#ai-search-structure .service-card {
+  display: flex;
+  align-items: center;
+}
+
+.use-cases-grid .service-card p,
+#value .service-card p,
+#ai-search-structure .service-card p {
+  margin: 0;
+}
+
+.faq-accordion {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.faq-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: 0.95rem 1.1rem;
+}
+
+.faq-item summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.faq-item p {
+  margin: 0.8rem 0 0;
+  color: var(--text-muted);
+}
+
+.related-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.related-links a {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.55rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid #c9d7f1;
+  background: #f4f8ff;
+  color: var(--text-main);
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.related-links a:hover {
+  background: #eaf1ff;
+  border-color: #aebfde;
+}
 .services-grid,
 .standards-grid,
 .testimonials-grid,
