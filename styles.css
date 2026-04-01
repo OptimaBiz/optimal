@@ -703,6 +703,12 @@ img {
   display: block;
   position: relative;
   z-index: var(--z-card);
+  --card-hover-lift: -4px;
+  --card-hover-shadow: 0 24px 36px rgba(12, 33, 66, 0.16);
+  --card-hover-border: rgba(184, 206, 234, 0.9);
+  --card-hover-bg: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
+  --card-hover-glow: 0 0 0 1px rgba(180, 207, 237, 0.42);
+  --card-link-shift: 4px;
   background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
   border: 1px solid #d7e1ef;
   border-radius: var(--radius-sm);
@@ -711,18 +717,37 @@ img {
   color: var(--text);
   cursor: pointer;
   padding: 1.06rem 1.08rem 1.12rem;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+  overflow: hidden;
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease, background 0.28s ease;
+}
+
+.hero-service-card::before {
+  content: "";
+  position: absolute;
+  inset: -55% -120%;
+  background: linear-gradient(120deg, transparent 20%, rgba(255, 255, 255, 0.58) 47%, rgba(255, 255, 255, 0.82) 50%, rgba(255, 255, 255, 0.56) 53%, transparent 80%);
+  transform: translate3d(-52%, 0, 0) skewX(-16deg);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.75s ease, opacity 0.35s ease;
 }
 
 /* Добавим стиль для состояния наведения, чтобы карточка "оживала" */
 .hero-service-card:hover {
-  background: linear-gradient(180deg, #ffffff 0%, #f4f9ff 100%);
-  border-color: #c3d3ea;
-  transform: translateY(-4px);
+  background: var(--card-hover-bg);
+  border-color: var(--card-hover-border);
+  box-shadow: var(--card-hover-shadow), var(--card-hover-glow);
+  transform: translateY(var(--card-hover-lift));
 }
 
 .hero-service-card--featured {
   grid-column: 1 / -1;
+  --card-hover-lift: -6px;
+  --card-hover-shadow: 0 28px 46px rgba(11, 31, 64, 0.2);
+  --card-hover-border: rgba(164, 192, 227, 0.98);
+  --card-hover-bg: linear-gradient(180deg, #ffffff 0%, #f4f9ff 100%);
+  --card-hover-glow: 0 0 0 1px rgba(159, 190, 229, 0.55), 0 10px 20px rgba(165, 198, 237, 0.24);
+  --card-link-shift: 6px;
   border-color: rgba(191, 210, 233, 0.88);
   background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
   min-height: 154px;
@@ -770,10 +795,15 @@ img {
 
 @media (hover: hover) and (pointer: fine) {
   .hero-service-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 24px 36px rgba(12, 33, 66, 0.16);
-    border-color: rgba(184, 206, 234, 0.9);
-    background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
+    transform: translateY(var(--card-hover-lift));
+    box-shadow: var(--card-hover-shadow), var(--card-hover-glow);
+    border-color: var(--card-hover-border);
+    background: var(--card-hover-bg);
+  }
+
+  .hero-service-card:hover::before {
+    opacity: 1;
+    transform: translate3d(52%, 0, 0) skewX(-16deg);
   }
 
   .hero-service-card:hover h3 {
@@ -781,7 +811,7 @@ img {
   }
 
   .hero-service-card:hover .card-cta {
-    transform: translateX(4px);
+    transform: translateX(var(--card-link-shift));
     color: #173b94 !important;
   }
 }
@@ -1192,6 +1222,26 @@ img {
   font-size: 0.93rem;
   font-weight: 590;
   text-decoration: none;
+  transition: transform 0.28s ease, color 0.28s ease;
+}
+
+.section--services-overview .service-card {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, #fbfdff 0%, #f7faff 100%);
+  border-color: #d9e3ef;
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease, background 0.28s ease;
+}
+
+.section--services-overview .service-card::before {
+  content: "";
+  position: absolute;
+  inset: -60% -120%;
+  background: linear-gradient(120deg, transparent 20%, rgba(255, 255, 255, 0.56) 47%, rgba(255, 255, 255, 0.82) 50%, rgba(255, 255, 255, 0.56) 53%, transparent 80%);
+  transform: translate3d(-54%, 0, 0) skewX(-18deg);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.75s ease, opacity 0.35s ease;
 }
 
 .services-overview-note {
@@ -1199,6 +1249,25 @@ img {
   max-width: 74ch;
   color: #4a5c77;
   line-height: 1.55;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .section--services-overview .service-card:hover {
+    transform: translateY(-4px);
+    background: linear-gradient(180deg, #ffffff 0%, #f4f9ff 100%);
+    border-color: #c3d3ea;
+    box-shadow: 0 20px 36px rgba(12, 33, 66, 0.14), 0 0 0 1px rgba(180, 207, 237, 0.34);
+  }
+
+  .section--services-overview .service-card:hover::before {
+    opacity: 1;
+    transform: translate3d(54%, 0, 0) skewX(-18deg);
+  }
+
+  .section--services-overview .service-card:hover a {
+    transform: translateX(4px);
+    color: #173b94;
+  }
 }
 
 .section--cases {
