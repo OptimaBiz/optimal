@@ -405,8 +405,9 @@ img {
   }
 
   .hero--home .hero-actions {
-    margin-top: auto;
-    padding-top: clamp(0.8rem, 1.5vw, 1.2rem);
+    margin-top: clamp(1.5rem, 2.2vw, 2rem);
+    margin-bottom: clamp(1.25rem, 2vw, 1.5rem);
+    padding-top: 0;
   }
 
   .hero--home .hero-panel--cards {
@@ -448,7 +449,8 @@ img {
 }
 
 .hero--home .hero-facts {
-  margin-bottom: clamp(1.1rem, 1.8vw, 1.45rem);
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .hero--service-page .hero-grid {
@@ -775,16 +777,62 @@ img {
 .hero-actions .button--primary {
   background: #1f4dbf;
   border-color: #214cb5;
-  box-shadow: 0 9px 22px rgba(22, 51, 115, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.15);
-  border-radius: 999px;
-  padding: 0.74rem 1.38rem;
+  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 16px 32px;
+  min-height: 58px;
+  font-size: 1rem;
+  font-weight: 650;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transform: translateZ(0);
+  transition: transform 0.28s ease, box-shadow 0.28s ease, background-color 0.28s ease, border-color 0.28s ease;
+}
+
+.hero-actions .button--primary::before {
+  content: "";
+  position: absolute;
+  inset: -35% -55%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.25) 40%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0.25) 60%,
+    transparent 100%
+  );
+  transform: translateX(-100%) skewX(-18deg);
+  animation: heroCtaShimmer 3.1s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
 }
 
 @media (hover: hover) and (pointer: fine) {
   .hero-actions .button--primary:hover {
     background: #1b44a6;
     border-color: #1b44a6;
-    box-shadow: 0 12px 24px rgba(20, 46, 103, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    box-shadow: 0 14px 40px rgba(37, 99, 235, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    transform: scale(1.02);
+  }
+}
+
+.hero-actions .button--primary:active {
+  transform: scale(0.98);
+}
+
+@keyframes heroCtaShimmer {
+  0% {
+    transform: translateX(-100%) skewX(-18deg);
+  }
+  100% {
+    transform: translateX(200%) skewX(-18deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-actions .button--primary::before {
+    animation: none;
   }
 }
 
@@ -2018,8 +2066,9 @@ body.menu-open {
   }
 
   .hero--home .hero-actions {
-    margin-top: auto;
-    padding-top: 0.72rem;
+    margin-top: clamp(1.25rem, 2.6vw, 1.5rem);
+    margin-bottom: clamp(1rem, 2.2vw, 1.25rem);
+    padding-top: 0;
     width: 100%;
   }
 
@@ -2892,15 +2941,16 @@ body.menu-open {
   }
 
   .hero--home .hero-actions {
-    margin-top: auto;
-    padding-top: clamp(0.65rem, 2.5vh, 1rem);
+    margin-top: clamp(1.25rem, 2.6vw, 1.5rem);
+    margin-bottom: clamp(1rem, 2.2vw, 1.25rem);
+    padding-top: 0;
     gap: 0;
   }
 
   .hero--home .hero-actions .button--primary {
     width: 100%;
-    min-height: 50px;
-    padding: 13px 20px;
+    min-height: 56px;
+    padding: 16px 24px;
     font-size: 16px;
     line-height: 1.12;
   }
@@ -2991,8 +3041,8 @@ body.menu-open {
   }
 
   .hero--home .hero-actions .button--primary {
-    min-height: 48px;
-    font-size: 15px;
+    min-height: 56px;
+    font-size: 16px;
   }
 
   .hero--home .hero-facts li span {
