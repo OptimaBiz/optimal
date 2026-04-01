@@ -1457,7 +1457,7 @@ img {
 
 .timeline {
   display: grid;
-  gap: 1rem;
+  gap: 1.4rem;
 }
 
 .process-step {
@@ -1494,6 +1494,7 @@ img {
   background: linear-gradient(180deg, #fdfefe 0%, #f2f6fc 100%);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86);
   letter-spacing: 0.02em;
+  font-size: 1.1rem;
   position: relative;
   z-index: 1;
 }
@@ -1504,7 +1505,13 @@ img {
   gap: 0.72rem;
   background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
   border-color: #d8e1ee;
+  border-radius: 16px;
   position: relative;
+}
+
+.process-step:hover .process-step__card {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(13, 33, 68, 0.12);
 }
 
 .process-step__card::before {
@@ -1537,7 +1544,7 @@ img {
   padding: 0;
   list-style: none;
   display: grid;
-  gap: 0.5rem;
+  gap: 0.6rem;
 }
 
 .process-step__list li {
@@ -2381,6 +2388,65 @@ body.menu-open {
 }
 
 @media (max-width: 767.98px) {
+  #process.section {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .process-step {
+    grid-template-columns: 1fr;
+  }
+
+  .process-step::after {
+    display: none;
+  }
+
+  .process-step__number {
+    margin-bottom: 0.5rem;
+    font-size: 0.98rem;
+  }
+
+  .process-step__card::before {
+    display: none;
+  }
+
+  .process-step__card {
+    padding: 0.9rem;
+    gap: 0.6rem;
+  }
+
+  .process-step__title {
+    font-size: 1.05rem;
+    line-height: 1.3;
+  }
+
+  .process-step__lead {
+    font-size: 0.92rem;
+    line-height: 1.45;
+  }
+
+  .process-step__list {
+    gap: 0.6rem;
+  }
+
+  .process-step__list li {
+    font-size: 0.88rem;
+  }
+
+  .process-step__result {
+    font-size: 0.9rem;
+  }
+
+  .inline-cta {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.8rem;
+  }
+
+  .inline-cta .button {
+    width: 100%;
+  }
+
   .contact-summary__title,
   .contact-form__title {
     font-size: 22px;
@@ -2850,50 +2916,6 @@ body.menu-open {
     gap: 0.5rem;
   }
 
-  .timeline {
-    gap: 0.85rem;
-  }
-
-  .process-step {
-    grid-template-columns: 2.45rem 1fr;
-    column-gap: 0.6rem;
-  }
-
-  .process-step::after {
-    left: 1.19rem;
-    top: 2.45rem;
-    bottom: -0.8rem;
-  }
-
-  .process-step__number {
-    width: 2.4rem;
-    height: 2.4rem;
-    font-size: 0.9rem;
-  }
-
-  .process-step__card {
-    gap: 0.7rem;
-    padding: 0.9rem;
-  }
-
-  .process-step__card::before {
-    left: -0.58rem;
-    top: 1.18rem;
-    width: 0.58rem;
-  }
-
-  .process-step__lead,
-  .process-step__result {
-    font-size: 0.9rem;
-  }
-
-  .process-step__list {
-    gap: 0.45rem;
-  }
-
-  .process-step__list li {
-    font-size: 0.89rem;
-  }
 }
 
 /* Contact form premium polish */
