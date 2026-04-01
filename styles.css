@@ -390,6 +390,8 @@ img {
 .hero--home .hero-copy {
   max-width: min(100%, 42.5rem);
   min-width: 0;
+  display: grid;
+  align-content: start;
 }
 
 @media (min-width: 801px) {
@@ -405,7 +407,7 @@ img {
   }
 
   .hero--home .hero-actions {
-    margin-top: clamp(1.1rem, 1.8vw, 1.5rem);
+    margin-top: 0;
     margin-bottom: 0;
     padding-top: 0;
   }
@@ -431,26 +433,35 @@ img {
   grid-template-columns: 1.12fr 0.88fr;
 }
 
+.hero--home {
+  padding: clamp(5rem, 8.2vw, 7rem) 0 clamp(5rem, 8.4vw, 7.2rem);
+}
+
+.hero--home::before {
+  inset: clamp(1rem, 2.2vw, 1.8rem) 0 auto;
+  height: min(74%, 560px);
+  background: radial-gradient(circle at 22% 22%, rgba(236, 244, 255, 0.9) 0%, rgba(248, 251, 255, 0.88) 56%, rgba(242, 247, 255, 0.82) 100%);
+  border: 1px solid rgba(208, 220, 238, 0.38);
+  box-shadow: 0 14px 34px rgba(16, 42, 88, 0.04);
+}
+
 .hero--home .hero-title {
   max-width: 24ch;
+  margin-bottom: clamp(1rem, 1.8vw, 1.35rem);
 }
 
 .hero--home .hero-text {
   max-width: 58ch;
-}
-
-.hero--home .eyebrow {
-  margin-bottom: clamp(0.42rem, 0.8vw, 0.62rem);
-}
-
-.hero--home .hero-text {
-  margin-top: clamp(0.94rem, 1.5vw, 1.26rem);
-  margin-bottom: clamp(1.18rem, 2vw, 1.7rem);
+  margin: 0 0 1.5rem;
 }
 
 .hero--home .hero-facts {
-  margin-top: 0;
+  margin-top: 1.5rem;
   margin-bottom: 0;
+}
+
+.hero--home .eyebrow {
+  margin-bottom: clamp(0.46rem, 0.9vw, 0.7rem);
 }
 
 .hero--service-page .hero-grid {
@@ -526,12 +537,13 @@ img {
 .hero-facts li span {
   display: inline-flex;
   align-items: center;
-  min-height: 31px;
-  padding: 0.3rem 0.72rem;
+  min-height: 36px;
+  padding: 0.65rem 0.82rem;
   border-radius: var(--radius-sm);
-  border: 1px solid rgba(181, 197, 220, 0.52);
-  background: rgba(249, 252, 255, 0.72);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.64), 0 3px 10px rgba(17, 39, 76, 0.026);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(244, 249, 255, 0.74) 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.78), 0 8px 18px rgba(17, 39, 76, 0.04);
+  backdrop-filter: blur(8px);
   color: #30425f;
   font-weight: 500;
   letter-spacing: 0.006em;
@@ -680,11 +692,12 @@ img {
 .hero-panel--cards {
   min-height: auto;
   display: grid;
-  gap: 0.7rem;
-  background: linear-gradient(180deg, #f8fbff 0%, #f1f6fd 100%);
-  border: 1px solid #d5dfed;
-  box-shadow: var(--shadow-lg);
-  padding: clamp(1rem, 1.8vw, 1.32rem);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.82rem;
+  background: linear-gradient(180deg, #fbfdff 0%, #f6faff 100%);
+  border: 1px solid #dce6f3;
+  box-shadow: 0 22px 42px rgba(17, 40, 82, 0.08);
+  padding: clamp(1rem, 1.8vw, 1.4rem);
   overflow: visible;
   align-content: start;
 }
@@ -696,7 +709,7 @@ img {
   background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
   border: 1px solid #d7e1ef;
   border-radius: var(--radius-sm);
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 16px 30px rgba(17, 42, 86, 0.07);
   text-decoration: none;
   color: var(--text);
   cursor: pointer;
@@ -708,13 +721,15 @@ img {
 .hero-service-card:hover {
   background: linear-gradient(180deg, #ffffff 0%, #f4f9ff 100%);
   border-color: #c3d3ea;
-  transform: translateY(-2px);
+  transform: translateY(-4px);
 }
 
 .hero-service-card--featured {
+  grid-column: 1 / -1;
   border-color: rgba(191, 210, 233, 0.88);
   background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
-  box-shadow: 0 9px 20px rgba(12, 35, 73, 0.072);
+  min-height: 154px;
+  box-shadow: 0 24px 38px rgba(12, 35, 73, 0.12);
 }
 
 .hero-service-card,
@@ -758,8 +773,8 @@ img {
 
 @media (hover: hover) and (pointer: fine) {
   .hero-service-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 22px rgba(12, 33, 66, 0.085);
+    transform: translateY(-4px);
+    box-shadow: 0 24px 36px rgba(12, 33, 66, 0.16);
     border-color: rgba(184, 206, 234, 0.9);
     background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
   }
@@ -775,9 +790,9 @@ img {
 }
 
 .hero-actions .button--primary {
-  background: #1f4dbf;
-  border-color: #214cb5;
-  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  background: linear-gradient(135deg, #2f65df 0%, #2150c5 100%);
+  border-color: #2855c4;
+  box-shadow: 0 14px 34px rgba(37, 99, 235, 0.34), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
   border-radius: 16px;
   padding: 16px 32px;
   min-height: 58px;
@@ -811,15 +826,15 @@ img {
 
 @media (hover: hover) and (pointer: fine) {
   .hero-actions .button--primary:hover {
-    background: #1b44a6;
-    border-color: #1b44a6;
-    box-shadow: 0 14px 40px rgba(37, 99, 235, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.12);
-    transform: scale(1.02);
+    background: linear-gradient(135deg, #346cf0 0%, #2355cd 100%);
+    border-color: #224fbe;
+    box-shadow: 0 20px 44px rgba(37, 99, 235, 0.42), 0 0 24px rgba(59, 127, 255, 0.35);
+    transform: translateY(-2px);
   }
 }
 
 .hero-actions .button--primary:active {
-  transform: scale(0.98);
+  transform: translateY(0);
 }
 
 @keyframes heroCtaShimmer {
@@ -2070,11 +2085,11 @@ body.menu-open {
 @media (max-width: 1023.98px) {
   /* Home hero: первый экран с CTA в рамках viewport */
   .hero--home {
-    min-height: calc(100dvh - 72px);
+    min-height: 0;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    padding: clamp(1.2rem, 4vw, 1.8rem) 0 clamp(1rem, 3.6vw, 1.45rem);
+    padding: clamp(3.2rem, 8vw, 4.8rem) 0 clamp(3rem, 7.4vw, 4.4rem);
     margin: 0;
     box-sizing: border-box;
     position: relative;
@@ -2085,14 +2100,14 @@ body.menu-open {
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
-    gap: 0.6rem;
+    gap: 1.1rem;
   }
 
   .hero--home .hero-copy {
     padding: 0;
     margin: 0;
     width: 100%;
-    min-height: 100%;
+    min-height: 0;
     display: flex;
     flex-direction: column;
   }
@@ -2100,20 +2115,20 @@ body.menu-open {
   .hero--home .hero-title {
     font-size: clamp(2.2rem, 9vw, 2.8rem) !important;
     line-height: 1.1;
-    margin: 0.72rem 0 0.94rem;
+    margin: 0.72rem 0 1rem;
     letter-spacing: -0.02em;
   }
 
   .hero--home .hero-text {
     font-size: 1rem;
     line-height: 1.48;
-    margin-bottom: 1.1rem;
+    margin-bottom: 1.5rem;
     max-width: 34ch;
   }
 
   .hero--home .hero-actions {
-    margin-top: clamp(1rem, 2.2vw, 1.3rem);
-    margin-bottom: 0.35rem;
+    margin-top: 0;
+    margin-bottom: 0;
     padding-top: 0;
     width: 100%;
   }
@@ -2144,7 +2159,7 @@ body.menu-open {
 
   .hero--home .hero-grid {
     grid-template-columns: minmax(0, 1fr);
-    gap: clamp(1.25rem, 3vw, 2rem);
+    gap: clamp(1.1rem, 2.8vw, 1.7rem);
   }
 
   .hero--home .hero-title {
@@ -2153,7 +2168,7 @@ body.menu-open {
 
   .hero--home::before {
     inset: 0.8rem 0 auto;
-    height: min(64%, 430px);
+    height: min(58%, 400px);
   }
 
   .hero--home::after {
@@ -2519,14 +2534,14 @@ body.menu-open {
 
 @media (max-width: 800px) {
   .hero--home {
-    padding-top: clamp(1.6rem, 6vw, 2.4rem);
-    padding-bottom: clamp(1.4rem, 5vw, 2rem);
+    padding-top: clamp(2.8rem, 7.2vw, 3.8rem);
+    padding-bottom: clamp(2.6rem, 6.8vw, 3.4rem);
   }
 
   .hero--home .hero-grid {
     grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: minmax(calc(100svh - 64px - clamp(1.6rem, 6vw, 2.4rem) - clamp(1.4rem, 5vw, 2rem)), auto);
-    gap: clamp(1rem, 3.8vh, 1.8rem);
+    grid-template-rows: auto;
+    gap: clamp(1rem, 3.2vh, 1.4rem);
   }
 
   .hero--home .hero-copy {
@@ -2602,12 +2617,13 @@ body.menu-open {
   }
 
   .hero-facts li span {
-    min-height: 30px;
+    min-height: 34px;
   }
 
   .hero-panel--cards {
-    gap: 0.56rem;
-    padding: 0.86rem;
+    grid-template-columns: 1fr;
+    gap: 0.62rem;
+    padding: 0.92rem;
   }
 
   .section {
@@ -2623,7 +2639,7 @@ body.menu-open {
   }
 
   .hero--home .hero-copy .hero-actions {
-    margin-top: clamp(0.65rem, 2.6vw, 0.95rem);
+    margin-top: 0;
   }
 
   .button {
@@ -2901,7 +2917,7 @@ body.menu-open {
   }
 
   .hero--home {
-    padding: 18px 0 14px;
+    padding: 2.4rem 0 2.2rem;
     margin-bottom: 0;
   }
 
@@ -2915,14 +2931,14 @@ body.menu-open {
   }
 
   .hero--home .hero-grid {
-    grid-template-rows: minmax(calc(100svh - 64px - 32px), auto);
-    gap: 0.48rem;
+    grid-template-rows: auto;
+    gap: 0.9rem;
   }
 
   .hero--home .hero-copy {
     max-width: none;
     width: 100%;
-    min-height: 100%;
+    min-height: 0;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -2930,7 +2946,7 @@ body.menu-open {
   }
 
   .hero--home .hero-copy .hero-facts {
-    margin-top: 0;
+    margin-top: 1rem;
   }
 
   .hero--home .eyebrow {
@@ -2971,7 +2987,7 @@ body.menu-open {
     font-size: 0.98rem;
     line-height: 1.46;
     max-width: 33ch;
-    margin: 0 0 10px;
+    margin: 0 0 1.3rem;
   }
 
   .hero-text__desktop {
@@ -2984,21 +3000,21 @@ body.menu-open {
 
   .hero--home .hero-facts {
     gap: 5px;
-    margin-bottom: 8px;
+    margin-bottom: 0;
     font-size: 11px;
   }
 
   .hero--home .hero-facts li span {
-    min-height: 30px;
+    min-height: 34px;
     font-size: 11px;
     line-height: 1.1;
-    padding: 7px 11px;
+    padding: 10px 12px;
     border-radius: 999px;
   }
 
   .hero--home .hero-actions {
-    margin-top: clamp(1rem, 2.2vw, 1.3rem);
-    margin-bottom: 0.35rem;
+    margin-top: 0;
+    margin-bottom: 0;
     padding-top: 0;
     gap: 0;
   }
