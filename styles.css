@@ -1555,6 +1555,15 @@ img {
   gap: 0.42rem;
 }
 
+.contact-summary__subtitle {
+  margin: 0;
+  padding-bottom: 1.5rem;
+  color: #5f738d;
+  font-size: 0.96rem;
+  line-height: 1.5;
+  border-bottom: 1px solid rgba(29, 56, 99, 0.1);
+}
+
 .contact-summary__eyebrow {
   font-size: 0.76rem;
   font-weight: 600;
@@ -1571,17 +1580,37 @@ img {
 
 .contact-summary__body {
   display: grid;
-  gap: 0;
+  gap: 1.25rem;
 }
 
 .contact-summary__section {
   display: grid;
-  gap: 0.3rem;
-  padding: 0.82rem 0;
+  gap: 0.5rem;
+  padding: 0;
 }
 
 .contact-summary__section + .contact-summary__section {
-  border-top: 1px solid #e5ebf5;
+  border-top: 1px solid rgba(29, 56, 99, 0.1);
+  padding-top: 1.25rem;
+}
+
+.contact-summary__section--card {
+  padding: 1rem 1rem 1.05rem;
+  border-radius: 12px;
+  border: 1px solid #dbe4f1;
+  background: linear-gradient(180deg, #f9fbff 0%, #f4f8ff 100%);
+  transition: border-color 0.22s ease, box-shadow 0.22s ease, background-color 0.22s ease;
+}
+
+.contact-summary__section--card + .contact-summary__section--card {
+  border-top: 1px solid #dbe4f1;
+  padding-top: 1rem;
+}
+
+.contact-summary__section--card:hover {
+  border-color: #c4d3e8;
+  background: linear-gradient(180deg, #ffffff 0%, #f6faff 100%);
+  box-shadow: 0 8px 20px rgba(21, 46, 87, 0.08);
 }
 
 .contact-summary__label {
@@ -1590,6 +1619,12 @@ img {
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+.contact-summary__section--geo .contact-summary__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
 }
 
 .contact-summary__value {
@@ -1612,11 +1647,35 @@ img {
   border-bottom-color: rgba(41, 77, 134, 0.32);
 }
 
+.contact-summary__value--regular {
+  font-weight: 500;
+}
+
 .contact-summary__meta {
   margin: 0;
   color: #62768f;
   font-size: 0.92rem;
   line-height: 1.45;
+}
+
+.contact-summary__trust-list {
+  margin: 0;
+  padding-left: 1.15rem;
+  display: grid;
+  gap: 0.5rem;
+  color: #314860;
+  font-size: 0.93rem;
+}
+
+.contact-summary__trust-list li::marker {
+  color: #2c5aac;
+}
+
+.contact-summary__quick {
+  display: grid;
+  gap: 0.75rem;
+  border-top: 1px solid rgba(29, 56, 99, 0.1);
+  padding-top: 1.15rem;
 }
 
 .contact-summary__note {
@@ -1628,6 +1687,23 @@ img {
   color: #5b6f87;
   font-size: 0.9rem;
   line-height: 1.45;
+}
+
+.contact-summary__quick-call {
+  justify-self: start;
+  min-height: 2.8rem;
+  padding: 0.72rem 1.2rem;
+  border-radius: 12px;
+  color: #214a96;
+  border-color: #b7c8df;
+  background: #fff;
+  font-weight: 600;
+}
+
+.contact-summary__quick-call:hover {
+  background: #2a58b2;
+  border-color: #2a58b2;
+  color: #fff;
 }
 
 .contact-form-shell {
