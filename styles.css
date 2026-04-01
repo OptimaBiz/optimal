@@ -2685,6 +2685,11 @@ body.menu-open {
     gap: 0.45rem;
   }
 
+  .hero--home .hero-copy .hero-facts {
+    justify-content: center;
+    align-self: center;
+  }
+
   .hero-facts li span {
     min-height: 34px;
   }
