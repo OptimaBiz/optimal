@@ -254,9 +254,9 @@
       <div class="form-field"><label class="form-label" for="contact-channel">Email или телефон</label><input class="form-input" id="contact-channel" name="contact" type="text" placeholder="example@mail.ru / телефон в любом формате" autocomplete="email" required /></div>
       <div class="form-field"><label class="form-label" for="contact-message">Кратко опишите задачу</label><textarea class="form-textarea" id="contact-message" name="message" rows="5" placeholder="Например: нужна аккредитация, лицензия, подготовка документов, сопровождение" required></textarea></div>
     </div>
-    <div class="form-consent">
-      <input class="form-consent__checkbox" type="checkbox" id="consent-checkbox" name="consent" required aria-describedby="consent-error" />
-      <label class="form-consent__text" for="consent-checkbox">Я даю <button type="button" class="form-consent__link" data-consent-open>согласие на обработку персональных данных</button> и принимаю <a href="privacy-policy.html">Политику конфиденциальности</a></label>
+    <div class="form-consent contact-form__consent">
+      <input class="form-consent__checkbox contact-form__consent-checkbox" type="checkbox" id="consent-checkbox" name="consent" required aria-describedby="consent-error" />
+      <label class="form-consent__text contact-form__consent-text" for="consent-checkbox">Даю <button type="button" class="form-consent__link" data-consent-open>согласие на обработку персональных данных</button> и принимаю <a href="privacy-policy.html">Политику конфиденциальности</a>.</label>
     </div>
     <p class="form-note form-note--error" id="consent-error" aria-live="polite"></p>
     <p class="form-note" id="form-note" role="status" aria-live="polite"></p>
@@ -547,6 +547,62 @@
     }
   };
 
+  const initMobileServiceCardFocus = () => {
+    const mobileBreakpoint = window.matchMedia('(max-width: 767.98px)');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const cards = Array.from(document.querySelectorAll('.section--services-overview .service-card'));
+    if (!cards.length) return;
+
+    let observer = null;
+
+    const clearActive = () => {
+      cards.forEach((card) => card.classList.remove('is-active'));
+    };
+
+    const enableFocusEffect = () => {
+      clearActive();
+      if (!('IntersectionObserver' in window)) return;
+
+      observer = new IntersectionObserver(
+        (entries) => {
+          const visibleEntries = entries.filter((entry) => entry.isIntersecting);
+          if (!visibleEntries.length) return;
+
+          const bestEntry = visibleEntries.reduce((best, entry) => (
+            entry.intersectionRatio > best.intersectionRatio ? entry : best
+          ));
+
+          cards.forEach((card) => card.classList.toggle('is-active', card === bestEntry.target));
+        },
+        {
+          root: null,
+          threshold: [0.35, 0.5, 0.7],
+          rootMargin: '-34% 0px -34% 0px'
+        }
+      );
+
+      cards.forEach((card) => observer.observe(card));
+    };
+
+    const disableFocusEffect = () => {
+      observer?.disconnect();
+      observer = null;
+      clearActive();
+    };
+
+    const syncMode = () => {
+      if (mobileBreakpoint.matches) {
+        enableFocusEffect();
+      } else {
+        disableFocusEffect();
+      }
+    };
+
+    syncMode();
+    mobileBreakpoint.addEventListener('change', syncMode);
+    reduceMotion.addEventListener('change', syncMode);
+  };
+
   const bootstrap = async () => {
     initPageTaxonomy();
     normalizeBreadcrumbs();
@@ -554,6 +610,7 @@
     initNavigation();
     initContactForms();
     initReveal();
+    initMobileServiceCardFocus();
   };
 
   bootstrap();
