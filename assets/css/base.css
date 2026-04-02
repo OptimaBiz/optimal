@@ -1,0 +1,88 @@
+/* Base tokens, reset and element defaults */
+
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css");
+
+:root {
+  --bg: #f5f7fa;
+  --surface: #ffffff;
+  --surface-soft: #eef2f7;
+  --text: #15233b;
+  --text-muted: #4e5b70;
+  --border: #d8e1ec;
+  --accent: #1f4dbf;
+  --accent-dark: #173a90;
+  --radius-sm: 12px;
+  --radius-md: 18px;
+  --radius-lg: 28px;
+  --shadow-sm: 0 4px 14px rgba(19, 39, 76, 0.06);
+  --shadow-md: 0 12px 28px rgba(13, 33, 68, 0.1);
+  --shadow-lg: 0 22px 46px rgba(11, 31, 66, 0.16);
+  --space-1: 0.5rem;
+  --space-2: 0.75rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+  --space-6: 3rem;
+  --space-7: 4rem;
+  --container: 1180px;
+  --space-section: clamp(3.5rem, 6vw, 5rem);
+  --space-section-tight: clamp(2.4rem, 4vw, 3.3rem);
+  --space-stack: clamp(1.4rem, 2.2vw, 2.1rem);
+  --space-section-block: clamp(1.4rem, 2.2vw, 2.1rem);
+  --space-head-gap: clamp(0.7rem, 1.2vw, 1rem);
+  --space-card-padding: clamp(1.15rem, 2vw, 1.6rem);
+  --font-sans: "Manrope", "Inter", "Segoe UI", "Roboto", -apple-system, BlinkMacSystemFont, sans-serif;
+  --z-base: 0;
+  --z-decor: 1;
+  --z-content: 2;
+  --z-card: 3;
+  --z-header: 40;
+  --z-dropdown: 70;
+  --z-overlay: 120;
+  --z-modal: 130;
+  --z-feedback: 140;
+  --case-gradient: radial-gradient(130% 100% at 8% 12%, rgba(164, 190, 228, 0.34), transparent 58%),
+                   radial-gradient(90% 70% at 88% 18%, rgba(190, 209, 235, 0.32), transparent 64%),
+                   linear-gradient(180deg, #f6f9ff 0%, #edf3fb 52%, #e8eef8 100%);
+  --case-text: #1b2b46;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+#contacts {
+  scroll-margin-top: 92px;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--text);
+  background: linear-gradient(180deg, #f8fafd 0%, #f3f6fb 100%);
+  line-height: 1.62;
+  font-size: 1rem;
+  letter-spacing: 0.002em;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+@media (hover: hover) {
+  a:hover {
+    color: var(--accent-dark);
+  }
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
