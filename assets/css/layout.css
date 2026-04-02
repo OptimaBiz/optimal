@@ -26,6 +26,24 @@
   margin-top: clamp(0.04rem, 0.28vw, 0.2rem);
 }
 
+.home-page main > .section:not(#hero) {
+  --home-type-eyebrow-size: 0.75rem;
+  --home-type-eyebrow-tracking: 0.1em;
+  --home-type-h2-size: clamp(1.75rem, 2.25vw, 2.35rem);
+  --home-type-h2-line: 1.2;
+  --home-type-h3-size: clamp(1.16rem, 1.05rem + 0.45vw, 1.38rem);
+  --home-type-h3-line: 1.34;
+  --home-type-lead-size: clamp(1rem, 0.96rem + 0.15vw, 1.08rem);
+  --home-type-lead-line: 1.62;
+  --home-type-body-size: 0.97rem;
+  --home-type-body-line: 1.58;
+  --home-type-meta-size: 0.83rem;
+  --home-type-meta-line: 1.45;
+  --home-type-link-size: 0.95rem;
+  --home-rhythm-eyebrow-to-title: 0.78rem;
+  --home-rhythm-title-to-lead: 0.82rem;
+}
+
 .section--alt {
   background: linear-gradient(180deg, #f8fbff 0%, #f0f4fa 100%);
 }
@@ -39,20 +57,24 @@
 
 .section-head h2 {
   margin: 0;
-  line-height: 1.22;
+  line-height: var(--home-type-h2-line, 1.22);
   letter-spacing: -0.01em;
-  font-size: clamp(1.65rem, 2.6vw, 2.4rem);
+  font-size: var(--home-type-h2-size, clamp(1.65rem, 2.6vw, 2.4rem));
+  font-weight: 700;
+  text-wrap: balance;
 }
 
 .section-head p {
   margin: 0;
   color: var(--text-muted);
-  line-height: 1.62;
+  line-height: var(--home-type-lead-line, 1.62);
+  font-size: var(--home-type-lead-size, 1rem);
   max-width: 68ch;
+  text-wrap: pretty;
 }
 
 .section-head .eyebrow {
-  margin-bottom: 0.72rem;
+  margin-bottom: var(--home-rhythm-eyebrow-to-title, 0.72rem);
 }
 
 .eyebrow {
@@ -62,9 +84,9 @@
   width: fit-content;
   max-width: max-content;
   padding: 0.28rem 0.65rem;
-  font-size: 0.75rem;
+  font-size: var(--home-type-eyebrow-size, 0.75rem);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: var(--home-type-eyebrow-tracking, 0.1em);
   color: var(--accent);
   font-weight: 700;
   background: rgba(31, 77, 191, 0.08);
@@ -76,6 +98,28 @@
   color: #385a9f;
   background: rgba(56, 90, 159, 0.06);
   border: 1px solid rgba(56, 90, 159, 0.14);
+}
+
+@media (max-width: 1023.98px) {
+  .home-page main > .section:not(#hero) {
+    --home-type-h2-size: clamp(1.62rem, 2.8vw, 2.05rem);
+    --home-type-h3-size: clamp(1.08rem, 1rem + 0.45vw, 1.24rem);
+    --home-type-lead-size: 1rem;
+    --home-type-body-size: 0.95rem;
+    --home-type-meta-size: 0.82rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .home-page main > .section:not(#hero) {
+    --home-type-h2-size: clamp(1.46rem, 5.1vw, 1.8rem);
+    --home-type-h3-size: clamp(1rem, 4vw, 1.14rem);
+    --home-type-lead-size: 0.98rem;
+    --home-type-body-size: 0.93rem;
+    --home-type-meta-size: 0.8rem;
+    --home-rhythm-eyebrow-to-title: 0.64rem;
+    --home-rhythm-title-to-lead: 0.72rem;
+  }
 }
 
 @media (hover: hover) {
@@ -263,4 +307,3 @@
 .services-mobile-menu {
   display: none;
 }
-

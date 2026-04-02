@@ -591,12 +591,13 @@
 
 .logos-heading {
   margin: 0 0 1.16rem;
-  font-size: clamp(1.72rem, 2.9vw, 2.08rem);
-  font-weight: 780;
+  font-size: var(--home-type-h2-size, clamp(1.72rem, 2.9vw, 2.08rem));
+  font-weight: 730;
   letter-spacing: -0.008em;
-  line-height: 1.2;
+  line-height: var(--home-type-h2-line, 1.2);
   color: var(--text);
   text-align: center;
+  text-wrap: balance;
 }
 
 .logos-subheading {
@@ -604,8 +605,8 @@
   max-width: 62ch;
   text-align: center;
   color: color-mix(in srgb, var(--text) 86%, var(--text-muted));
-  font-size: clamp(1.24rem, 1.7vw, 1.42rem);
-  line-height: 1.8;
+  font-size: var(--home-type-lead-size, clamp(1.24rem, 1.7vw, 1.42rem));
+  line-height: var(--home-type-lead-line, 1.62);
 }
 
 .logo-ticker__viewport {
@@ -740,6 +741,8 @@
   margin: 0;
   max-width: 66ch;
   color: var(--text-muted);
+  font-size: var(--home-type-body-size, 0.97rem);
+  line-height: var(--home-type-body-line, 1.58);
 }
 
 .section--cool {
