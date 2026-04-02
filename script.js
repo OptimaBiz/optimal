@@ -4,6 +4,87 @@
   const mobileMedia = window.matchMedia('(max-width: 1023.98px)');
   const isDesktop = () => desktopMedia.matches;
   const isMobile = () => mobileMedia.matches;
+  const currentPath = (() => {
+    const raw = window.location.pathname.split('/').pop() || 'index.html';
+    return raw.toLowerCase();
+  })();
+
+  const PAGE_META = {
+    'uslugi.html': { title: 'Услуги', family: null, crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'Услуги' }] },
+    'akkreditaciya.html': { title: 'Аккредитация', family: 'accreditation', crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'Услуги', href: 'uslugi.html' }, { label: 'Аккредитация' }] },
+    'akkreditaciya-ispytatelnaya-laboratoriya.html': { title: 'Испытательная лаборатория', family: 'accreditation', crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'Услуги', href: 'uslugi.html' }, { label: 'Аккредитация', href: 'akkreditaciya.html' }, { label: 'Испытательная лаборатория' }] },
+    'akkreditaciya-organ-inspekcionnogo-kontrolya.html': { title: 'Орган инспекционного контроля', family: 'accreditation', crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'Услуги', href: 'uslugi.html' }, { label: 'Аккредитация', href: 'akkreditaciya.html' }, { label: 'Орган инспекционного контроля' }] },
+    'akkreditaciya-organ-po-sertifikacii.html': { title: 'Орган по сертификации', family: 'accreditation', crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'Услуги', href: 'uslugi.html' }, { label: 'Аккредитация', href: 'akkreditaciya.html' }, { label: 'Орган по сертификации' }] },
+    'sertifikaciya.html': { title: 'Сертификация', family: 'certification', crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'Услуги', href: 'uslugi.html' }, { label: 'Сертификация' }] },
+    'gost-r-iso-9001-2015.html': { title: 'ГОСТ Р ИСО 9001:2015', family: 'certification', crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'Услуги', href: 'uslugi.html' }, { label: 'Сертификация', href: 'sertifikaciya.html' }, { label: 'ГОСТ Р ИСО 9001:2015' }] },
+    'gost-r-45001-2020-ohsas.html': { title: 'ГОСТ Р ИСО 45001-2020', family: 'certification', crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'Услуги', href: 'uslugi.html' }, { label: 'Сертификация', href: 'sertifikaciya.html' }, { label: 'ГОСТ Р ИСО 45001-2020' }] },
+    'gost-r-54934-2012-ohsas.html': { title: 'ГОСТ Р 54934-2012 (OHSAS 18001)', family: 'certification', crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'Услуги', href: 'uslugi.html' }, { label: 'Сертификация', href: 'sertifikaciya.html' }, { label: 'ГОСТ Р 54934-2012' }] },
+    'gost-r-iso-14001-2016.html': { title: 'ГОСТ Р ИСО 14001-2016', family: 'certification', crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'Услуги', href: 'uslugi.html' }, { label: 'Сертификация', href: 'sertifikaciya.html' }, { label: 'ГОСТ Р ИСО 14001-2016' }] },
+    'integrirovannaya-sistema-menedzhmenta-kachestva.html': { title: 'Интегрированная система', family: 'certification', crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'Услуги', href: 'uslugi.html' }, { label: 'Сертификация', href: 'sertifikaciya.html' }, { label: 'Интегрированная система' }] },
+    'attestaciya.html': { title: 'Аттестация', family: 'attestation', crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'Услуги', href: 'uslugi.html' }, { label: 'Аттестация' }] },
+    'promyshlennaya-bezopasnost.html': { title: 'Промышленная безопасность', family: 'attestation', crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'Услуги', href: 'uslugi.html' }, { label: 'Аттестация', href: 'attestaciya.html' }, { label: 'Промышленная безопасность' }] },
+    'tehnologii-svarki-naks.html': { title: 'Технологии сварки НАКС', family: 'attestation', crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'Услуги', href: 'uslugi.html' }, { label: 'Аттестация', href: 'attestaciya.html' }, { label: 'Технологии сварки НАКС' }] },
+    'personal-naks.html': { title: 'Персонал НАКС', family: 'attestation', crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'Услуги', href: 'uslugi.html' }, { label: 'Аттестация', href: 'attestaciya.html' }, { label: 'Персонал НАКС' }] },
+    'attestaciya-naks.html': { title: 'Аттестация НАКС', family: 'attestation', crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'Услуги', href: 'uslugi.html' }, { label: 'Аттестация', href: 'attestaciya.html' }, { label: 'Аттестация НАКС' }] },
+    'elektrobezopasnost.html': { title: 'Электробезопасность', family: 'attestation', crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'Услуги', href: 'uslugi.html' }, { label: 'Аттестация', href: 'attestaciya.html' }, { label: 'Электробезопасность' }] },
+    'licenzirovanie.html': { title: 'Лицензирование', family: 'licensing', crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'Услуги', href: 'uslugi.html' }, { label: 'Лицензирование' }] },
+    'licenziya-medicinskaya-deyatelnost.html': { title: 'Лицензия на медицинскую деятельность', family: 'licensing', crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'Услуги', href: 'uslugi.html' }, { label: 'Лицензирование', href: 'licenzirovanie.html' }, { label: 'Лицензия на медицинскую деятельность' }] },
+    'licenziya-mchs.html': { title: 'Лицензия МЧС', family: 'licensing', crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'Услуги', href: 'uslugi.html' }, { label: 'Лицензирование', href: 'licenzirovanie.html' }, { label: 'Лицензия МЧС' }] },
+    'licenziya-minkult.html': { title: 'Лицензия Минкультуры', family: 'licensing', crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'Услуги', href: 'uslugi.html' }, { label: 'Лицензирование', href: 'licenzirovanie.html' }, { label: 'Лицензия Минкультуры' }] },
+    'dop-uslugi.html': { title: 'Сопутствующие услуги', family: 'adjacent', crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'Услуги', href: 'uslugi.html' }, { label: 'Сопутствующие услуги' }] },
+    'obuchenie-povyshenie-kvalifikacii.html': { title: 'Повышение квалификации', family: 'adjacent', crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'Услуги', href: 'uslugi.html' }, { label: 'Сопутствующие услуги', href: 'dop-uslugi.html' }, { label: 'Повышение квалификации' }] },
+    'profperepodgotovka.html': { title: 'Профпереподготовка', family: 'adjacent', crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'Услуги', href: 'uslugi.html' }, { label: 'Сопутствующие услуги', href: 'dop-uslugi.html' }, { label: 'Профпереподготовка' }] },
+    'okhrana-truda.html': { title: 'Охрана труда', family: 'adjacent', crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'Услуги', href: 'uslugi.html' }, { label: 'Сопутствующие услуги', href: 'dop-uslugi.html' }, { label: 'Охрана труда' }] },
+    'obuchenie-po-okhrane-truda.html': { title: 'Обучение по охране труда', family: 'adjacent', crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'Услуги', href: 'uslugi.html' }, { label: 'Сопутствующие услуги', href: 'dop-uslugi.html' }, { label: 'Обучение по охране труда' }] },
+    'pozharnaya-bezopasnost.html': { title: 'Пожарная безопасность', family: 'adjacent', crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'Услуги', href: 'uslugi.html' }, { label: 'Сопутствующие услуги', href: 'dop-uslugi.html' }, { label: 'Пожарная безопасность' }] },
+    'about.html': { title: 'О компании', family: null, crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'О компании' }] },
+    'contacts.html': { title: 'Контакты', family: null, crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'Контакты' }] },
+    'requisites.html': { title: 'Реквизиты', family: null, crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'Реквизиты' }] },
+    'privacy-policy.html': { title: 'Политика конфиденциальности', family: null, crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'Политика конфиденциальности' }] },
+    'personal-data.html': { title: 'Персональные данные', family: null, crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'Персональные данные' }] },
+    'oferta.html': { title: 'Оферта', family: null, crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'Оферта' }] },
+    'legal.html': { title: 'Юридическая информация', family: null, crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'Юридическая информация' }] },
+    'medicinskaya-deyatelnost.html': { title: 'Медицинская деятельность', family: null, crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'Медицинская деятельность' }] },
+    'sro-proektirovanie.html': { title: 'СРО проектирование', family: null, crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'СРО проектирование' }] },
+    'sro-stroitelstvo.html': { title: 'СРО строительство', family: null, crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'СРО строительство' }] }
+  };
+
+  const initPageTaxonomy = () => {
+    if (currentPath === 'index.html') return;
+    body.classList.add('page-internal');
+    const meta = PAGE_META[currentPath];
+    if (!meta?.family) return;
+    body.classList.add(`page-family--${meta.family}`);
+  };
+
+  const normalizeBreadcrumbs = () => {
+    if (currentPath === 'index.html') return;
+    const main = document.querySelector('main');
+    const header = document.querySelector('.site-header');
+    if (!main || !header) return;
+
+    const breadcrumbNodes = Array.from(document.querySelectorAll('.breadcrumbs'));
+    const activeNode = breadcrumbNodes[0] || document.createElement('nav');
+    breadcrumbNodes.slice(1).forEach((node) => node.remove());
+
+    activeNode.className = 'container breadcrumbs';
+    activeNode.setAttribute('aria-label', 'Хлебные крошки');
+
+    const fallbackTitle = document.querySelector('h1')?.textContent?.trim() || document.title;
+    const crumbs = PAGE_META[currentPath]?.crumbs || [{ label: 'Главная', href: 'index.html' }, { label: fallbackTitle }];
+    const itemsMarkup = crumbs
+      .map((item, index) => {
+        const isCurrent = index === crumbs.length - 1;
+        const content = isCurrent || !item.href
+          ? `<span class="breadcrumbs__current" aria-current="page">${item.label}</span>`
+          : `<a href="${item.href}">${item.label}</a>`;
+        return `<li class="breadcrumbs__item">${content}</li>`;
+      })
+      .join('');
+
+    activeNode.innerHTML = `<ol class="breadcrumbs__list">${itemsMarkup}</ol>`;
+    main.prepend(activeNode);
+  };
 
   const initNavigation = () => {
     const menuToggle = document.querySelector('.menu-toggle');
@@ -467,6 +548,8 @@
   };
 
   const bootstrap = async () => {
+    initPageTaxonomy();
+    normalizeBreadcrumbs();
     await loadPartials();
     initNavigation();
     initContactForms();
