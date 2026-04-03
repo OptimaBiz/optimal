@@ -213,14 +213,14 @@
   <div class="contact-summary__body">
     <section class="contact-summary__section contact-summary__section--card" aria-label="Email">
       <span class="contact-summary__label">Email</span>
-      <a class="contact-summary__value contact-summary__value--link" href="mailto:hello@optimaloption.ru"><i class="fa-solid fa-envelope contact-summary__icon" aria-hidden="true"></i><span>hello@optimaloption.ru</span></a>
+      <a class="contact-summary__value contact-summary__value--link" href="mailto:hello@optimaloption.ru"><span class="ui-icon contact-summary__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="6" width="16" height="12" rx="2"/><path d="M5 7L12 12.5L19 7"/></svg></span><span>hello@optimaloption.ru</span></a>
     </section>
     <section class="contact-summary__section contact-summary__section--card" aria-label="Телефон">
       <span class="contact-summary__label">Телефон</span>
-      <a class="contact-summary__value contact-summary__value--link" href="tel:+78123898178"><i class="fa-solid fa-phone contact-summary__icon" aria-hidden="true"></i><span>+7 812 38-98-178</span></a>
+      <a class="contact-summary__value contact-summary__value--link" href="tel:+78123898178"><span class="ui-icon contact-summary__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.8 5.5H10L11.6 9.1L9.7 10.8C10.4 12.2 11.8 13.6 13.2 14.3L14.9 12.4L18.5 14V17.2C18.5 18.2 17.7 19 16.7 19C10.8 19 5 13.2 5 7.3C5 6.3 5.8 5.5 6.8 5.5Z"/></svg></span><span>+7 812 38-98-178</span></a>
     </section>
     <section class="contact-summary__section contact-summary__section--geo" aria-label="География работы">
-      <span class="contact-summary__label"><i class="fa-solid fa-location-dot contact-summary__icon" aria-hidden="true"></i><span>География работы</span></span>
+      <span class="contact-summary__label"><span class="ui-icon contact-summary__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 20C15.5 15.9 17.2 13.1 17.2 10.4C17.2 7.4 14.9 5 12 5C9.1 5 6.8 7.4 6.8 10.4C6.8 13.1 8.5 15.9 12 20Z"/><circle cx="12" cy="10.2" r="1.9"/></svg></span><span>География работы</span></span>
       <p class="contact-summary__value">Базируемся в Санкт-Петербурге</p>
       <p class="contact-summary__value contact-summary__value--regular">Работаем по всей России</p>
       <p class="contact-summary__meta">Дистанционно и очно — в зависимости от задачи</p>

@@ -830,3 +830,90 @@
   background: #eaf1ff;
   border-color: #aebfde;
 }
+
+/* Hero workflow bridge and soft staged entrance */
+.hero-bridge {
+  display: grid;
+  gap: 0.6rem;
+  align-self: center;
+  justify-self: center;
+  max-width: 210px;
+  width: 100%;
+  margin-top: 0.4rem;
+}
+
+.hero-bridge__step {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.42rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid rgba(198, 213, 235, 0.62);
+  background: rgba(249, 252, 255, 0.92);
+  color: #506682;
+  font-size: 0.76rem;
+}
+
+.hero-bridge__step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 1.1rem;
+  top: calc(100% + 3px);
+  width: 1px;
+  height: 10px;
+  background: linear-gradient(180deg, rgba(120, 148, 191, 0.45), rgba(120, 148, 191, 0));
+}
+
+.hero-bridge .ui-icon {
+  width: 0.9rem;
+  height: 0.9rem;
+}
+
+.hero-entrance {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: heroSoftIn 0.62s ease forwards;
+  animation-delay: var(--hero-delay, 0s);
+}
+
+@keyframes heroSoftIn {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 1023.98px) {
+  .hero-bridge {
+    order: 4;
+    max-width: 100%;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.45rem;
+    margin-top: 0.2rem;
+  }
+
+  .hero-bridge__step {
+    justify-content: center;
+    padding: 0.48rem;
+  }
+
+  .hero-bridge__step:not(:last-child)::after {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-entrance {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero--home .hero-grid {
+    grid-template-columns: minmax(0, 1.02fr) minmax(170px, 0.34fr) minmax(0, 0.84fr);
+    align-items: center;
+  }
+}
