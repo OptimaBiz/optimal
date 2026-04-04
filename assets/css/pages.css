@@ -1033,7 +1033,7 @@
 
 @media (max-width: 480px) {
   .hero-title {
-    font-size: clamp(2.06rem, 9.4vw, 2.42rem);
+    font-size: clamp(2.14rem, 9.9vw, 2.56rem);
   }
 
   .site-header {
@@ -1045,7 +1045,7 @@
   }
 
   .hero--home {
-    padding: 2.4rem 0 2.2rem;
+    padding: 2.85rem 0 2.5rem;
     margin-bottom: 0;
   }
 
@@ -1055,12 +1055,12 @@
   }
 
   .hero--home .container {
-    width: min(100% - 2rem, var(--container));
+    width: min(100% - 2.4rem, var(--container));
   }
 
   .hero--home .hero-grid {
     grid-template-rows: auto;
-    gap: 0.9rem;
+    gap: 1.15rem;
   }
 
   .hero--home .hero-copy {
@@ -1079,7 +1079,7 @@
 
   .hero--home .eyebrow {
     align-self: flex-start;
-    margin-bottom: 11px;
+    margin-bottom: 15px;
     font-size: 11px;
     line-height: 1.2;
     letter-spacing: 0.05em;
@@ -1089,20 +1089,26 @@
   }
 
   .hero--home .hero-title {
-    font-size: clamp(2.18rem, 9.9vw, 2.54rem);
-    line-height: 1.01;
-    letter-spacing: -0.019em;
-    margin-bottom: 10px;
-    max-width: none;
-    gap: 0.12em;
+    display: block;
+    font-size: clamp(2.3rem, 10.2vw, 2.74rem);
+    line-height: 1.05;
+    letter-spacing: -0.022em;
+    margin-bottom: 0;
+    max-width: 12.2ch;
+    gap: 0.2em;
     font-weight: 800;
   }
 
   .hero--home .hero-title__line {
+    display: inline;
     font-size: inherit;
     line-height: inherit;
     white-space: normal;
     overflow-wrap: anywhere;
+  }
+
+  .hero--home .hero-title__line + .hero-title__line {
+    margin-left: 0.24ch;
   }
 
   .hero--home .hero-title__line--accent {
@@ -1112,10 +1118,10 @@
   }
 
   .hero--home .hero-text {
-    font-size: 0.98rem;
-    line-height: 1.46;
-    max-width: 33ch;
-    margin: 0 0 1.3rem;
+    font-size: 1.06rem;
+    line-height: 1.62;
+    max-width: 30ch;
+    margin: 0.3rem 0 1.7rem;
   }
 
   .hero-text__desktop {
@@ -1141,7 +1147,7 @@
   }
 
   .hero--home .hero-actions {
-    margin-top: 0;
+    margin-top: 0.1rem;
     margin-bottom: 0;
     padding-top: 0;
     gap: 0;
@@ -1210,16 +1216,16 @@
 
 @media (max-width: 390px) {
   .hero--home .container {
-    width: min(100% - 2.25rem, var(--container));
+    width: min(100% - 2.1rem, var(--container));
   }
 
   .hero--home .hero-title {
-    font-size: clamp(2.06rem, 10.2vw, 2.3rem);
+    font-size: clamp(2.12rem, 10.4vw, 2.42rem);
   }
 
   .hero--home .hero-text {
-    font-size: 0.96rem;
-    max-width: 30ch;
+    font-size: 1.01rem;
+    max-width: 29ch;
   }
 
   .hero--home .hero-facts,
@@ -1234,7 +1240,7 @@
   }
 
   .hero--home .container {
-    width: min(100% - 1.5rem, var(--container));
+    width: min(100% - 1.7rem, var(--container));
   }
 
   .hero--home .hero-copy {
@@ -1242,8 +1248,8 @@
   }
 
   .hero--home .hero-title {
-    font-size: clamp(1.94rem, 10.9vw, 2.16rem);
-    line-height: 1.03;
+    font-size: clamp(2rem, 10.9vw, 2.24rem);
+    line-height: 1.05;
   }
 
   .hero--home .hero-actions .button--primary {
