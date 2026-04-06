@@ -660,7 +660,9 @@
 
   .hero--home .hero-title__line {
     white-space: normal;
-    overflow-wrap: anywhere;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
   }
 
   .hero--accreditation {
@@ -1078,25 +1080,27 @@
 
   .hero--home .hero-title {
     display: block;
-    font-size: clamp(2.3rem, 10.2vw, 2.74rem);
-    line-height: 1.05;
+    font-size: clamp(2.42rem, 10.8vw, 2.94rem);
+    line-height: 1.08;
     letter-spacing: -0.022em;
-    margin-bottom: 0;
-    max-width: 12.2ch;
+    margin-bottom: 0.48rem;
+    max-width: none;
     gap: 0.2em;
     font-weight: 800;
   }
 
   .hero--home .hero-title__line {
-    display: inline;
+    display: block;
     font-size: inherit;
     line-height: inherit;
-    white-space: normal;
-    overflow-wrap: anywhere;
+    white-space: nowrap;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
   }
 
   .hero--home .hero-title__line + .hero-title__line {
-    margin-left: 0.24ch;
+    margin-left: 0;
   }
 
   .hero--home .hero-title__line--accent {
@@ -1106,10 +1110,10 @@
   }
 
   .hero--home .hero-text {
-    font-size: 1.06rem;
-    line-height: 1.62;
-    max-width: 30ch;
-    margin: 0.3rem 0 1.7rem;
+    font-size: 1.16rem;
+    line-height: 1.5;
+    max-width: 26ch;
+    margin: 0.52rem 0 1.82rem;
   }
 
   .hero-text__desktop {
@@ -1208,12 +1212,12 @@
   }
 
   .hero--home .hero-title {
-    font-size: clamp(2.12rem, 10.4vw, 2.42rem);
+    font-size: clamp(2.24rem, 10.6vw, 2.56rem);
   }
 
   .hero--home .hero-text {
-    font-size: 1.01rem;
-    max-width: 29ch;
+    font-size: 1.1rem;
+    max-width: 24ch;
   }
 
   .hero--home .hero-facts,
@@ -1236,8 +1240,8 @@
   }
 
   .hero--home .hero-title {
-    font-size: clamp(2rem, 10.9vw, 2.24rem);
-    line-height: 1.05;
+    font-size: clamp(2.06rem, 10.9vw, 2.34rem);
+    line-height: 1.06;
   }
 
   .hero--home .hero-actions .button--primary {
