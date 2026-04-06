@@ -911,9 +911,19 @@ a:focus-visible {
 }
 
 .form-consent__text {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.15rem 0.33rem;
   color: #607389;
   font-size: var(--home-type-meta-size, 14px);
   line-height: var(--home-type-meta-line, 1.45);
+}
+
+.form-consent__lead,
+.form-consent__tail {
+  display: inline;
 }
 
 .form-consent__link {
@@ -924,6 +934,8 @@ a:focus-visible {
   background: transparent;
   color: #2a56bb;
   font: inherit;
+  line-height: inherit;
+  text-align: left;
   cursor: pointer;
   text-decoration: none;
   border-bottom: 1px solid rgba(42, 86, 187, 0.3);

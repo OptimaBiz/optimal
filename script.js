@@ -256,7 +256,11 @@
     </div>
     <div class="form-consent contact-form__consent">
       <input class="form-consent__checkbox contact-form__consent-checkbox" type="checkbox" id="consent-checkbox" name="consent" required aria-describedby="consent-error" />
-      <label class="form-consent__text contact-form__consent-text" for="consent-checkbox">Даю <button type="button" class="form-consent__link" data-consent-open>согласие на обработку персональных данных</button> и принимаю <a href="privacy-policy.html">Политику конфиденциальности</a>.</label>
+      <label class="form-consent__text contact-form__consent-text" for="consent-checkbox">
+        <span class="form-consent__lead">Даю</span>
+        <button type="button" class="form-consent__link" data-consent-open>согласие на обработку персональных данных</button>
+        <span class="form-consent__tail">и принимаю <a href="privacy-policy.html">Политику конфиденциальности</a>.</span>
+      </label>
     </div>
     <p class="form-note form-note--error" id="consent-error" aria-live="polite"></p>
     <p class="form-note" id="form-note" role="status" aria-live="polite"></p>
@@ -603,6 +607,45 @@
     reduceMotion.addEventListener('change', syncMode);
   };
 
+  const initScrollToTop = () => {
+    const buttons = Array.from(document.querySelectorAll('.home-scroll-top'));
+    if (!buttons.length) return;
+
+    const revealOffset = () => Math.max(360, window.innerHeight * 0.6);
+    let rafId = null;
+
+    const updateButtonsVisibility = () => {
+      const shouldShow = window.scrollY > revealOffset();
+      buttons.forEach((button) => {
+        button.classList.toggle('is-visible', shouldShow);
+        button.setAttribute('aria-hidden', String(!shouldShow));
+      });
+    };
+
+    const requestVisibilityUpdate = () => {
+      if (rafId !== null) return;
+      rafId = window.requestAnimationFrame(() => {
+        rafId = null;
+        updateButtonsVisibility();
+      });
+    };
+
+    buttons.forEach((button) => {
+      button.addEventListener('click', (event) => {
+        event.preventDefault();
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        window.scrollTo({
+          top: 0,
+          behavior: prefersReducedMotion ? 'auto' : 'smooth'
+        });
+      });
+    });
+
+    window.addEventListener('scroll', requestVisibilityUpdate, { passive: true });
+    window.addEventListener('resize', requestVisibilityUpdate);
+    updateButtonsVisibility();
+  };
+
   const bootstrap = async () => {
     initPageTaxonomy();
     normalizeBreadcrumbs();
@@ -611,6 +654,7 @@
     initContactForms();
     initReveal();
     initMobileServiceCardFocus();
+    initScrollToTop();
   };
 
   bootstrap();
