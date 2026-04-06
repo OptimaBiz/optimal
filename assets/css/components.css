@@ -143,9 +143,24 @@
 .hero--home::before {
   inset: clamp(1rem, 2.2vw, 1.8rem) 0 auto;
   height: min(74%, 560px);
-  background: radial-gradient(circle at 22% 22%, rgba(236, 244, 255, 0.9) 0%, rgba(248, 251, 255, 0.88) 56%, rgba(242, 247, 255, 0.82) 100%);
+  background:
+    radial-gradient(circle at 18% 18%, rgba(235, 244, 255, 0.78) 0%, rgba(235, 244, 255, 0) 58%),
+    radial-gradient(circle at 82% 16%, rgba(216, 232, 255, 0.5) 0%, rgba(216, 232, 255, 0) 52%),
+    linear-gradient(108deg, rgba(244, 249, 255, 0.92) 0%, rgba(248, 251, 255, 0.9) 48%, rgba(240, 247, 255, 0.9) 100%);
+  background-size: 132% 132%, 118% 118%, 182% 182%;
+  background-position: 0% 54%, 100% 28%, 0% 50%;
   border: 1px solid rgba(208, 220, 238, 0.38);
   box-shadow: 0 14px 34px rgba(16, 42, 88, 0.04);
+  animation: heroGradientDrift 14s ease-in-out infinite;
+}
+
+.hero--home::after {
+  background:
+    radial-gradient(circle at 24% 34%, rgba(125, 161, 233, 0.22) 0%, rgba(125, 161, 233, 0.08) 38%, rgba(125, 161, 233, 0) 72%),
+    radial-gradient(circle at 72% 62%, rgba(154, 176, 241, 0.18) 0%, rgba(154, 176, 241, 0.05) 44%, rgba(154, 176, 241, 0) 74%);
+  filter: blur(64px);
+  opacity: 0.72;
+  animation: heroGlowDrift 16s ease-in-out infinite;
 }
 
 .hero--home .hero-title {
@@ -583,9 +598,35 @@
   }
 }
 
+@keyframes heroGradientDrift {
+  0%,
+  100% {
+    background-position: 0% 54%, 100% 28%, 0% 50%;
+  }
+  50% {
+    background-position: 18% 46%, 84% 38%, 100% 50%;
+  }
+}
+
+@keyframes heroGlowDrift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-2.6%, 1.8%, 0) scale(1.045);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .hero--home::before,
+  .hero--home::after,
   .hero-actions .button--primary::after {
     animation: none;
+  }
+
+  .hero--home::after {
+    transform: none;
   }
 }
 

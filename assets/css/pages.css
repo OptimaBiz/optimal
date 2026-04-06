@@ -180,6 +180,9 @@
   .hero--home::after {
     width: min(68vw, 460px);
     right: -4rem;
+    background: radial-gradient(circle at 30% 42%, rgba(134, 168, 236, 0.2) 0%, rgba(134, 168, 236, 0.08) 44%, rgba(134, 168, 236, 0) 74%);
+    filter: blur(52px);
+    opacity: 0.62;
   }
 
   .hero--service-page .hero-copy,
