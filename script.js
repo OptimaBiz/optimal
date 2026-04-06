@@ -92,6 +92,17 @@
     const servicesWrap = document.querySelector('.nav-services');
     const servicesToggle = document.querySelector('.nav-services__toggle');
     const servicesDesktopPanel = document.querySelector('#services-menu-panel');
+    const servicesMobileGroups = document.querySelectorAll('.services-mobile-menu__group');
+
+    if (servicesMobileGroups.length) {
+      servicesMobileGroups.forEach((group, index) => {
+        group.style.setProperty('--services-group-index', String(index));
+      });
+    }
+
+    if (servicesToggle) {
+      servicesToggle.setAttribute('aria-label', 'Услуги: развернуть список');
+    }
 
     const updateDesktopMenuPosition = () => {
       if (!servicesDesktopPanel || !servicesWrap || !isDesktop()) return;
@@ -111,6 +122,7 @@
       if (!servicesWrap || !servicesToggle) return;
       servicesWrap.classList.remove('is-open');
       servicesToggle.setAttribute('aria-expanded', 'false');
+      servicesToggle.setAttribute('aria-label', 'Услуги: развернуть список');
       if (servicesDesktopPanel) {
         servicesDesktopPanel.style.setProperty('--services-menu-offset-x', '0px');
       }
@@ -141,6 +153,7 @@
         event.stopPropagation();
         const isOpen = servicesWrap.classList.toggle('is-open');
         servicesToggle.setAttribute('aria-expanded', String(isOpen));
+        servicesToggle.setAttribute('aria-label', isOpen ? 'Услуги: свернуть список' : 'Услуги: развернуть список');
       });
 
       servicesWrap.addEventListener('mouseenter', () => {
