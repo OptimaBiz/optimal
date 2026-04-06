@@ -471,20 +471,20 @@
   .site-nav {
     position: absolute;
     inset: calc(100% + 1px) 1rem auto;
-    background: #f9fbff;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-md);
-    display: grid;
+    background: #fff;
+    border: 1px solid #dfe5ef;
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(17, 37, 69, 0.12);
+    display: none;
     gap: 0;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-8px);
-    transition: 0.22s ease;
-    overflow: hidden;
-    max-height: min(82vh, 34rem);
+    overflow-x: hidden;
+    max-height: min(82vh, 38rem);
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+  }
+
+  .site-nav.is-open {
+    display: block;
   }
 
   .site-nav > * {
@@ -497,8 +497,8 @@
 
   .site-nav > a,
   .site-nav > .nav-services > .nav-services__toggle {
-    padding: 0.98rem 1rem;
-    border-top: 1px solid var(--border);
+    padding: 0.84rem 0.95rem;
+    border-top: 1px solid #e6ebf3;
     text-align: left;
     width: 100%;
   }
@@ -508,16 +508,18 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 0.5rem;
-    font-weight: 700;
-    color: #1f4dbf;
-    background: linear-gradient(180deg, #f4f8ff 0%, #edf4ff 100%);
+    gap: 0.4rem;
+    min-height: 46px;
+    font-weight: 600;
+    color: #17345f;
+    background: #fff;
+    border-bottom: 0;
   }
 
   .site-nav > .nav-services > .nav-services__toggle::after {
     content: "▾";
-    font-size: 0.95rem;
-    color: #1f4dbf;
+    font-size: 0.84rem;
+    color: #56709a;
     transition: transform 0.2s ease;
   }
 
@@ -525,27 +527,9 @@
     transform: rotate(180deg);
   }
 
-  .site-nav > .nav-services > .nav-services__toggle::before {
-    content: "Развернуть";
-    position: absolute;
-    right: 2.2rem;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 0.72rem;
-    color: #5b6f8c;
-    font-weight: 500;
-    pointer-events: none;
-  }
-
   .site-nav > *:first-child .nav-services__toggle,
   .site-nav > a:first-of-type {
     border-top: 0;
-  }
-
-  .site-nav.is-open {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
   }
 
   #services-menu-panel {
@@ -554,24 +538,15 @@
 
   #services-mobile-panel {
     position: static;
-    left: auto;
-    top: auto;
     width: 100%;
-    max-width: none;
-    transform: none;
-    opacity: 1;
-    visibility: visible;
     box-shadow: none;
-    overflow: hidden;
-    transition: none;
     border-radius: 0;
     border: 0;
-    border-top: 1px solid var(--border);
-    background: linear-gradient(180deg, #ffffff 0%, #f7faff 100%);
-    padding: var(--space-2) var(--space-3);
+    border-top: 1px solid #e6ebf3;
+    background: #fff;
+    padding: 0 var(--space-3) 0.8rem;
     margin-top: 0;
     display: none;
-    max-height: 0;
   }
 
   .nav-services.is-open #services-mobile-panel {
@@ -583,39 +558,52 @@
 
   .services-mobile-menu {
     display: block;
+    padding-bottom: 0.1rem;
   }
 
   .services-mobile-menu__group {
     display: grid;
-    gap: 0.4rem;
-    padding: 0.8rem 0;
+    gap: 0.2rem;
+    padding: 0.8rem 0 0.6rem;
   }
 
   .services-mobile-menu__group + .services-mobile-menu__group {
-    border-top: 1px solid #e8eef7;
+    border-top: 1px solid #e6ebf3;
+    margin-top: 0.2rem;
   }
 
   .services-mobile-menu a {
     display: block;
-    padding: 0.35rem 0.2rem;
+    min-height: 44px;
+    padding: 0.48rem 0.6rem;
+    border-radius: 8px;
     line-height: 1.4;
+    color: #2f4668;
   }
 
   .services-mobile-menu__title {
     margin-bottom: 0.2rem;
-    color: var(--accent);
-    font-size: 0.92rem;
-    letter-spacing: 0.01em;
+    min-height: auto;
+    padding: 0.1rem 0.1rem 0.2rem;
+    color: #1e3458;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     font-weight: 700;
+    border-radius: 0;
+    border-bottom: 1px solid #edf1f7;
   }
-}
 
-@media (max-width: 640px) {
-  .site-nav > .nav-services > .nav-services__toggle::before {
-    content: "Нажмите";
-    right: 2rem;
-    font-size: 0.68rem;
+  .services-mobile-menu a:not(.services-mobile-menu__title):focus-visible {
+    outline: 2px solid rgba(31, 77, 191, 0.35);
+    outline-offset: 2px;
+    background: rgba(43, 82, 158, 0.08);
+    color: #1b386a;
+  }
+
+  .services-mobile-menu a:not(.services-mobile-menu__title):active {
+    background: rgba(43, 82, 158, 0.1);
+    color: #1f3e79;
   }
 }
 
