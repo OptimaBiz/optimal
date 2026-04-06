@@ -608,42 +608,40 @@
   };
 
   const initScrollToTop = () => {
-    const buttons = Array.from(document.querySelectorAll('.home-scroll-top'));
-    if (!buttons.length) return;
+    const button = document.querySelector('.home-scroll-top');
+    if (!button) return;
 
-    const revealOffset = () => Math.max(360, window.innerHeight * 0.6);
+    const revealOffset = () => Math.max(280, window.innerHeight * 0.45);
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     let rafId = null;
 
-    const updateButtonsVisibility = () => {
-      const shouldShow = window.scrollY > revealOffset();
-      buttons.forEach((button) => {
-        button.classList.toggle('is-visible', shouldShow);
-        button.setAttribute('aria-hidden', String(!shouldShow));
-      });
+    const setButtonVisibility = () => {
+      const isVisible = window.scrollY > revealOffset();
+      button.classList.toggle('is-visible', isVisible);
+      button.setAttribute('aria-hidden', String(!isVisible));
+      button.tabIndex = isVisible ? 0 : -1;
     };
 
     const requestVisibilityUpdate = () => {
       if (rafId !== null) return;
       rafId = window.requestAnimationFrame(() => {
         rafId = null;
-        updateButtonsVisibility();
+        setButtonVisibility();
       });
     };
 
-    buttons.forEach((button) => {
-      button.addEventListener('click', (event) => {
-        event.preventDefault();
-        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        window.scrollTo({
-          top: 0,
-          behavior: prefersReducedMotion ? 'auto' : 'smooth'
-        });
+    button.addEventListener('click', (event) => {
+      event.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: prefersReducedMotion.matches ? 'auto' : 'smooth'
       });
     });
 
+    prefersReducedMotion.addEventListener('change', requestVisibilityUpdate);
     window.addEventListener('scroll', requestVisibilityUpdate, { passive: true });
     window.addEventListener('resize', requestVisibilityUpdate);
-    updateButtonsVisibility();
+    setButtonVisibility();
   };
 
   const bootstrap = async () => {
