@@ -289,6 +289,234 @@
   <div class="footer">
     <div class="btn-group">
       <a class="btn" href="/anton.vcf" download>Сохранить контакт</a>
+      <a class="btn btn-ghost" href="https://t.me/anton_g_k" target="_blank" rel="noopener">Telegram</a>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
+  /* ── Thin top line that draws itself ── */
+  .card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: drawLine .8s cubic-bezier(.16,1,.3,1) .6s forwards;
+  }
+  @keyframes drawLine {
+    to { transform: scaleX(1); }
+  }
+
+  /* ── Header ── */
+  .header {
+    padding: 48px 40px 40px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .director-label {
+    font-size: 10px; font-weight: 300;
+    color: var(--muted2); letter-spacing: .15em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp .6s cubic-bezier(.16,1,.3,1) .35s forwards;
+  }
+
+  .name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(44px, 12vw, 56px);
+    line-height: .92;
+    font-weight: 300;
+    color: var(--text);
+    letter-spacing: -.02em;
+    margin-bottom: 22px;
+    opacity: 0;
+    animation: fadeUp .7s cubic-bezier(.16,1,.3,1) .45s forwards;
+  }
+  .name em {
+    display: block;
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .company-row {
+    display: flex; align-items: center; gap: 12px;
+    opacity: 0;
+    animation: fadeUp .6s cubic-bezier(.16,1,.3,1) .55s forwards;
+  }
+  .dash { width: 18px; height: 1px; background: var(--muted2); flex-shrink: 0; }
+  .company-text {
+    font-size: 10px; font-weight: 300;
+    color: var(--muted); letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+
+  /* ── Contacts ── */
+  .body {
+    display: flex; flex-direction: column;
+  }
+
+  .row {
+    display: flex; align-items: baseline; gap: 0;
+    padding: 15px 40px;
+    border-bottom: 1px solid var(--border2);
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    animation: fadeUp .6s cubic-bezier(.16,1,.3,1) forwards;
+    transition: background .2s;
+  }
+  .row:last-child { border-bottom: none; }
+
+  .row::after {
+    content: '';
+    position: absolute; left: 0; bottom: 0;
+    width: 0; height: 1px;
+    background: var(--accent);
+    transition: width .3s cubic-bezier(.16,1,.3,1);
+  }
+  .row:hover { background: var(--hover); }
+  .row:hover::after { width: 100%; }
+
+  .row:nth-child(1) { animation-delay: .55s; }
+  .row:nth-child(2) { animation-delay: .62s; }
+  .row:nth-child(3) { animation-delay: .69s; }
+  .row:nth-child(4) { animation-delay: .76s; }
+
+  .row-label {
+    font-size: 9px; font-weight: 300;
+    color: var(--muted2); letter-spacing: .12em;
+    text-transform: uppercase;
+    width: 58px; flex-shrink: 0;
+    padding-top: 2px;
+  }
+  .row-val {
+    font-size: 13px; font-weight: 300;
+    color: var(--text2); letter-spacing: .01em;
+    line-height: 1.4;
+    transition: color .2s;
+  }
+  .row:hover .row-val { color: var(--text); }
+
+  .arrow {
+    margin-left: auto;
+    font-size: 11px;
+    color: var(--muted2);
+    transform: translate(0, 0);
+    transition: transform .25s cubic-bezier(.16,1,.3,1), color .2s;
+    flex-shrink: 0;
+    align-self: center;
+  }
+  .row:hover .arrow {
+    transform: translate(3px, -3px);
+    color: var(--accent);
+  }
+
+  /* ── Footer ── */
+  .footer {
+    padding: 24px 40px 32px;
+    border-top: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 12px;
+    opacity: 0;
+    animation: fadeUp .6s cubic-bezier(.16,1,.3,1) .85s forwards;
+  }
+
+  .btn-group {
+    display: flex; gap: 8px; flex-wrap: wrap;
+  }
+
+  .btn {
+    font-family: 'Geist Mono', monospace;
+    font-size: 9px; font-weight: 400;
+    letter-spacing: .12em; text-transform: uppercase;
+    color: var(--card);
+    background: var(--ink);
+    border: none;
+    padding: 10px 16px;
+    border-radius: 2px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background .18s, transform .12s;
+    white-space: nowrap;
+  }
+  .btn:hover { background: #3a3630; transform: translateY(-1px); }
+  .btn:active { transform: none; }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--muted);
+    border: 1px solid var(--border);
+  }
+  .btn-ghost:hover { background: var(--hover); color: var(--text2); transform: translateY(-1px); }
+
+  /* ── Keyframe shared ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 480px) {
+    html, body { padding: 24px 16px; align-items: flex-start; padding-top: 40px; }
+    .header { padding: 36px 28px 32px; }
+    .row { padding: 14px 28px; }
+    .footer { padding: 20px 28px 28px; flex-direction: column; align-items: flex-start; }
+    .btn-group { width: 100%; }
+    .btn { flex: 1; text-align: center; }
+  }
+
+  @media (max-width: 360px) {
+    .name { font-size: 38px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+
+  <div class="header">
+    <div class="director-label">Директор</div>
+    <h1 class="name">Антон<em>Карапетян</em></h1>
+    <div class="company-row">
+      <div class="dash"></div>
+      <div class="company-text">Оптимальный Вариант</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <a class="row" href="tel:+79650045566">
+      <span class="row-label">Тел</span>
+      <span class="row-val">+7 (965) 004-55-66</span>
+      <span class="arrow">↗</span>
+    </a>
+    <a class="row" href="mailto:hello@optimaloption.ru">
+      <span class="row-label">Email</span>
+      <span class="row-val">hello@optimaloption.ru</span>
+      <span class="arrow">↗</span>
+    </a>
+    <a class="row" href="https://t.me/anton_g_k" target="_blank" rel="noopener">
+      <span class="row-label">TG</span>
+      <span class="row-val">@anton_g_k</span>
+      <span class="arrow">↗</span>
+    </a>
+    <a class="row" href="https://optimaloption.ru" target="_blank" rel="noopener">
+      <span class="row-label">Web</span>
+      <span class="row-val">optimaloption.ru</span>
+      <span class="arrow">↗</span>
+    </a>
+  </div>
+
+  <div class="footer">
+    <div class="btn-group">
+      <a class="btn" href="/anton.vcf" download>Сохранить контакт</a>
     </div>
   </div>
 
