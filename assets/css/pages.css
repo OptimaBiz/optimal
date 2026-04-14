@@ -208,6 +208,27 @@
     padding: 1.1rem;
     display: flex;
     justify-content: center;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .hero--home .hero-actions .button--primary::before {
+    content: "";
+    position: absolute;
+    inset: -70% -45%;
+    background: linear-gradient(
+      115deg,
+      transparent 34%,
+      rgba(255, 255, 255, 0.05) 42%,
+      rgba(255, 255, 255, 0.46) 50%,
+      rgba(255, 255, 255, 0.08) 58%,
+      transparent 66%
+    );
+    transform: translate3d(-145%, 0, 0) skewX(-16deg);
+    animation: heroHomeButtonGlint 2.8s ease-in-out infinite;
+    pointer-events: none;
+    mix-blend-mode: screen;
   }
 
   .hero--home .hero-visual {
@@ -1324,5 +1345,20 @@
   .hero--home .hero-facts li span {
     min-height: 32px;
     padding: 8px 12px;
+  }
+}
+
+@keyframes heroHomeButtonGlint {
+  0% {
+    transform: translate3d(-145%, 0, 0) skewX(-16deg);
+  }
+  100% {
+    transform: translate3d(170%, 0, 0) skewX(-16deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero--home .hero-actions .button--primary::before {
+    animation: none;
   }
 }
