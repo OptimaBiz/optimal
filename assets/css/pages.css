@@ -1,5 +1,53 @@
 /* Page-level and responsive overrides */
 
+.home-page {
+  position: relative;
+  min-height: 100%;
+  background-color: #081321;
+  background-image:
+    radial-gradient(130% 88% at 12% 8%, rgba(72, 104, 152, 0.3) 0%, rgba(72, 104, 152, 0) 58%),
+    radial-gradient(95% 72% at 88% 18%, rgba(56, 84, 124, 0.28) 0%, rgba(56, 84, 124, 0) 66%),
+    radial-gradient(86% 68% at 50% 78%, rgba(35, 60, 97, 0.2) 0%, rgba(35, 60, 97, 0) 68%),
+    linear-gradient(165deg, #081321 0%, #0c1c2f 46%, #081624 100%);
+  background-attachment: fixed;
+  isolation: isolate;
+}
+
+.home-page::before,
+.home-page::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.home-page::before {
+  background:
+    radial-gradient(108% 76% at 20% 22%, rgba(98, 132, 180, 0.16) 0%, rgba(98, 132, 180, 0) 65%),
+    radial-gradient(86% 72% at 82% 74%, rgba(78, 112, 156, 0.14) 0%, rgba(78, 112, 156, 0) 64%);
+  background-size: 140% 140%, 128% 128%;
+  animation: homePremiumGradientShift 42s ease-in-out infinite alternate;
+}
+
+.home-page::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cg fill='%23ffffff' fill-opacity='0.035'%3E%3Ccircle cx='12' cy='22' r='0.8'/%3E%3Ccircle cx='48' cy='38' r='0.7'/%3E%3Ccircle cx='86' cy='18' r='0.6'/%3E%3Ccircle cx='120' cy='42' r='0.75'/%3E%3Ccircle cx='152' cy='24' r='0.6'/%3E%3Ccircle cx='20' cy='78' r='0.7'/%3E%3Ccircle cx='58' cy='94' r='0.85'/%3E%3Ccircle cx='96' cy='74' r='0.65'/%3E%3Ccircle cx='132' cy='92' r='0.7'/%3E%3Ccircle cx='166' cy='84' r='0.6'/%3E%3Ccircle cx='34' cy='132' r='0.8'/%3E%3Ccircle cx='72' cy='148' r='0.65'/%3E%3Ccircle cx='108' cy='128' r='0.75'/%3E%3Ccircle cx='144' cy='150' r='0.7'/%3E%3Ccircle cx='170' cy='136' r='0.6'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 180px 180px;
+  opacity: 0.23;
+  mix-blend-mode: soft-light;
+}
+
+@keyframes homePremiumGradientShift {
+  0% {
+    background-position: 0% 0%, 100% 0%;
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  100% {
+    background-position: 100% 100%, 0% 100%;
+    transform: scale(1.03) translate3d(0, -1%, 0);
+  }
+}
+
 
 .menu-toggle {
   display: none;
@@ -131,6 +179,12 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .home-page::before {
+    animation: none;
+    transform: none;
+    background-position: 50% 50%, 50% 50%;
+  }
+
   .home-scroll-top {
     transition: opacity 0.12s linear;
     transform: none;
@@ -149,6 +203,21 @@
 
   .case-card:hover {
     transform: none;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .home-page {
+    background-attachment: scroll;
+  }
+
+  .home-page::before {
+    background-size: 156% 156%, 142% 142%;
+    animation-duration: 56s;
+  }
+
+  .home-page::after {
+    opacity: 0.16;
   }
 }
 
