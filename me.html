@@ -1,161 +1,298 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Антон Карапетян</title>
-  <meta name="robots" content="noindex, nofollow" />
-  <style>
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      background: #1c2026;
-      color: #d2d6dc;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 24px;
-      box-sizing: border-box;
-    }
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Антон Карапетян</title>
+<meta name="robots" content="noindex,nofollow"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Geist+Mono:wght@300;400&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
 
-    .card {
-      width: 100%;
-      max-width: 420px;
-      background: #232932;
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 20px;
-      padding: 28px;
-      box-shadow: 0 20px 60px rgba(0,0,0,.35);
-    }
+  :root {
+    --bg: #f5f3ef;
+    --card: #fafaf8;
+    --border: #e2dfd9;
+    --border2: #eeece8;
+    --text: #1a1916;
+    --text2: #2c2924;
+    --muted: #9c9589;
+    --muted2: #b5b0a8;
+    --accent: #8c7a5e;
+    --hover: #f0ede7;
+    --ink: #1a1916;
+  }
 
-    h1 {
-      margin: 0 0 8px;
-      font-size: 28px;
-      line-height: 1.1;
-      color: #fff;
-    }
+  html, body {
+    min-height: 100%;
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 24px;
+    font-family: 'Geist Mono', monospace;
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
 
-    .role {
-      margin: 0 0 24px;
-      color: #8ea6c9;
-      font-size: 16px;
-    }
+  /* ── Grain overlay ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+    z-index: 0;
+    opacity: .5;
+  }
 
-    .item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 14px;
-      line-height: 1.45;
-      font-size: 15px;
-    }
+  /* ── Card ── */
+  .card {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 400px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(28px) scale(.985);
+    animation: rise .9s cubic-bezier(.16,1,.3,1) .1s forwards;
+  }
 
-    .icon {
-      width: 22px;
-      min-width: 22px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: .95;
-    }
+  @keyframes rise {
+    to { opacity: 1; transform: none; }
+  }
 
-    .icon svg {
-      width: 20px;
-      height: 20px;
-      display: block;
-    }
+  /* ── Thin top line that draws itself ── */
+  .card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: drawLine .8s cubic-bezier(.16,1,.3,1) .6s forwards;
+  }
+  @keyframes drawLine {
+    to { transform: scaleX(1); }
+  }
 
-    a {
-      color: #d2d6dc;
-      text-decoration: none;
-    }
+  /* ── Header ── */
+  .header {
+    padding: 48px 40px 40px;
+    border-bottom: 1px solid var(--border);
+  }
 
-    a:hover {
-      color: #ffffff;
-    }
+  .director-label {
+    font-size: 10px; font-weight: 300;
+    color: var(--muted2); letter-spacing: .15em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp .6s cubic-bezier(.16,1,.3,1) .35s forwards;
+  }
 
-    .btn {
-      display: block;
-      width: 100%;
-      text-align: center;
-      padding: 15px 18px;
-      border-radius: 14px;
-      text-decoration: none;
-      font-weight: 600;
-      margin-top: 14px;
-      box-sizing: border-box;
-    }
+  .name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(44px, 12vw, 56px);
+    line-height: .92;
+    font-weight: 300;
+    color: var(--text);
+    letter-spacing: -.02em;
+    margin-bottom: 22px;
+    opacity: 0;
+    animation: fadeUp .7s cubic-bezier(.16,1,.3,1) .45s forwards;
+  }
+  .name em {
+    display: block;
+    font-style: italic;
+    color: var(--accent);
+  }
 
-    .btn-primary {
-      background: #2e78ff;
-      color: #fff;
-    }
+  .company-row {
+    display: flex; align-items: center; gap: 12px;
+    opacity: 0;
+    animation: fadeUp .6s cubic-bezier(.16,1,.3,1) .55s forwards;
+  }
+  .dash { width: 18px; height: 1px; background: var(--muted2); flex-shrink: 0; }
+  .company-text {
+    font-size: 10px; font-weight: 300;
+    color: var(--muted); letter-spacing: .1em;
+    text-transform: uppercase;
+  }
 
-    .btn-secondary {
-      background: transparent;
-      color: #d2d6dc;
-      border: 1px solid rgba(255,255,255,.12);
-    }
+  /* ── Contacts ── */
+  .body {
+    display: flex; flex-direction: column;
+  }
 
-    .small {
-      margin-top: 18px;
-      font-size: 13px;
-      color: #9aa3ad;
-      text-align: center;
-    }
-  </style>
+  .row {
+    display: flex; align-items: baseline; gap: 0;
+    padding: 15px 40px;
+    border-bottom: 1px solid var(--border2);
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    animation: fadeUp .6s cubic-bezier(.16,1,.3,1) forwards;
+    transition: background .2s;
+  }
+  .row:last-child { border-bottom: none; }
+
+  .row::after {
+    content: '';
+    position: absolute; left: 0; bottom: 0;
+    width: 0; height: 1px;
+    background: var(--accent);
+    transition: width .3s cubic-bezier(.16,1,.3,1);
+  }
+  .row:hover { background: var(--hover); }
+  .row:hover::after { width: 100%; }
+
+  .row:nth-child(1) { animation-delay: .55s; }
+  .row:nth-child(2) { animation-delay: .62s; }
+  .row:nth-child(3) { animation-delay: .69s; }
+  .row:nth-child(4) { animation-delay: .76s; }
+
+  .row-label {
+    font-size: 9px; font-weight: 300;
+    color: var(--muted2); letter-spacing: .12em;
+    text-transform: uppercase;
+    width: 58px; flex-shrink: 0;
+    padding-top: 2px;
+  }
+  .row-val {
+    font-size: 13px; font-weight: 300;
+    color: var(--text2); letter-spacing: .01em;
+    line-height: 1.4;
+    transition: color .2s;
+  }
+  .row:hover .row-val { color: var(--text); }
+
+  .arrow {
+    margin-left: auto;
+    font-size: 11px;
+    color: var(--muted2);
+    transform: translate(0, 0);
+    transition: transform .25s cubic-bezier(.16,1,.3,1), color .2s;
+    flex-shrink: 0;
+    align-self: center;
+  }
+  .row:hover .arrow {
+    transform: translate(3px, -3px);
+    color: var(--accent);
+  }
+
+  /* ── Footer ── */
+  .footer {
+    padding: 24px 40px 32px;
+    border-top: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 12px;
+    opacity: 0;
+    animation: fadeUp .6s cubic-bezier(.16,1,.3,1) .85s forwards;
+  }
+
+  .btn-group {
+    display: flex; gap: 8px; flex-wrap: wrap;
+  }
+
+  .btn {
+    font-family: 'Geist Mono', monospace;
+    font-size: 9px; font-weight: 400;
+    letter-spacing: .12em; text-transform: uppercase;
+    color: var(--card);
+    background: var(--ink);
+    border: none;
+    padding: 10px 16px;
+    border-radius: 2px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background .18s, transform .12s;
+    white-space: nowrap;
+  }
+  .btn:hover { background: #3a3630; transform: translateY(-1px); }
+  .btn:active { transform: none; }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--muted);
+    border: 1px solid var(--border);
+  }
+  .btn-ghost:hover { background: var(--hover); color: var(--text2); transform: translateY(-1px); }
+
+  /* ── Keyframe shared ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 480px) {
+    html, body { padding: 24px 16px; align-items: flex-start; padding-top: 40px; }
+    .header { padding: 36px 28px 32px; }
+    .row { padding: 14px 28px; }
+    .footer { padding: 20px 28px 28px; flex-direction: column; align-items: flex-start; }
+    .btn-group { width: 100%; }
+    .btn { flex: 1; text-align: center; }
+  }
+
+  @media (max-width: 360px) {
+    .name { font-size: 38px; }
+  }
+</style>
 </head>
 <body>
-  <div class="card">
-    <h1>Антон Карапетян</h1>
-    <p class="role">Директор · Оптимальный Вариант</p>
 
-    <div class="item">
-      <div class="icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none">
-          <path d="M6.6 10.8c1.2 2.4 3.2 4.4 5.6 5.6l1.9-1.9c.2-.2.5-.3.8-.2 1 .3 2 .4 3.1.4.4 0 .7.3.7.7V19c0 .4-.3.7-.7.7C10.7 19.7 4.3 13.3 4.3 5.4c0-.4.3-.7.7-.7h3.6c.4 0 .7.3.7.7 0 1.1.1 2.1.4 3.1.1.3 0 .6-.2.8l-1.9 1.5Z" fill="#d2d6dc"/>
-        </svg>
-      </div>
-      <a href="tel:+79650045566">+7 (965) 004-55-66</a>
+<div class="card">
+
+  <div class="header">
+    <div class="director-label">Директор</div>
+    <h1 class="name">Антон<em>Карапетян</em></h1>
+    <div class="company-row">
+      <div class="dash"></div>
+      <div class="company-text">Оптимальный Вариант</div>
     </div>
-
-    <div class="item">
-      <div class="icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none">
-          <path d="M4 6.5A1.5 1.5 0 0 1 5.5 5h13A1.5 1.5 0 0 1 20 6.5v11a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 17.5v-11Zm1.8.1 6.2 4.8 6.2-4.8" stroke="#d2d6dc" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-          <rect x="4" y="5" width="16" height="14" rx="1.5" stroke="#d2d6dc" stroke-width="1.6"/>
-        </svg>
-      </div>
-      <a href="mailto:hello@optimaloption.ru">hello@optimaloption.ru</a>
-    </div>
-
-    <div class="item">
-      <div class="icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none">
-          <circle cx="12" cy="12" r="8" stroke="#d2d6dc" stroke-width="1.6"/>
-          <path d="M4.5 12h15" stroke="#d2d6dc" stroke-width="1.6" stroke-linecap="round"/>
-          <path d="M12 4c2 2.2 3.2 5 3.2 8S14 17.8 12 20c-2-2.2-3.2-5-3.2-8S10 6.2 12 4Z" stroke="#d2d6dc" stroke-width="1.6"/>
-        </svg>
-      </div>
-      <a href="https://optimaloption.ru" target="_blank" rel="noopener">optimaloption.ru</a>
-    </div>
-
-    <div class="item">
-      <div class="icon" aria-hidden="true">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2e78ff">
-          <path d="M9.993 15.494l-.396 4.058c.568 0 .814-.244 1.107-.537l2.655-2.547 5.506 4.026c1.01.557 1.732.264 1.99-.934l3.608-16.93c.334-1.547-.56-2.154-1.542-1.79L1.53 9.36c-1.49.58-1.47 1.417-.253 1.79l5.902 1.84 13.688-8.626c.645-.392 1.232-.175.75.217"/>
-        </svg>
-      </div>
-      <a href="https://t.me/anton_g_k" target="_blank" rel="noopener">@anton_g_k</a>
-    </div>
-
-    <a class="btn btn-primary" href="/anton.vcf" download>Сохранить контакт</a>
-    <a class="btn btn-secondary" href="tel:+79650045566">Позвонить</a>
-    <a class="btn btn-secondary" href="https://t.me/anton_g_k" target="_blank" rel="noopener">Открыть Telegram</a>
-    <a class="btn btn-secondary" href="https://optimaloption.ru" target="_blank" rel="noopener">Открыть сайт</a>
-
-    <div class="small">Скачайте файл и сохраните контакт в телефонной книге</div>
   </div>
+
+  <div class="body">
+    <a class="row" href="tel:+79650045566">
+      <span class="row-label">Тел</span>
+      <span class="row-val">+7 (965) 004-55-66</span>
+      <span class="arrow">↗</span>
+    </a>
+    <a class="row" href="mailto:hello@optimaloption.ru">
+      <span class="row-label">Email</span>
+      <span class="row-val">hello@optimaloption.ru</span>
+      <span class="arrow">↗</span>
+    </a>
+    <a class="row" href="https://t.me/anton_g_k" target="_blank" rel="noopener">
+      <span class="row-label">TG</span>
+      <span class="row-val">@anton_g_k</span>
+      <span class="arrow">↗</span>
+    </a>
+    <a class="row" href="https://optimaloption.ru" target="_blank" rel="noopener">
+      <span class="row-label">Web</span>
+      <span class="row-val">optimaloption.ru</span>
+      <span class="arrow">↗</span>
+    </a>
+  </div>
+
+  <div class="footer">
+    <div class="btn-group">
+      <a class="btn" href="/anton.vcf" download>Сохранить контакт</a>
+    </div>
+  </div>
+
+</div>
+
 </body>
 </html>
