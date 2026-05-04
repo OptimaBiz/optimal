@@ -247,6 +247,7 @@
     </div>
     <input type="hidden" name="page_url" value="" />
     <input type="hidden" name="page_title" value="" />
+    <input type="hidden" name="service_scenario" value="" />
     <input type="hidden" name="email" value="" />
     <input type="hidden" name="_subject" value="Новая заявка с сайта optimaloption.ru" />
     <input type="hidden" name="_language" value="ru" />
