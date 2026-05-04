@@ -830,3 +830,298 @@
   background: #eaf1ff;
   border-color: #aebfde;
 }
+
+/* FSA hub flagship patterns */
+.fsa-hero-grid {
+  grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr) !important;
+  align-items: stretch;
+}
+
+.fsa-hero-panel,
+.fsa-diagnostic-card,
+.fsa-factor-list {
+  border: 1px solid rgba(184, 201, 226, 0.82);
+  border-radius: var(--radius-md);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.88) 0%, rgba(245, 249, 255, 0.92) 100%);
+  box-shadow: var(--shadow-sm);
+}
+
+.fsa-hero-panel {
+  padding: clamp(1.15rem, 2.2vw, 1.65rem);
+  align-self: center;
+}
+
+.fsa-hero-panel__eyebrow,
+.fsa-scenario-card__label {
+  display: inline-flex;
+  margin: 0 0 0.75rem;
+  color: #4a6182;
+  font-size: 0.74rem;
+  font-weight: 720;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.fsa-hero-panel h2,
+.fsa-diagnostic-card h3,
+.fsa-factor-list h3 {
+  margin: 0 0 1rem;
+  color: #162b49;
+  font-size: clamp(1.12rem, 1.65vw, 1.45rem);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.fsa-hero-panel ul,
+.fsa-factor-list ul,
+.fsa-diagnostic-card ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.fsa-hero-panel li,
+.fsa-factor-list li,
+.fsa-diagnostic-card li {
+  color: var(--text-muted);
+  line-height: 1.52;
+}
+
+.fsa-hero-panel li span {
+  margin-right: 0.42rem;
+  color: #315583;
+  font-weight: 760;
+}
+
+.fsa-scenario-layout {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.88fr) minmax(0, 1.45fr);
+  gap: var(--space-4);
+  align-items: stretch;
+}
+
+.fsa-scenario-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.fsa-scenario-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding: clamp(1.05rem, 2vw, 1.45rem);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  color: inherit;
+  text-decoration: none;
+}
+
+.fsa-scenario-card--primary {
+  background: linear-gradient(145deg, #f9fbff 0%, #eef5ff 100%);
+  border-color: #c4d3e8;
+}
+
+.fsa-scenario-card h3 {
+  margin: 0 0 0.62rem;
+  color: #172b48;
+  font-size: clamp(1.05rem, 1.45vw, 1.24rem);
+  line-height: 1.28;
+}
+
+.fsa-scenario-card p {
+  margin: 0 0 1rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+.fsa-scenario-card .card-cta {
+  margin-top: auto;
+  color: #274d7e;
+  font-weight: 680;
+}
+
+.fsa-split {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(280px, 1.05fr);
+  gap: clamp(1.25rem, 3vw, 2.4rem);
+  align-items: start;
+}
+
+.fsa-split--reverse {
+  grid-template-columns: minmax(280px, 1.05fr) minmax(0, 0.95fr);
+}
+
+.fsa-diagnostic-card,
+.fsa-factor-list {
+  padding: clamp(1.15rem, 2.2vw, 1.65rem);
+}
+
+.fsa-diagnostic-card li {
+  padding-left: 1rem;
+  border-left: 2px solid rgba(71, 105, 154, 0.22);
+}
+
+.fsa-diagnostic-card strong {
+  color: #1f385d;
+}
+
+.fsa-risk-matrix {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.fsa-risk-note {
+  padding: clamp(1rem, 1.9vw, 1.35rem);
+  border-left: 3px solid #4f6f9f;
+  border-radius: var(--radius-md);
+  background: #fbfdff;
+  box-shadow: var(--shadow-sm);
+}
+
+.fsa-risk-note span {
+  display: inline-flex;
+  margin-bottom: 0.8rem;
+  color: #46638d;
+  font-weight: 780;
+  letter-spacing: 0.08em;
+}
+
+.fsa-risk-note h3 {
+  margin: 0 0 0.55rem;
+  color: #172b48;
+  font-size: 1.04rem;
+  line-height: 1.3;
+}
+
+.fsa-risk-note p {
+  margin: 0;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.fsa-scope-table {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.fsa-scope-row {
+  display: grid;
+  grid-template-columns: minmax(190px, 0.38fr) minmax(0, 1fr);
+  gap: var(--space-4);
+  padding: clamp(0.95rem, 1.8vw, 1.25rem) clamp(1rem, 2vw, 1.45rem);
+  border-bottom: 1px solid var(--border);
+}
+
+.fsa-scope-row:last-child {
+  border-bottom: 0;
+}
+
+.fsa-scope-row strong {
+  color: #183151;
+}
+
+.fsa-scope-row span {
+  color: var(--text-muted);
+  line-height: 1.52;
+}
+
+.fsa-roadmap {
+  display: grid;
+  gap: 1rem;
+}
+
+.fsa-roadmap-step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 3.2rem minmax(0, 1fr);
+  gap: 0.95rem;
+  padding: clamp(1rem, 1.8vw, 1.3rem);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.fsa-roadmap-step__number {
+  display: grid;
+  place-items: center;
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 999px;
+  border: 1px solid #c5d2e5;
+  background: linear-gradient(180deg, #ffffff 0%, #f2f6fc 100%);
+  color: #315583;
+  font-weight: 780;
+}
+
+.fsa-roadmap-step h3 {
+  margin: 0 0 0.35rem;
+  color: #172b48;
+  font-size: 1.08rem;
+}
+
+.fsa-roadmap-step p {
+  margin: 0 0 0.55rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.fsa-roadmap-step strong {
+  color: #29476f;
+  font-size: 0.94rem;
+  line-height: 1.45;
+}
+
+.fsa-factor-list li {
+  position: relative;
+  padding-left: 1.05rem;
+}
+
+.fsa-factor-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.66em;
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 999px;
+  background: #496b9a;
+}
+
+@media (max-width: 1023px) {
+  .fsa-hero-grid,
+  .fsa-scenario-layout,
+  .fsa-split,
+  .fsa-split--reverse {
+    grid-template-columns: 1fr !important;
+  }
+
+  .fsa-risk-matrix {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .fsa-scenario-grid,
+  .fsa-risk-matrix,
+  .fsa-scope-row {
+    grid-template-columns: 1fr;
+  }
+
+  .fsa-scope-row {
+    gap: 0.45rem;
+  }
+
+  .fsa-roadmap-step {
+    grid-template-columns: 1fr;
+  }
+}
