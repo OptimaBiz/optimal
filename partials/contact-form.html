@@ -9,6 +9,7 @@
 
     <input type="hidden" name="page_url" value="" />
     <input type="hidden" name="page_title" value="" />
+    <input type="hidden" name="service_scenario" value="" />
     <input type="hidden" name="email" value="" />
     <input type="hidden" name="_subject" value="Новая заявка с сайта optimaloption.ru" />
     <input type="hidden" name="_language" value="ru" />
@@ -24,6 +25,16 @@
       <div class="form-field">
         <label class="form-label" for="contact-channel">Email или телефон</label>
         <input class="form-input" id="contact-channel" name="contact" type="text" placeholder="example@mail.ru / телефон в любом формате" autocomplete="email" required />
+      </div>
+
+      <div class="form-field">
+        <label class="form-label" for="contact-company">Компания / лаборатория</label>
+        <input class="form-input" id="contact-company" name="company" type="text" placeholder="Название организации" autocomplete="organization" />
+      </div>
+
+      <div class="form-field">
+        <label class="form-label" for="contact-deadline">Срок / ближайшая процедура</label>
+        <input class="form-input" id="contact-deadline" name="deadline" type="text" placeholder="Например: ПК в июле 2026" />
       </div>
 
       <div class="form-field">
