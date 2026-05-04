@@ -11,10 +11,13 @@
 
   const PAGE_META = {
     'uslugi.html': { title: 'Услуги', family: null, crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'Услуги' }] },
-    'akkreditaciya.html': { title: 'Аккредитация', family: 'accreditation', crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'Услуги', href: 'uslugi.html' }, { label: 'Аккредитация' }] },
-    'akkreditaciya-ispytatelnaya-laboratoriya.html': { title: 'Испытательная лаборатория', family: 'accreditation', crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'Услуги', href: 'uslugi.html' }, { label: 'Аккредитация', href: 'akkreditaciya.html' }, { label: 'Испытательная лаборатория' }] },
-    'akkreditaciya-organ-inspekcionnogo-kontrolya.html': { title: 'Орган инспекционного контроля', family: 'accreditation', crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'Услуги', href: 'uslugi.html' }, { label: 'Аккредитация', href: 'akkreditaciya.html' }, { label: 'Орган инспекционного контроля' }] },
-    'akkreditaciya-organ-po-sertifikacii.html': { title: 'Орган по сертификации', family: 'accreditation', crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'Услуги', href: 'uslugi.html' }, { label: 'Аккредитация', href: 'akkreditaciya.html' }, { label: 'Орган по сертификации' }] },
+    'akkreditaciya.html': { title: 'Аккредитация', family: 'accreditation', serviceScenario: 'Аккредитация в Росаккредитации', crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'Услуги', href: 'uslugi.html' }, { label: 'Аккредитация' }] },
+    'akkreditaciya-ispytatelnaya-laboratoriya.html': { title: 'Испытательная лаборатория', family: 'accreditation', serviceScenario: 'Аккредитация испытательной лаборатории', crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'Услуги', href: 'uslugi.html' }, { label: 'Аккредитация', href: 'akkreditaciya.html' }, { label: 'Испытательная лаборатория' }] },
+    'akkreditaciya-podtverzhdenie-kompetentnosti-laboratorii.html': { title: 'Подтверждение компетентности ИЛ', family: 'accreditation', serviceScenario: 'Подтверждение компетентности ИЛ', crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'Услуги', href: 'uslugi.html' }, { label: 'Аккредитация', href: 'akkreditaciya.html' }, { label: 'Испытательная лаборатория', href: 'akkreditaciya-ispytatelnaya-laboratoriya.html' }, { label: 'Подтверждение компетентности ИЛ' }] },
+    'akkreditaciya-rasshirenie-oblasti-laboratorii.html': { title: 'Расширение области аккредитации ИЛ', family: 'accreditation', serviceScenario: 'Расширение области аккредитации ИЛ', crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'Услуги', href: 'uslugi.html' }, { label: 'Аккредитация', href: 'akkreditaciya.html' }, { label: 'Испытательная лаборатория', href: 'akkreditaciya-ispytatelnaya-laboratoriya.html' }, { label: 'Расширение области аккредитации ИЛ' }] },
+    'akkreditaciya-zamechaniya-vyezdnaya-ocenka.html': { title: 'Замечания ФСА и выездная оценка', family: 'accreditation', serviceScenario: 'Замечания ФСА и выездная оценка ИЛ', crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'Услуги', href: 'uslugi.html' }, { label: 'Аккредитация', href: 'akkreditaciya.html' }, { label: 'Испытательная лаборатория', href: 'akkreditaciya-ispytatelnaya-laboratoriya.html' }, { label: 'Замечания ФСА и выездная оценка' }] },
+    'akkreditaciya-organ-inspekcionnogo-kontrolya.html': { title: 'Орган инспекционного контроля', family: 'accreditation', serviceScenario: 'Аккредитация органа инспекционного контроля', crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'Услуги', href: 'uslugi.html' }, { label: 'Аккредитация', href: 'akkreditaciya.html' }, { label: 'Орган инспекционного контроля' }] },
+    'akkreditaciya-organ-po-sertifikacii.html': { title: 'Орган по сертификации', family: 'accreditation', serviceScenario: 'Аккредитация органа по сертификации', crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'Услуги', href: 'uslugi.html' }, { label: 'Аккредитация', href: 'akkreditaciya.html' }, { label: 'Орган по сертификации' }] },
     'sertifikaciya.html': { title: 'Сертификация', family: 'certification', crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'Услуги', href: 'uslugi.html' }, { label: 'Сертификация' }] },
     'gost-r-iso-9001-2015.html': { title: 'ГОСТ Р ИСО 9001:2015', family: 'certification', crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'Услуги', href: 'uslugi.html' }, { label: 'Сертификация', href: 'sertifikaciya.html' }, { label: 'ГОСТ Р ИСО 9001:2015' }] },
     'gost-r-45001-2020-ohsas.html': { title: 'ГОСТ Р ИСО 45001-2020', family: 'certification', crumbs: [{ label: 'Главная', href: 'index.html' }, { label: 'Услуги', href: 'uslugi.html' }, { label: 'Сертификация', href: 'sertifikaciya.html' }, { label: 'ГОСТ Р ИСО 45001-2020' }] },
@@ -363,9 +366,11 @@
         const pageUrl = form.querySelector('input[name="page_url"]');
         const pageTitle = form.querySelector('input[name="page_title"]');
         const emailField = form.querySelector('input[name="email"]');
+        const scenarioField = form.querySelector('input[name="service_scenario"]');
         const nextUrl = form.querySelector('input[name="_next"]');
         if (pageUrl) pageUrl.value = window.location.href;
         if (pageTitle) pageTitle.value = document.title;
+        if (scenarioField && PAGE_META[currentPath]?.serviceScenario) scenarioField.value = PAGE_META[currentPath].serviceScenario;
         if (emailField) {
           const contactValue = String(contactInput.value || '').trim();
           emailField.value = emailRegex.test(contactValue) ? contactValue : '';
