@@ -1148,3 +1148,91 @@ body.menu-open {
 .button--full {
   width: 100%;
 }
+
+
+/* FSA visual rhythm and card consistency */
+.page-family--accreditation .section {
+  padding-block: clamp(3.35rem, 5.4vw, 4.7rem);
+}
+
+.page-family--accreditation .section + .section {
+  margin-top: clamp(0.3rem, 0.9vw, 0.7rem);
+}
+
+.page-family--accreditation .section-head {
+  margin-bottom: clamp(1.45rem, 2.5vw, 2.15rem);
+}
+
+.page-family--accreditation .services-grid {
+  gap: clamp(0.95rem, 1.35vw, 1.25rem);
+}
+
+.page-family--accreditation .service-card {
+  border-radius: clamp(14px, 1.5vw, 18px);
+  border-color: #d6e0ed;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+  box-shadow: 0 8px 20px rgba(17, 37, 72, 0.07);
+  padding: clamp(1.05rem, 1.8vw, 1.35rem) clamp(1rem, 1.8vw, 1.3rem);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.55rem, 1vw, 0.78rem);
+}
+
+.page-family--accreditation .service-card h3 {
+  margin: 0;
+  font-size: clamp(1.02rem, 0.94rem + 0.32vw, 1.18rem);
+  line-height: 1.35;
+}
+
+.page-family--accreditation .service-card p {
+  margin: 0;
+  color: #425572;
+  line-height: 1.55;
+}
+
+.page-family--accreditation .section--alt .service-card {
+  background: linear-gradient(180deg, #fcfdff 0%, #f3f7fc 100%);
+}
+
+.page-family--accreditation .timeline {
+  gap: clamp(1rem, 1.6vw, 1.35rem);
+}
+
+.page-family--accreditation .process-step__card {
+  box-shadow: 0 8px 22px rgba(15, 36, 73, 0.08);
+}
+
+.page-family--accreditation #cta .cta-card {
+  border-radius: clamp(16px, 1.8vw, 22px);
+  padding: clamp(2rem, 3.6vw, 2.75rem) clamp(1rem, 2vw, 1.5rem);
+}
+
+@media (max-width: 1023.98px) {
+  .page-family--accreditation .section {
+    padding-block: clamp(2.75rem, 6.8vw, 3.55rem);
+  }
+
+  .page-family--accreditation .section-head {
+    margin-bottom: clamp(1.2rem, 2.8vw, 1.7rem);
+  }
+
+  .page-family--accreditation .services-grid {
+    gap: clamp(0.85rem, 1.8vw, 1.05rem);
+  }
+}
+
+@media (max-width: 767.98px) {
+  .page-family--accreditation .section {
+    padding-block: clamp(2.35rem, 9vw, 2.95rem);
+  }
+
+  .page-family--accreditation .service-card {
+    border-radius: 14px;
+    padding: 0.95rem 0.95rem 1rem;
+    gap: 0.52rem;
+  }
+
+  .page-family--accreditation .service-card h3 {
+    font-size: clamp(0.98rem, 3.8vw, 1.08rem);
+  }
+}
