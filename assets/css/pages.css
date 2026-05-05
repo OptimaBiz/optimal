@@ -1326,3 +1326,33 @@
     padding: 8px 12px;
   }
 }
+
+/* PR-8: sitewide standard transfer for non-FSA service families */
+.page-internal:not(.page-family--accreditation) .hero--service-page .hero-copy {
+  max-width: 72ch;
+}
+
+.page-internal:not(.page-family--accreditation) .hero--service-page .hero-text {
+  color: var(--color-text-muted);
+}
+
+.page-internal:not(.page-family--accreditation) .hero--service-page .hero-actions .button--primary {
+  min-width: clamp(14rem, 28vw, 19rem);
+}
+
+.page-internal:not(.page-family--accreditation) .section .section-head {
+  max-width: 74ch;
+}
+
+.page-internal:not(.page-family--accreditation) .services-grid {
+  row-gap: 1.2rem;
+}
+
+.page-internal:not(.page-family--accreditation) .cta-card {
+  border: 1px solid rgba(43, 82, 122, 0.24);
+  box-shadow: 0 10px 24px rgba(19, 35, 64, 0.08);
+}
+
+.page-internal:not(.page-family--accreditation) .section#cta + .section .contact-panel {
+  margin-top: 0.4rem;
+}
