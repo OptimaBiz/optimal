@@ -373,7 +373,7 @@
 }
 
 .case-card--featured::before {
-  background-image: url("assets/img/case-bg-1.svg");
+  background-image: url("../img/case-bg-1.svg");
 }
 
 .case-card--featured .case-card__title {
