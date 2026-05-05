@@ -200,3 +200,45 @@ WORKFLOW.md
 усиливает доверие;
 не ломает хорошие рабочие блоки;
 делает страницы более зрелыми и профессиональными.
+
+
+---
+
+## Browser QA (Playwright foundation)
+
+Минимальная база для whole-site smoke QA уже подключена.
+
+### Установка
+
+```bash
+npm install
+npm run test:e2e:install
+```
+
+### Основные команды
+
+```bash
+# Локальный предпросмотр сайта
+npm run preview
+
+# Полный e2e прогон (desktop/tablet/mobile)
+npm run test:e2e
+
+# Smoke suite (ключевые страницы и базовые UX-проверки)
+npm run test:smoke
+
+# Отладочный запуск
+npm run test:e2e:headed
+npm run test:e2e:ui
+```
+
+Playwright автоматически поднимает локальный static preview server на `http://127.0.0.1:8000` через `webServer` в `playwright.config.ts`.
+
+### Что покрывает smoke foundation
+
+- открытие ключевых страниц (главная, каталог услуг, FSA и non-FSA services, контакты);
+- базовые блоки (header/main/hero);
+- проверка наличия hero CTA и не-пустого `href`;
+- проверка наличия формы и ключевых полей/кнопки отправки;
+- проверка навигации (desktop services menu и mobile menu toggle);
+- базовая проверка `scroll-to-top` при наличии элемента.
