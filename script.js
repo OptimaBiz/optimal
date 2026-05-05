@@ -332,14 +332,12 @@
       const successState = shell.querySelector('[data-contact-success]');
       const resetButton = shell.querySelector('[data-contact-reset]');
       const submitButton = form?.querySelector('button[type="submit"]');
-      const contactInput = form?.querySelector('input[name="contact"]');
+      const phoneInput = form?.querySelector('input[name="phone"]');
+      const emailContactInput = form?.querySelector('input[name="email_contact"]');
 
-      if (!form || !formNote || !consentError || !consentCheckbox || !consentModal || !modalDialog || !openConsentButton || !submitButton || !contactInput) {
+      if (!form || !formNote || !consentError || !consentCheckbox || !consentModal || !modalDialog || !openConsentButton || !submitButton || !phoneInput) {
         return;
       }
-
-      contactInput.setAttribute('autocomplete', 'off');
-      contactInput.setAttribute('inputmode', 'text');
 
       const suffix = `${Date.now()}-${index}`;
       const assignLinkedId = (inputSelector, labelSelector, prefix) => {
@@ -351,7 +349,8 @@
       };
 
       assignLinkedId('[name="name"]', 'label[for="contact-name"]', 'contact-name');
-      assignLinkedId('[name="contact"]', 'label[for="contact-channel"]', 'contact-channel');
+      assignLinkedId('[name="phone"]', 'label[for="contact-phone"]', 'contact-phone');
+      assignLinkedId('[name="email_contact"]', 'label[for="contact-email"]', 'contact-email');
       assignLinkedId('[name="message"]', 'label[for="contact-message"]', 'contact-message');
       assignLinkedId('[name="consent"]', '.form-consent__text', 'consent-checkbox');
 
@@ -373,21 +372,14 @@
         if (pageTitle) pageTitle.value = document.title;
         if (scenarioField && PAGE_META[currentPath]?.serviceScenario) scenarioField.value = PAGE_META[currentPath].serviceScenario;
         if (emailField) {
-          const contactValue = String(contactInput.value || '').trim();
-          emailField.value = emailRegex.test(contactValue) ? contactValue : '';
+          emailField.value = String(emailContactInput?.value || '').trim();
         }
         if (nextUrl) nextUrl.value = window.location.href;
       };
 
 
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      const validateContactField = (rawValue) => {
-        const value = String(rawValue || '').trim();
-        if (!value) return false;
-        if (emailRegex.test(value)) return true;
-        const digitsOnly = value.replace(/\D/g, '');
-        return digitsOnly.length >= 7;
-      };
+      const validatePhoneField = (rawValue) => String(rawValue || '').replace(/\D/g, '').length >= 7;
 
       let lastFocusedTrigger = null;
 
@@ -418,9 +410,8 @@
         consentCheckbox.setCustomValidity('');
       });
 
-      contactInput.addEventListener('input', () => {
-        contactInput.setCustomValidity('');
-      });
+      phoneInput.addEventListener('input', () => phoneInput.setCustomValidity(''));
+      if (emailContactInput) emailContactInput.addEventListener('input', () => emailContactInput.setCustomValidity(''));
 
       const setSubmittingState = (isSubmitting) => {
         submitButton.disabled = isSubmitting;
@@ -441,7 +432,8 @@
         formNote.textContent = '';
         consentError.textContent = '';
         consentCheckbox.setCustomValidity('');
-        contactInput.setCustomValidity('');
+        phoneInput.setCustomValidity('');
+        if (emailContactInput) emailContactInput.setCustomValidity('');
         setContextFields();
       };
 
@@ -471,7 +463,8 @@
 
         const formData = new FormData(form);
         const name = String(formData.get('name') || '').trim();
-        const contact = String(formData.get('contact') || '').trim();
+        const phone = String(formData.get('phone') || '').trim();
+        const emailContact = String(formData.get('email_contact') || '').trim();
         const message = String(formData.get('message') || '').trim();
         const hasConsent = consentCheckbox.checked;
 
@@ -481,10 +474,20 @@
           return;
         }
 
-        if (!validateContactField(contact)) {
-          contactInput.setCustomValidity('Укажите email или телефон не короче 7 цифр');
-          contactInput.reportValidity();
-          formNote.textContent = 'Укажите email или телефон не короче 7 цифр';
+        if (!validatePhoneField(phone)) {
+          phoneInput.setCustomValidity('Укажите телефон не короче 7 цифр');
+          phoneInput.reportValidity();
+          formNote.textContent = 'Укажите телефон не короче 7 цифр';
+          formNote.classList.add('is-error');
+          return;
+        }
+
+        if (emailContact && !emailRegex.test(emailContact)) {
+          if (emailContactInput) {
+            emailContactInput.setCustomValidity('Укажите email в корректном формате');
+            emailContactInput.reportValidity();
+          }
+          formNote.textContent = 'Укажите email в корректном формате';
           formNote.classList.add('is-error');
           return;
         }
@@ -498,7 +501,7 @@
 
         const emailField = form.querySelector('input[name="email"]');
         if (emailField) {
-          emailField.value = emailRegex.test(contact) ? contact : '';
+          emailField.value = emailContact && emailRegex.test(emailContact) ? emailContact : '';
           formData.set('email', emailField.value);
         }
 

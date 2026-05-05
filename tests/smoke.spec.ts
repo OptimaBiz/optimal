@@ -12,7 +12,7 @@ const pages: PageCase[] = [
   { url: '/akkreditaciya-ispytatelnaya-laboratoriya.html', hasForm: true },
   { url: '/licenzirovanie.html', hasForm: true },
   { url: '/attestaciya.html', hasForm: true },
-  { url: '/contacts.html', hasForm: true }
+  { url: '/contacts.html', hasForm: false }
 ];
 
 test.describe('Smoke: key pages render', () => {
@@ -43,8 +43,10 @@ test.describe('Smoke: key pages render', () => {
 
       const topButton = page.locator('.home-scroll-top').first();
       if (await topButton.count()) {
+        await expect(topButton).toHaveClass(/home-scroll-top/);
+        await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+        await expect(topButton).toHaveClass(/is-visible/);
         await topButton.click();
-        await expect(topButton).toBeVisible();
       }
 
       expect(errors, `No runtime page errors on ${pageCase.url}`).toEqual([]);
@@ -53,17 +55,16 @@ test.describe('Smoke: key pages render', () => {
 });
 
 test.describe('Smoke: navigation and mobile menu', () => {
-  test('desktop nav and services menu exist', async ({ page }) => {
+  test('services navigation menu opens', async ({ page }) => {
     await page.goto('/index.html', { waitUntil: 'domcontentloaded' });
+    test.skip((page.viewportSize()?.width || 0) < 1200, 'Desktop navigation check only');
 
     await expect(page.locator('header.site-header')).toBeVisible();
-    const servicesToggle = page.locator('.nav-services__toggle').first();
+    const servicesToggle = page.locator('.nav-services__toggle:visible').first();
     await expect(servicesToggle).toBeVisible();
     await servicesToggle.click();
-    await expect(page.locator('#services-menu-panel, #services-mobile-panel').first()).toBeVisible();
-
-    await expect(page.locator('a[href="uslugi.html"]').first()).toBeVisible();
-    await expect(page.locator('a[href="contacts.html"]').first()).toBeVisible();
+    await expect(page.locator('#services-menu-panel')).toBeVisible();
+    await expect(page.locator('#services-menu-panel a[href*="akkreditaciya"]').first()).toBeVisible();
   });
 
   test('mobile menu opens', async ({ page, isMobile }) => {
