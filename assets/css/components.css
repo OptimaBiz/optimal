@@ -1359,3 +1359,270 @@
     justify-content: center;
   }
 }
+
+/* PR-4: page-specific OS SMK (подтверждение компетентности) blocks */
+.os-audit-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.os-audit-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.55rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.os-audit-list li span {
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: 1.15rem;
+  height: 1.15rem;
+  border-radius: 999px;
+  background: #e7f0fb;
+  color: #2f5685;
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+
+.os-audit-result {
+  margin: 1.1rem 0 0;
+  padding-top: 0.95rem;
+  border-top: 1px solid rgba(184, 201, 226, 0.7);
+  color: #1f385d;
+  line-height: 1.5;
+}
+
+.os-audit-result strong {
+  color: #16304f;
+}
+
+/* 3-column card grid for scenarios and cross-sell routes */
+.os-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+/* report / document mockup — makes the deliverable tangible */
+.os-report {
+  border: 1px solid rgba(184, 201, 226, 0.82);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: linear-gradient(180deg, #ffffff 0%, #f7faff 100%);
+  box-shadow: var(--shadow-md);
+}
+
+.os-report__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: clamp(1rem, 2vw, 1.35rem) clamp(1.1rem, 2.2vw, 1.55rem);
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(145deg, #f8fbff 0%, #eef5ff 100%);
+}
+
+.os-report__eyebrow {
+  display: block;
+  color: #4a6182;
+  font-size: 0.72rem;
+  font-weight: 720;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.os-report__title {
+  margin: 0.32rem 0 0;
+  color: #162b49;
+  font-size: clamp(1.04rem, 1.5vw, 1.22rem);
+  line-height: 1.22;
+}
+
+.os-report__tag {
+  flex: none;
+  align-self: flex-start;
+  display: inline-flex;
+  padding: 0.3rem 0.6rem;
+  border: 1px solid #c4d3e8;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #315583;
+  font-size: 0.68rem;
+  font-weight: 720;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.os-report__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.os-report__row {
+  display: grid;
+  grid-template-columns: 2.2rem minmax(0, 1fr);
+  gap: 0.85rem;
+  align-items: baseline;
+  padding: clamp(0.7rem, 1.4vw, 0.95rem) clamp(1.1rem, 2.2vw, 1.55rem);
+  border-bottom: 1px dashed rgba(184, 201, 226, 0.65);
+}
+
+.os-report__row:last-child {
+  border-bottom: 0;
+}
+
+.os-report__num {
+  color: #46638d;
+  font-weight: 780;
+  font-variant-numeric: tabular-nums;
+}
+
+.os-report__label {
+  color: #1f385d;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+@media (max-width: 1023px) {
+  .os-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .os-card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── OS SMK page visual lift (page-family--os-smk) ── */
+
+/* Hero audit card — product frame */
+.page-family--os-smk .fsa-hero-panel {
+  border-top: 3px solid #2d5494;
+  box-shadow: 0 10px 32px rgba(16, 40, 88, 0.13);
+}
+
+.page-family--os-smk .os-audit-result {
+  margin: 1rem 0 0;
+  padding: 0.6rem 0.85rem;
+  border-top: none;
+  border-radius: 10px;
+  background: rgba(45, 84, 148, 0.09);
+}
+
+/* Risk notes — numbered badges */
+.page-family--os-smk .fsa-risk-note {
+  background: #f5f9ff;
+  border-left-color: #1d3a62;
+}
+
+.page-family--os-smk .fsa-risk-note > span {
+  display: inline-grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  background: #1d3a62;
+  color: #ffffff;
+  font-size: 0.72rem;
+  letter-spacing: 0.03em;
+}
+
+/* Scenario cards — accent top border per scenario */
+.page-family--os-smk #scenarios .fsa-scenario-card:nth-child(1) {
+  border-top: 2px solid #2a5190;
+}
+
+.page-family--os-smk #scenarios .fsa-scenario-card:nth-child(2) {
+  border-top: 2px solid #2a6644;
+}
+
+.page-family--os-smk #scenarios .fsa-scenario-card:nth-child(3) {
+  border-top: 2px solid #7a4a28;
+}
+
+/* Cross-sell route cards — horizontal list style */
+.os-route-grid {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.os-route-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: clamp(0.9rem, 1.6vw, 1.15rem) clamp(1.1rem, 2vw, 1.5rem);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.os-route-card:hover {
+  border-color: #b0c4de;
+  box-shadow: var(--shadow-md);
+}
+
+.os-route-card__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.os-route-card h3 {
+  margin: 0 0 0.25rem;
+  color: #172b48;
+  font-size: clamp(1rem, 1.25vw, 1.08rem);
+  line-height: 1.3;
+}
+
+.os-route-card p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.os-route-card .card-cta {
+  flex: none;
+  color: #274d7e;
+  font-weight: 680;
+  font-size: 0.88rem;
+  white-space: nowrap;
+}
+
+/* CTA section — stronger contrast panel */
+.page-family--os-smk #cta .cta-card {
+  background: linear-gradient(145deg, #edf4ff 0%, #dce9ff 100%);
+  border-color: #b4cce8;
+  box-shadow: 0 14px 36px rgba(15, 40, 88, 0.1);
+}
+
+/* Method section — richer factor list background */
+.page-family--os-smk .fsa-factor-list {
+  background: linear-gradient(145deg, #f4f8ff 0%, #eaf2ff 100%);
+  border-color: #bed0e6;
+}
+
+/* Mobile: heading before bullet list in method section */
+@media (max-width: 1023px) {
+  .page-family--os-smk #method .section-head {
+    order: -1;
+  }
+}
+
+@media (max-width: 520px) {
+  .os-route-card .card-cta {
+    display: none;
+  }
+}
