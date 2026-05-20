@@ -10,6 +10,7 @@ const pages: PageCase[] = [
   { url: '/uslugi.html', hasForm: true },
   { url: '/akkreditaciya.html', hasForm: true },
   { url: '/akkreditaciya-ispytatelnaya-laboratoriya.html', hasForm: true },
+  { url: '/podtverzhdenie-kompetentnosti-os-smk.html', hasForm: true },
   { url: '/licenzirovanie.html', hasForm: true },
   { url: '/attestaciya.html', hasForm: true },
   { url: '/contacts.html', hasForm: false }
