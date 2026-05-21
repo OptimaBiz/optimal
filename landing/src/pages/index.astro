@@ -1,0 +1,367 @@
+---
+import "../styles/global.css";
+import { criticalSituations, deliverables, faq, packages, riskTabs, timeline } from "../data/landingContent";
+import { cssVariables, siteConfig } from "../lib/siteConfig";
+import heroImage from "../../images/os-smk-hero.png";
+import riskImage from "../../images/os-smk-risk-matrix.png";
+import witnessImage from "../../images/os-smk-witness-vks.png";
+import packageExpressImage from "../../images/os-smk-package-express.png";
+import packageAuditImage from "../../images/os-smk-package-audit.png";
+import packageSupportImage from "../../images/os-smk-package-support.png";
+
+const packageImages = {
+  express: packageExpressImage,
+  audit: packageAuditImage,
+  support: packageSupportImage
+};
+
+const canonicalUrl = new URL(Astro.url.pathname, siteConfig.siteUrl).toString();
+const serviceName = "Подготовка ОС СМК к подтверждению компетентности";
+---
+
+<!doctype html>
+<html lang="ru" style={cssVariables}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{siteConfig.pageTitle}</title>
+    <meta name="description" content={siteConfig.pageDescription} />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={siteConfig.pageTitle} />
+    <meta property="og:description" content={siteConfig.pageDescription} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={new URL(heroImage.src, siteConfig.siteUrl).toString()} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={siteConfig.pageTitle} />
+    <meta name="twitter:description" content={siteConfig.pageDescription} />
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero" id="top">
+        <div class="shell">
+          <header class="topline" aria-label="Шапка лендинга">
+            <a class="topline__brand" href="#top">{siteConfig.siteName}</a>
+            <span>{siteConfig.city} · ОС СМК · подтверждение компетентности</span>
+            <a href={`tel:${siteConfig.phone.replaceAll(" ", "")}`}>{siteConfig.phone}</a>
+          </header>
+
+          <div class="hero__grid">
+            <div class="hero__content">
+              <div class="norm">
+                Процедуры подготовки соответствуют Федеральному закону № 412-ФЗ, Постановлению Правительства РФ № 2050, Приказу Минэкономразвития № 707 и схеме аккредитации СМ № 03.1-9.0004.
+              </div>
+              <p class="kicker">Досудебная методическая верификация</p>
+              <h1>Подготовка Органов по сертификации систем менеджмента качества к подтверждению компетентности.</h1>
+              <p class="lead hero__lead">
+                Полная досудебная и методическая верификация дел по сертификации, зачистка дефектов в анкетах самообследования и подготовка штатных экспертов к этапу практической оценки в режиме видеоконференцсвязи. Зачищаем риски приостановки деятельности.
+              </p>
+              <img class="hero__asset" src={heroImage.src} alt="Минималистичная композиция с тонким кругом и линиями" loading="eager" />
+            </div>
+
+            <form class="capture glass form" action={siteConfig.formAction} method="post">
+              <input type="hidden" name="service" value={serviceName} />
+              <input type="hidden" name="service_scenario" value="hero_express_analysis" />
+              <input type="hidden" name="page" value="os_smk_pk_landing" />
+              <p class="capture__title">Запустите экспресс-анализ анкеты самообследования до официальной подачи заявления</p>
+              <label class="field">
+                <span>Имя / Должность</span>
+                <input class="input" name="name_position" autocomplete="name" required />
+              </label>
+              <label class="field">
+                <span>Контактный телефон</span>
+                <input class="input" name="phone" autocomplete="tel" inputmode="tel" required />
+              </label>
+              <label class="field">
+                <span>Электронная почта</span>
+                <input class="input" type="email" name="email" autocomplete="email" required />
+              </label>
+              <label class="check">
+                <input type="checkbox" name="urgent_less_30_days" value="yes" />
+                <span>До нормативного срока подачи заявления осталось менее 30 рабочих дней</span>
+              </label>
+              <button class="btn btn--wide" type="submit">Пройти экспресс-анализ документации</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="situations">
+        <div class="shell">
+          <div class="section__head">
+            <div>
+              <p class="kicker">Критические ситуации</p>
+              <h2>Где обычно ломается процедура ПК</h2>
+            </div>
+            <p class="lead">Лендинг сфокусирован на операционной повестке руководителя ОС СМК: сроки, область, эксперты, архив и работа комиссии ФСА.</p>
+          </div>
+          <div class="cards">
+            {criticalSituations.map((item, index) => (
+              <article class="card">
+                <span class="card__index">{String(index + 1).padStart(2, "0")}</span>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="deliverables">
+        <div class="shell deliverables">
+          <div>
+            <p class="kicker">Передаваемые результаты</p>
+            <h2>Не консультации, а закрывающие артефакты</h2>
+          </div>
+          <ul class="result-list">
+            {deliverables.map((item, index) => (
+              <li>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <p>{item}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section class="section" id="risks">
+        <div class="shell">
+          <div class="section__head">
+            <div>
+              <p class="kicker">Матрица рисков</p>
+              <h2>Выявление и устранение точек приостановки</h2>
+            </div>
+            <p class="lead">Три кластера, где комиссия обычно фиксирует критичные дефекты: дела, персонал и практическая оценка в ВКС.</p>
+          </div>
+
+          <div class="risk">
+            <img class="risk__asset" src={riskImage.src} alt="Тонкая сетка линий с янтарным маркером" loading="lazy" />
+            <div>
+              <div class="tabs" role="tablist" aria-label="Кластеры рисков">
+                {riskTabs.map((tab, index) => (
+                  <button class="tab" type="button" role="tab" aria-selected={index === 0 ? "true" : "false"} aria-controls={`risk-panel-${tab.id}`} id={`risk-tab-${tab.id}`} data-risk-tab={tab.id}>
+                    {tab.label}
+                  </button>
+                ))}
+              </div>
+              {riskTabs.map((tab, index) => (
+                <div class="risk-table" role="tabpanel" id={`risk-panel-${tab.id}`} aria-labelledby={`risk-tab-${tab.id}`} hidden={index !== 0} data-risk-panel={tab.id}>
+                  <div class="risk-row">
+                    <div class="risk-row__label">Зона уязвимости</div>
+                    <div class="risk-row__value">{tab.vulnerability}</div>
+                  </div>
+                  <div class="risk-row">
+                    <div class="risk-row__label">Что зафиксирует комиссия</div>
+                    <div class="risk-row__value">{tab.commission}</div>
+                  </div>
+                  <div class="risk-row">
+                    <div class="risk-row__label">Как устраняем мы</div>
+                    <div class="risk-row__value">{tab.solution}</div>
+                  </div>
+                </div>
+              ))}
+              <div class="teaser">
+                <p>Аналитика по скрытым триггерам приостановки деятельности ОС СМК по результатам проверок Росаккредитации за первый квартал 2026 года.</p>
+                <a class="btn btn--ghost" href="#express-test">Скачать чек-лист внутренних уязвимостей</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="packages">
+        <div class="shell">
+          <div class="section__head">
+            <div>
+              <p class="kicker">Форматы работы</p>
+              <h2>Три пакета под срок и глубину проверки</h2>
+            </div>
+            <p class="lead">Объем и итоговая стоимость уточняются после первичного разбора. Бюджет фиксируется в договоре до начала работ.</p>
+          </div>
+          <div class="pricing">
+            {packages.map((pack) => (
+              <article class="price-card">
+                <img class="price-card__image" src={packageImages[pack.image].src} alt={`${pack.name}: неомодернистская графика пакета`} loading="lazy" />
+                <div class="price-card__meta">
+                  <span>{pack.code}</span>
+                  <span>{pack.name}</span>
+                </div>
+                <h3>{pack.subtitle}</h3>
+                <div class="price-card__price">{pack.price}</div>
+                <p class="price-card__term">{pack.term}</p>
+                <ul>
+                  {pack.items.map((item) => <li>{item}</li>)}
+                </ul>
+                <a class="btn" href="#express-test">{pack.cta}</a>
+              </article>
+            ))}
+          </div>
+          <p class="guarantee">
+            <strong>Гарантия неизменности бюджета:</strong> окончательная стоимость фиксируется в договоре до начала работ. Она зависит от количества экспертов в штате и объема архива. Никаких доплат в процессе прохождения проверки.
+          </p>
+        </div>
+      </section>
+
+      <section class="section" id="express-test">
+        <div class="shell quiz">
+          <div>
+            <p class="kicker">Экспресс-тест</p>
+            <h2>Две минуты до первичного плана защиты</h2>
+            <p class="lead">Микроконверсия без длинной анкеты: фиксируем контур процедуры, главный риск и контакт для обратной связи.</p>
+          </div>
+
+          <form class="quiz-card glass" action={siteConfig.formAction} method="post" enctype="multipart/form-data" data-quiz data-step="1">
+            <input type="hidden" name="service" value={serviceName} />
+            <input type="hidden" name="service_scenario" value="express_test" />
+            <input type="hidden" name="page" value="os_smk_pk_landing" />
+            <div class="progress" aria-hidden="true"><span></span></div>
+
+            <div class="quiz-step" data-quiz-step="1">
+              <h3>Шаг 1. Контур процедуры</h3>
+              <div class="option-grid">
+                <p class="kicker">Срок подачи заявления</p>
+                <label class="radio"><input type="radio" name="deadline" value="less_30_days" required /><span>Менее 30 рабочих дней</span></label>
+                <label class="radio"><input type="radio" name="deadline" value="planned_2_3_months" /><span>Плановые 2-3 месяца</span></label>
+                <label class="radio"><input type="radio" name="deadline" value="violations_fsa_act" /><span>Устраняем нарушения по акту ФСА</span></label>
+              </div>
+              <div class="option-grid">
+                <p class="kicker">Формат процедуры</p>
+                <label class="radio"><input type="radio" name="procedure_format" value="pk_only" required /><span>Только подтверждение компетентности</span></label>
+                <label class="radio"><input type="radio" name="procedure_format" value="pk_plus_scope_extension" /><span>ПК + расширение области аккредитации</span></label>
+              </div>
+              <button class="btn" type="button" data-next-step>Далее →</button>
+            </div>
+
+            <div class="quiz-step" data-quiz-step="2">
+              <h3>Шаг 2. Главная уязвимость и контакт</h3>
+              <div class="option-grid">
+                <p class="kicker">Где основной риск</p>
+                <label class="radio"><input type="radio" name="main_risk" value="questionnaire_archive" required /><span>Анкета самообследования и архив дел</span></label>
+                <label class="radio"><input type="radio" name="main_risk" value="experts_quality_manual" /><span>Личные дела экспертов и Руководство по качеству</span></label>
+                <label class="radio"><input type="radio" name="main_risk" value="vks_practical_assessment" /><span>Практическая оценка в режиме ВКС</span></label>
+              </div>
+              <label class="field">
+                <span>Телефон</span>
+                <input class="input" name="phone" autocomplete="tel" inputmode="tel" required />
+              </label>
+              <label class="field">
+                <span>Электронная почта</span>
+                <input class="input" type="email" name="email" autocomplete="email" required />
+              </label>
+              <label class="field file-input">
+                <span>Прикрепить область аккредитации или анкету</span>
+                <input name="attachment" type="file" />
+              </label>
+              <button class="btn" type="submit">Получить план защиты аккредитации</button>
+            </div>
+            <p class="notice" data-submit-notice>Данные приняты. Ведущий технический эксперт свяжется с вами в течение 20 минут с готовым планом зачистки рисков под ваш график Росаккредитации.</p>
+          </form>
+        </div>
+      </section>
+
+      <section class="section" id="timeline">
+        <div class="shell">
+          <div class="section__head">
+            <div>
+              <p class="kicker">Календарный план</p>
+              <h2>14 рабочих дней до управляемой готовности</h2>
+            </div>
+            <p class="lead">План показывает, как используется время клиента до подачи заявления и во время работы комиссии ФСА.</p>
+          </div>
+          <div class="timeline">
+            <img class="timeline__asset" src={witnessImage.src} alt="Эксперт за рабочим столом перед контуром экрана ВКС" loading="lazy" />
+            <div class="steps">
+              {timeline.map((item) => (
+                <article class="step">
+                  <div class="step__meta">{item.stage}<br />{item.days}</div>
+                  <div>
+                    <h3>{item.title}</h3>
+                    <p>{item.text}</p>
+                    <p><strong>Результат:</strong> {item.result}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--tight" id="faq">
+        <div class="shell">
+          <div class="section__head">
+            <div>
+              <p class="kicker">FAQ</p>
+              <h2>Разбор сложных вопросов</h2>
+            </div>
+            <p class="lead">Ответы снимают юридические и процедурные страхи без некорректных обещаний стопроцентного результата.</p>
+          </div>
+          <div class="faq">
+            {faq.map((item, index) => (
+              <details open={index === 0}>
+                <summary>{item.question}</summary>
+                <p>{item.answer}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="shell">
+        <div class="footer__grid">
+          <div>
+            <p class="kicker">Финальное действие</p>
+            <h2>Запустите экспресс-разбор документов до официальной подачи заявления</h2>
+            <a class="btn" href="#top">Запустить экспресс-разбор документов</a>
+          </div>
+          <div class="footer__contacts">
+            <a href={`tel:${siteConfig.phone.replaceAll(" ", "")}`}>{siteConfig.phone}</a>
+            <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+            <span>{siteConfig.address}</span>
+            <a href={siteConfig.messengerUrl}>{siteConfig.messengerLabel}</a>
+          </div>
+        </div>
+        <div class="footer__legal">
+          <a href={siteConfig.privacyUrl}>Политика конфиденциальности</a>
+          <a href={siteConfig.personalDataUrl}>Согласие на обработку персональных данных</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const tabs = document.querySelectorAll("[data-risk-tab]");
+      const panels = document.querySelectorAll("[data-risk-panel]");
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          const id = tab.getAttribute("data-risk-tab");
+          tabs.forEach((item) => item.setAttribute("aria-selected", String(item === tab)));
+          panels.forEach((panel) => {
+            panel.toggleAttribute("hidden", panel.getAttribute("data-risk-panel") !== id);
+          });
+        });
+      });
+
+      const quiz = document.querySelector("[data-quiz]");
+      const nextStep = document.querySelector("[data-next-step]");
+      const notice = document.querySelector("[data-submit-notice]");
+
+      nextStep?.addEventListener("click", () => {
+        const stepOneFields = quiz?.querySelectorAll('[data-quiz-step="1"] input[required]');
+        const valid = Array.from(stepOneFields ?? []).every((input) => input instanceof HTMLInputElement && input.checkValidity());
+        if (!valid) {
+          stepOneFields?.[0]?.dispatchEvent(new Event("invalid", { cancelable: true }));
+          if (stepOneFields?.[0] instanceof HTMLInputElement) stepOneFields[0].reportValidity();
+          return;
+        }
+        quiz?.setAttribute("data-step", "2");
+      });
+
+      quiz?.addEventListener("submit", (event) => {
+        event.preventDefault();
+        notice?.classList.add("is-visible");
+      });
+    </script>
+  </body>
+</html>
