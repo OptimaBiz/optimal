@@ -1,0 +1,20 @@
+
+# dependencies
+node_modules/
+
+# test/cache
+.playwright/
+test-results/
+playwright-report/
+.cache/
+.DS_Store
+
+# dependencies
+node_modules/
+
+# test/cache
+.playwright/
+test-results/
+playwright-report/
+.cache/
+.DS_Store
