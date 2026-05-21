@@ -1,7 +1,7 @@
 ---
 import "../styles/global.css";
 import { criticalSituations, deliverables, faq, packages, riskTabs, timeline } from "../data/landingContent";
-import { cssVariables, siteConfig } from "../lib/siteConfig";
+import { cssVariables, isDemoFormAction, phoneHref, siteConfig } from "../lib/siteConfig";
 import heroImage from "../../images/os-smk-hero.png";
 import riskImage from "../../images/os-smk-risk-matrix.png";
 import witnessImage from "../../images/os-smk-witness-vks.png";
@@ -43,7 +43,7 @@ const serviceName = "Подготовка ОС СМК к подтвержден�
           <header class="topline" aria-label="Шапка лендинга">
             <a class="topline__brand" href="#top">{siteConfig.siteName}</a>
             <span>{siteConfig.city} · ОС СМК · подтверждение компетентности</span>
-            <a href={`tel:${siteConfig.phone.replaceAll(" ", "")}`}>{siteConfig.phone}</a>
+            <a href={`tel:${phoneHref}`}>{siteConfig.phone}</a>
           </header>
 
           <div class="hero__grid">
@@ -210,7 +210,7 @@ const serviceName = "Подготовка ОС СМК к подтвержден�
             <p class="lead">Микроконверсия без длинной анкеты: фиксируем контур процедуры, главный риск и контакт для обратной связи.</p>
           </div>
 
-          <form class="quiz-card glass" action={siteConfig.formAction} method="post" enctype="multipart/form-data" data-quiz data-step="1">
+          <form class="quiz-card glass" action={siteConfig.formAction} method="post" enctype="multipart/form-data" data-quiz data-demo-form={isDemoFormAction ? "true" : "false"} data-step="1">
             <input type="hidden" name="service" value={serviceName} />
             <input type="hidden" name="service_scenario" value="express_test" />
             <input type="hidden" name="page" value="os_smk_pk_landing" />
@@ -316,7 +316,7 @@ const serviceName = "Подготовка ОС СМК к подтвержден�
             <a class="btn" href="#top">Запустить экспресс-разбор документов</a>
           </div>
           <div class="footer__contacts">
-            <a href={`tel:${siteConfig.phone.replaceAll(" ", "")}`}>{siteConfig.phone}</a>
+            <a href={`tel:${phoneHref}`}>{siteConfig.phone}</a>
             <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
             <span>{siteConfig.address}</span>
             <a href={siteConfig.messengerUrl}>{siteConfig.messengerLabel}</a>
@@ -359,6 +359,7 @@ const serviceName = "Подготовка ОС СМК к подтвержден�
       });
 
       quiz?.addEventListener("submit", (event) => {
+        if (quiz.getAttribute("data-demo-form") !== "true") return;
         event.preventDefault();
         notice?.classList.add("is-visible");
       });

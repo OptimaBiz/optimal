@@ -60,6 +60,9 @@ export const siteConfig = {
   pageDescription: getEnv("PUBLIC_PAGE_DESCRIPTION", fallback.pageDescription)
 };
 
+export const phoneHref = siteConfig.phone.replace(/[^\d+]/g, "");
+export const isDemoFormAction = siteConfig.formAction.includes("example.com");
+
 export const cssVariables = `
   --font-display: ${siteConfig.fontDisplay};
   --font-text: ${siteConfig.fontText};
