@@ -1,0 +1,18 @@
+<svg width="1400" height="1400" viewBox="0 0 1400 1400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="1400" height="1400" fill="white" fill-opacity="0"/>
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <path d="M-80 980 C 120 920, 250 960, 360 910 C 470 862, 560 760, 690 764 C 800 768, 860 858, 980 846 C 1120 832, 1230 726, 1480 690" stroke="#1C3F8F" stroke-opacity="0.12" stroke-width="1.8"/>
+    <path d="M-120 1030 C 80 980, 210 1012, 330 962 C 450 910, 560 800, 700 806 C 820 812, 910 900, 1030 888 C 1180 874, 1290 788, 1520 740" stroke="#6A8AD0" stroke-opacity="0.095" stroke-width="1.6"/>
+    <path d="M-60 840 C 90 830, 190 792, 300 730 C 420 664, 530 606, 670 612 C 806 618, 910 682, 1024 672 C 1160 660, 1240 620, 1460 584" stroke="#1C3F8F" stroke-opacity="0.09" stroke-width="1.5"/>
+
+    <path d="M180 1080 C 240 930, 282 852, 344 760 C 404 670, 470 626, 520 540 C 572 454, 610 348, 694 248 C 742 190, 786 158, 846 82" stroke="#1C3F8F" stroke-opacity="0.10" stroke-width="1.7"/>
+    <path d="M268 1100 C 326 970, 378 900, 440 810 C 498 726, 558 656, 612 566 C 668 474, 716 376, 784 286 C 836 218, 884 182, 944 98" stroke="#6A8AD0" stroke-opacity="0.085" stroke-width="1.5"/>
+    <path d="M420 1120 C 470 1004, 524 912, 580 824 C 640 732, 708 650, 760 556 C 812 462, 852 360, 920 274 C 974 206, 1030 166, 1090 84" stroke="#1C3F8F" stroke-opacity="0.075" stroke-width="1.35"/>
+
+    <path d="M760 1100 C 804 1004, 842 916, 898 824 C 954 734, 1016 658, 1080 566 C 1144 472, 1200 362, 1280 256" stroke="#6A8AD0" stroke-opacity="0.075" stroke-width="1.35"/>
+    <path d="M860 1120 C 906 1034, 956 952, 1006 858 C 1058 764, 1112 674, 1180 586 C 1240 508, 1292 418, 1370 330" stroke="#1C3F8F" stroke-opacity="0.065" stroke-width="1.3"/>
+
+    <path d="M0 560 C 160 520, 270 538, 390 492 C 512 444, 600 352, 726 356 C 856 360, 930 450, 1060 438 C 1210 424, 1300 340, 1480 300" stroke="#B7C7E4" stroke-opacity="0.09" stroke-width="1.1"/>
+    <path d="M-40 360 C 110 320, 240 334, 360 290 C 474 248, 586 172, 702 176 C 820 180, 912 252, 1030 242 C 1188 228, 1288 154, 1480 120" stroke="#D6DEF0" stroke-opacity="0.07" stroke-width="1"/>
+  </g>
+</svg>
