@@ -29,7 +29,7 @@ test.describe('Smoke: key pages render', () => {
       await expect(page.locator('main')).toBeVisible();
       await expect(page.locator('section.hero')).toBeVisible();
 
-      const cta = page.locator('section.hero a.button, section.hero .hero-actions a').first();
+      const cta = page.locator('section.hero a.button, section.hero a.btn, section.hero .hero-actions a, section.hero .hero__actions a').first();
       await expect(cta).toBeVisible();
       const href = await cta.getAttribute('href');
       expect(href && href.trim().length > 0, `CTA href should not be empty on ${pageCase.url}`).toBeTruthy();
