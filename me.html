@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Антон Карапетян</title>
+  <meta name="robots" content="noindex, nofollow" />
+
+  <style>
+    :root {
+      --bg: #1c2026;
+      --card: #232932;
+      --card-deep: #1f252d;
+      --text: #f3f6fa;
+      --muted: #aeb8c5;
+      --line: rgba(255,255,255,0.10);
+      --accent: #2e78ff;
+      --accent-hover: #1f66ea;
+      --icon: #d2d6dc;
+      --role: #8ea6c9;
+      --link: #d7dde6;
+      --link-hover: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(46,120,255,0.10), transparent 30%),
+        var(--bg);
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100dvh;
+      padding: 16px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 420px;
+      background: linear-gradient(180deg, var(--card) 0%, var(--card-deep) 100%);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow:
+        0 20px 60px rgba(0,0,0,.35),
+        0 1px 0 rgba(255,255,255,.04) inset;
+      animation: cardFadeUp 620ms cubic-bezier(.22,1,.36,1) both;
+      will-change: transform, opacity;
+    }
+
+    h1 {
+      margin: 0 0 6px;
+      font-size: 26px;
+      line-height: 1.1;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+
+    .role {
+      margin: 0 0 20px;
+      color: var(--role);
+      font-size: 15px;
+      line-height: 1.4;
+    }
+
+    .item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    .icon {
+      width: 22px;
+      min-width: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .icon svg {
+      width: 20px;
+      height: 20px;
+      display: block;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+      transition: color 180ms ease;
+      word-break: break-word;
+    }
+
+    a:hover {
+      color: var(--link-hover);
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 14px 16px;
+      border-radius: 12px;
+      margin-top: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      line-height: 1.2;
+      transition:
+        background-color 180ms ease,
+        border-color 180ms ease,
+        color 180ms ease,
+        transform 180ms ease,
+        box-shadow 180ms ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 10px 24px rgba(46,120,255,.22);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      color: #fff;
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--line);
+      color: var(--icon);
+    }
+
+    .small {
+      margin-top: 16px;
+      font-size: 13px;
+      line-height: 1.45;
+      color: #9aa3ad;
+      text-align: center;
+    }
+
+    @keyframes cardFadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(18px) scale(0.985);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @media (max-width: 420px) {
+      body {
+        padding: 16px;
+      }
+
+      .card {
+        padding: 20px;
+        border-radius: 18px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      .role,
+      .item {
+        font-size: 14px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .card,
+      .btn,
+      a {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Антон Карапетян</h1>
+    <div class="role">Директор · Оптимальный Вариант</div>
+
+    <div class="item">
+      <div class="icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M6.6 10.8c1.2 2.4 3.2 4.4 5.6 5.6l1.9-1.9c.2-.2.5-.3.8-.2 1 .3 2 .4 3.1.4.4 0 .7.3.7.7V19c0 .4-.3.7-.7.7C10.7 19.7 4.3 13.3 4.3 5.4c0-.4.3-.7.7-.7h3.6c.4 0 .7.3.7.7 0 1.1.1 2.1.4 3.1.1.3 0 .6-.2.8l-1.9 1.5Z" fill="#d2d6dc"/>
+        </svg>
+      </div>
+      <a href="tel:+79650045566">+7 (965) 004-55-66</a>
+    </div>
+
+    <div class="item">
+      <div class="icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M4 6.5A1.5 1.5 0 0 1 5.5 5h13A1.5 1.5 0 0 1 20 6.5v11a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 17.5v-11Zm1.8.1 6.2 4.8 6.2-4.8" stroke="#d2d6dc" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="4" y="5" width="16" height="14" rx="1.5" stroke="#d2d6dc" stroke-width="1.6"/>
+        </svg>
+      </div>
+      <a href="mailto:hello@optimaloption.ru">hello@optimaloption.ru</a>
+    </div>
+
+    <div class="item">
+      <div class="icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="8" stroke="#d2d6dc" stroke-width="1.6"/>
+          <path d="M4.5 12h15" stroke="#d2d6dc" stroke-width="1.6" stroke-linecap="round"/>
+          <path d="M12 4c2 2.2 3.2 5 3.2 8S14 17.8 12 20c-2-2.2-3.2-5-3.2-8S10 6.2 12 4Z" stroke="#d2d6dc" stroke-width="1.6"/>
+        </svg>
+      </div>
+      <a href="https://optimaloption.ru" target="_blank" rel="noopener">optimaloption.ru</a>
+    </div>
+
+    <div class="item">
+      <div class="icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="#2e78ff">
+          <path d="M9.993 15.494l-.396 4.058c.568 0 .814-.244 1.107-.537l2.655-2.547 5.506 4.026c1.01.557 1.732.264 1.99-.934l3.608-16.93c.334-1.547-.56-2.154-1.542-1.79L1.53 9.36c-1.49.58-1.47 1.417-.253 1.79l5.902 1.84 13.688-8.626c.645-.392 1.232-.175.75.217"/>
+        </svg>
+      </div>
+      <a href="https://t.me/anton_g_k" target="_blank" rel="noopener">@anton_g_k</a>
+    </div>
+
+    <a class="btn btn-primary" href="/anton.vcf">Добавить в контакты</a>
+    <a class="btn btn-secondary" href="tel:+79650045566">Позвонить</a>
+    <a class="btn btn-secondary" href="https://t.me/anton_g_k" target="_blank" rel="noopener">Telegram</a>
+    <a class="btn btn-secondary" href="https://optimaloption.ru" target="_blank" rel="noopener">Сайт</a>
+
+    <div class="small">
+      Откроется карточка контакта — нажмите «Сохранить»
+    </div>
+  </div>
+</body>
+</html>
