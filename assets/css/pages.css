@@ -103,6 +103,77 @@
   outline-offset: 2px;
 }
 
+.site-cookie {
+  position: fixed;
+  right: max(1rem, env(safe-area-inset-right));
+  bottom: calc(1rem + env(safe-area-inset-bottom));
+  z-index: 95;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  width: min(30rem, calc(100vw - 2rem));
+  padding: 0.85rem 0.9rem 0.85rem 1rem;
+  border: 1px solid rgba(185, 199, 221, 0.82);
+  border-radius: 14px;
+  background: rgba(247, 250, 255, 0.97);
+  box-shadow: 0 12px 30px rgba(18, 39, 73, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s ease;
+}
+
+.site-cookie--hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+}
+
+.site-cookie__text {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.86rem;
+  line-height: 1.45;
+}
+
+.site-cookie__text a {
+  color: #1d2f4b;
+  font-weight: 650;
+}
+
+.site-cookie__button {
+  flex: none;
+  min-height: 2.35rem;
+  padding: 0.55rem 0.85rem;
+  border: 0;
+  border-radius: 10px;
+  background: #173b75;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.84rem;
+  cursor: pointer;
+}
+
+.site-cookie__button:hover {
+  background: #122d59;
+}
+
+@media (max-width: 640px) {
+  .site-cookie {
+    left: 1rem;
+    right: 1rem;
+    bottom: calc(4.35rem + env(safe-area-inset-bottom));
+    width: auto;
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .site-cookie__button {
+    width: 100%;
+  }
+}
+
 .legal-card {
   display: block;
   color: inherit;

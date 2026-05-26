@@ -654,6 +654,44 @@
     setButtonVisibility();
   };
 
+  const initCookieConsent = () => {
+    const storageKey = 'optimaloption_cookie_consent';
+    if (document.querySelector('.site-cookie')) return;
+
+    let hasConsent = false;
+    try {
+      hasConsent = window.localStorage.getItem(storageKey) === 'accepted';
+    } catch (_error) {
+      hasConsent = false;
+    }
+    if (hasConsent) return;
+
+    const banner = document.createElement('div');
+    banner.className = 'site-cookie';
+    banner.setAttribute('role', 'region');
+    banner.setAttribute('aria-label', 'Уведомление о cookie');
+    banner.innerHTML = `
+      <p class="site-cookie__text">
+        Мы используем cookie для корректной работы сайта. Подробнее — <a href="/privacy-policy.html">в политике конфиденциальности</a>.
+      </p>
+      <button class="site-cookie__button" type="button">Понятно</button>
+    `;
+
+    const acceptButton = banner.querySelector('.site-cookie__button');
+    acceptButton?.addEventListener('click', () => {
+      try {
+        window.localStorage.setItem(storageKey, 'accepted');
+      } catch (_error) {
+        // Consent still hides for the current session if storage is unavailable.
+      }
+      banner.classList.add('site-cookie--hidden');
+      banner.addEventListener('transitionend', () => banner.remove(), { once: true });
+      window.setTimeout(() => banner.remove(), 260);
+    });
+
+    document.body.append(banner);
+  };
+
   const bootstrap = async () => {
     initPageTaxonomy();
     normalizeBreadcrumbs();
@@ -663,6 +701,7 @@
     initReveal();
     initMobileServiceCardFocus();
     initScrollToTop();
+    initCookieConsent();
   };
 
   bootstrap();
